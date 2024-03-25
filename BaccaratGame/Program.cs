@@ -2,6 +2,7 @@ namespace BaccaratGame
 {
     internal static class Program
     {
+        /// this is a comment
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
