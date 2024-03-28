@@ -12,7 +12,9 @@ namespace BaccaratGame
         private decimal _funds;
         //TODO: add avatar files
         //private Image _avatar;
-        private decimal _currentBet;
+        private decimal _playerBet;
+        private decimal _dealerBet;
+        private decimal _tieBet;
 
         public Player(String name, decimal funds, String avatarFilePath)
         {
@@ -37,15 +39,28 @@ namespace BaccaratGame
         //    get { return _avatar; }
         //}
 
-        public decimal CurrentBet
+        public decimal PlayerBet
         {
-            get { return _currentBet; }
-            set { if (value <= _funds) _currentBet = value;
-                else _currentBet = _funds;
-            }
+            get { return _playerBet; }
+            set { _playerBet = value; }
+        } 
+        public decimal DealerBet
+        {
+            get { return _dealerBet; }
+            set { _dealerBet = value; }
         }
+        public decimal TieBet
+        {
+            get { return _tieBet; }
+            set { _tieBet = value; }
+        }
+    
 
-        public void clearBet() { _currentBet = 0; }
+        public void clearAllBets() { 
+            _playerBet = 0;
+            _dealerBet = 0;
+            _tieBet = 0;
+        }
        
     }
 }
