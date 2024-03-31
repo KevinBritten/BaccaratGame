@@ -12,8 +12,8 @@ namespace BaccaratGame
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             //Application.Run(new Welcome());
-            //Application.Run(new GameTable());
-            Application.Run(new Rules());
+            Application.Run(new GameTable());
+            //Application.Run(new Rules());
         }
     }
 }
