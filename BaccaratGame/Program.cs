@@ -11,7 +11,9 @@ namespace BaccaratGame
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Welcome());
+            //Application.Run(new Welcome());
+            //Application.Run(new GameTable());
+            Application.Run(new Rules());
         }
     }
 }
