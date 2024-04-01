@@ -21,11 +21,15 @@ namespace BaccaratGame
         public GameTable()
         {
             InitializeComponent();
+            int i;
             ShoeBoxes[0] = ShoeBox0; ShoeBoxes[1] = ShoeBox1; ShoeBoxes[2] = ShoeBox2; ShoeBoxes[3] = ShoeBox3;
             ShoeBoxes[4] = ShoeBox4; ShoeBoxes[5] = ShoeBox5; ShoeBoxes[6] = ShoeBox6; ShoeBoxes[7] = ShoeBox7;
             ShoeBoxes[8] = ShoeBox8; ShoeBoxes[9] = ShoeBox9; ShoeBoxes[10] = ShoeBox10;
             PlayerBoxes[0] = PlayerBox0; PlayerBoxes[1] = PlayerBox1; PlayerBoxes[2] = PlayerBox2;
             BankerBoxes[0] = BankerBox0; BankerBoxes[1] = BankerBox1; BankerBoxes[2] = BankerBox2;
+            for (i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; }
+            for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
+            for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
         }
 
         private void GameControlButton_Click(object sender, EventArgs e)
@@ -69,6 +73,8 @@ namespace BaccaratGame
             int[] BankerH = H.Banker();
             int[] Scores = H.Scores();
             for (i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; }
+            for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
+            for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
             ShoeBoxes[0].Image = PlayingCardsList.Images[PlayerH[0]]; ShoeBoxes[1].Image = PlayingCardsList.Images[BankerH[0]];
             ShoeBoxes[2].Image = PlayingCardsList.Images[PlayerH[1]]; ShoeBoxes[3].Image = PlayingCardsList.Images[BankerH[1]];
             if (ThirdCard[0] == 1) { ShoeBoxes[4].Image = PlayingCardsList.Images[PlayerH[2]]; }
@@ -83,6 +89,32 @@ namespace BaccaratGame
             if (ThirdCard[1] == 1) { BankerBoxes[2].Image = PlayingCardsList.Images[BankerH[2]]; }
             PlayerScoreV.Text = Convert.ToString(Scores[0]);
             BankerScoreV.Text = Convert.ToString(Scores[1]);
+        }
+
+        private void RulesButton_Click(object sender, EventArgs e)
+        {
+            Rules SecondForm = new Rules();
+            SecondForm.ShowDialog();
+        }
+
+        private void Seat1ControlButton_Click(object sender, EventArgs e)
+        {
+            //Until we develop the sitplayer, busted and withdraw forms...
+        }
+
+        private void Seat2ControlButton_Click(object sender, EventArgs e)
+        {
+            //Until we develop the sitplayer, busted and withdraw forms...
+        }
+
+        private void Seat3ControButton_Click(object sender, EventArgs e)
+        {
+            //Until we develop the sitplayer, busted and withdraw forms...
+        }
+
+        private void Seat4ControlButton_Click(object sender, EventArgs e)
+        {
+            //Until we develop the sitplayer, busted and withdraw forms...
         }
     }
 }

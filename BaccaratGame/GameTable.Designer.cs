@@ -58,6 +58,12 @@
             BankerBox1 = new PictureBox();
             BankerBox0 = new PictureBox();
             GameControlButton = new Button();
+            groupBox1 = new GroupBox();
+            RulesButton = new Button();
+            Seat1ControlButton = new Button();
+            Seat2ControlButton = new Button();
+            Seat3ControButton = new Button();
+            Seat4ControlButton = new Button();
             ShoeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ShoeBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ShoeBox9).BeginInit();
@@ -79,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)BankerBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BankerBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BankerBox0).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // ShoeGroupBox
@@ -287,7 +294,7 @@
             PlayerGroupBox.Controls.Add(PlayerBox2);
             PlayerGroupBox.Controls.Add(PlayerBox1);
             PlayerGroupBox.Controls.Add(PlayerBox0);
-            PlayerGroupBox.Location = new Point(12, 208);
+            PlayerGroupBox.Location = new Point(158, 149);
             PlayerGroupBox.Name = "PlayerGroupBox";
             PlayerGroupBox.Size = new Size(200, 100);
             PlayerGroupBox.TabIndex = 1;
@@ -346,7 +353,7 @@
             BankerGroupBox.Controls.Add(BankerBox2);
             BankerGroupBox.Controls.Add(BankerBox1);
             BankerGroupBox.Controls.Add(BankerBox0);
-            BankerGroupBox.Location = new Point(12, 324);
+            BankerGroupBox.Location = new Point(378, 149);
             BankerGroupBox.Name = "BankerGroupBox";
             BankerGroupBox.Size = new Size(200, 100);
             BankerGroupBox.TabIndex = 2;
@@ -408,14 +415,80 @@
             GameControlButton.UseVisualStyleBackColor = true;
             GameControlButton.Click += GameControlButton_Click;
             // 
+            // groupBox1
+            // 
+            groupBox1.BackgroundImage = Properties.Resources.BaccaratTable1;
+            groupBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            groupBox1.Controls.Add(PlayerGroupBox);
+            groupBox1.Controls.Add(BankerGroupBox);
+            groupBox1.Location = new Point(12, 140);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(758, 399);
+            groupBox1.TabIndex = 4;
+            groupBox1.TabStop = false;
+            // 
+            // RulesButton
+            // 
+            RulesButton.Location = new Point(852, 12);
+            RulesButton.Name = "RulesButton";
+            RulesButton.Size = new Size(100, 30);
+            RulesButton.TabIndex = 5;
+            RulesButton.Text = "Rules";
+            RulesButton.UseVisualStyleBackColor = true;
+            RulesButton.Click += RulesButton_Click;
+            // 
+            // Seat1ControlButton
+            // 
+            Seat1ControlButton.Location = new Point(30, 557);
+            Seat1ControlButton.Name = "Seat1ControlButton";
+            Seat1ControlButton.Size = new Size(100, 30);
+            Seat1ControlButton.TabIndex = 6;
+            Seat1ControlButton.Text = "Seat 1 free";
+            Seat1ControlButton.UseVisualStyleBackColor = true;
+            Seat1ControlButton.Click += Seat1ControlButton_Click;
+            // 
+            // Seat2ControlButton
+            // 
+            Seat2ControlButton.Location = new Point(222, 557);
+            Seat2ControlButton.Name = "Seat2ControlButton";
+            Seat2ControlButton.Size = new Size(100, 30);
+            Seat2ControlButton.TabIndex = 7;
+            Seat2ControlButton.Text = "Seat 2 free";
+            Seat2ControlButton.UseVisualStyleBackColor = true;
+            Seat2ControlButton.Click += Seat2ControlButton_Click;
+            // 
+            // Seat3ControButton
+            // 
+            Seat3ControButton.Location = new Point(428, 557);
+            Seat3ControButton.Name = "Seat3ControButton";
+            Seat3ControButton.Size = new Size(100, 30);
+            Seat3ControButton.TabIndex = 8;
+            Seat3ControButton.Text = "Seat 3 free";
+            Seat3ControButton.UseVisualStyleBackColor = true;
+            Seat3ControButton.Click += Seat3ControButton_Click;
+            // 
+            // Seat4ControlButton
+            // 
+            Seat4ControlButton.Location = new Point(626, 557);
+            Seat4ControlButton.Name = "Seat4ControlButton";
+            Seat4ControlButton.Size = new Size(100, 30);
+            Seat4ControlButton.TabIndex = 9;
+            Seat4ControlButton.Text = "Seat 4 free";
+            Seat4ControlButton.UseVisualStyleBackColor = true;
+            Seat4ControlButton.Click += Seat4ControlButton_Click;
+            // 
             // GameTable
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(964, 609);
+            Controls.Add(Seat4ControlButton);
+            Controls.Add(Seat3ControButton);
+            Controls.Add(Seat2ControlButton);
+            Controls.Add(Seat1ControlButton);
+            Controls.Add(RulesButton);
+            Controls.Add(groupBox1);
             Controls.Add(GameControlButton);
-            Controls.Add(BankerGroupBox);
-            Controls.Add(PlayerGroupBox);
             Controls.Add(ShoeGroupBox);
             Margin = new Padding(3, 2, 3, 2);
             Name = "GameTable";
@@ -443,6 +516,7 @@
             ((System.ComponentModel.ISupportInitialize)BankerBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)BankerBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)BankerBox0).EndInit();
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -476,5 +550,11 @@
         private Label BankerScoreV;
         private Label BankerScore;
         private Button GameControlButton;
+        private GroupBox groupBox1;
+        private Button RulesButton;
+        private Button Seat1ControlButton;
+        private Button Seat2ControlButton;
+        private Button Seat3ControButton;
+        private Button Seat4ControlButton;
     }
 }

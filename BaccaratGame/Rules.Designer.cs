@@ -41,6 +41,7 @@
             btnReturn.TabIndex = 0;
             btnReturn.Text = "Return";
             btnReturn.UseVisualStyleBackColor = true;
+            btnReturn.Click += btnReturn_Click;
             // 
             // listBox1
             // 
