@@ -31,15 +31,9 @@ namespace Play {
 
         public void ReplenishShoe() {
             int i, j, index, temp;
-            int k = 0;
             Random rand = new Random();
             // Fill the stack with cards.
-            for (i = 0; i < _deckN; i++) {
-                for (j = 0; j < _cardN; j++) {
-                    _stack[k] = j;
-                    k++;
-                }
-            }
+            for (i = 0; i < _deckN; i++) { for (j = 0; j < _cardN; j++) { _stack[i * _cardN + j] = j; } }
             // Shuffle the stack.
             for (i = 0; i < _stack.Length; i++) {
                 index = rand.Next(_stack.Length);
