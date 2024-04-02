@@ -147,57 +147,57 @@ namespace BaccaratGame
 
         private void PlayerBetPlayer2_ValueChanged(object sender, EventArgs e)
         {
-            updateBet(0, PlayerBetPlayer1.Value, players[1]);
+            updateBet(0, PlayerBetPlayer2.Value, players[1]);
         }
 
         private void PlayerBetPlayer3_ValueChanged(object sender, EventArgs e)
         {
-            updateBet(0, PlayerBetPlayer1.Value, players[2]);
+            updateBet(0, PlayerBetPlayer3.Value, players[2]);
         }
 
         private void PlayerBetPlayer4_ValueChanged(object sender, EventArgs e)
         {
-            updateBet(0, PlayerBetPlayer1.Value, players[3]);
+            updateBet(0, PlayerBetPlayer4.Value, players[3]);
         }
 
         private void DealerBetPlayer1_ValueChanged(object sender, EventArgs e)
         {
-            updateBet(1, PlayerBetPlayer1.Value, players[0]);
+            updateBet(1, DealerBetPlayer1.Value, players[0]);
         }
 
         private void DealerBetPlayer2_ValueChanged(object sender, EventArgs e)
         {
-            updateBet(1, PlayerBetPlayer1.Value, players[1]);
+            updateBet(1, DealerBetPlayer2.Value, players[1]);
         }
 
         private void DealerBetPlayer3_ValueChanged(object sender, EventArgs e)
         {
-            updateBet(1, PlayerBetPlayer1.Value, players[2]);
+            updateBet(1, DealerBetPlayer3.Value, players[2]);
         }
 
         private void DealerBetPlayer4_ValueChanged(object sender, EventArgs e)
         {
-            updateBet(1, PlayerBetPlayer1.Value, players[3]);
+            updateBet(1, DealerBetPlayer4.Value, players[3]);
         }
 
         private void TieBetPlayer1_ValueChanged(object sender, EventArgs e)
         {
-            updateBet(2, PlayerBetPlayer1.Value, players[0]);
+            updateBet(2, TieBetPlayer1.Value, players[0]);
         }
 
         private void TieBetPlayer2_ValueChanged(object sender, EventArgs e)
         {
-            updateBet(2, PlayerBetPlayer1.Value, players[1]);
+            updateBet(2, TieBetPlayer2.Value, players[1]);
         }
 
         private void TieBetPlayer3_ValueChanged(object sender, EventArgs e)
         {
-            updateBet(2, PlayerBetPlayer1.Value, players[2]);
+            updateBet(2, TieBetPlayer3.Value, players[2]);
         }
 
         private void TieBetPlayer4_ValueChanged(object sender, EventArgs e)
         {
-            updateBet(2, PlayerBetPlayer1.Value, players[3]);
+            updateBet(2, TieBetPlayer4.Value, players[3]);
         }
         private void updateBet(int index, decimal value, Player player)
         {
