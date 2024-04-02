@@ -31,7 +31,10 @@ namespace BaccaratGame
         public decimal Funds
         {
             get { return _funds; }
-            set { _funds = value; }
+            set {
+                OnMyFundsChanged();
+                _funds = value; 
+            }
         }
 
         //public Image Avatar
@@ -61,6 +64,12 @@ namespace BaccaratGame
             _dealerBet = 0;
             _tieBet = 0;
         }
-       
+
+        public event EventHandler FundsChanged;
+
+        protected virtual void OnMyFundsChanged()
+        {
+            FundsChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

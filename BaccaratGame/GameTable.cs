@@ -17,6 +17,7 @@ namespace BaccaratGame
         PictureBox[] ShoeBoxes = new PictureBox[11];
         PictureBox[] PlayerBoxes = new PictureBox[3];
         PictureBox[] BankerBoxes = new PictureBox[3];
+        Player[] players = new Player[4];
 
         public GameTable()
         {
@@ -30,6 +31,11 @@ namespace BaccaratGame
             for (i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; }
             for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
             for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
+
+            //TODO: test player, remove after implimenting player add function
+            players[0] = new Player("Test", 10m, "empty");
+            players[0].FundsChanged += FundBoxPlayer1_FundsChanged;
+            players[0].Funds = 11m;
         }
 
         private void GameControlButton_Click(object sender, EventArgs e)
@@ -115,6 +121,23 @@ namespace BaccaratGame
         private void Seat4ControlButton_Click(object sender, EventArgs e)
         {
             //Until we develop the sitplayer, busted and withdraw forms...
+        }
+
+        private void FundBoxPlayer1_FundsChanged(object sender, EventArgs e)
+        {
+            FundBoxPlayer1.Text = players[0].Funds.ToString();
+        }
+        private void FundBoxPlayer2_FundsChanged(object sender, EventArgs e)
+        {
+            FundBoxPlayer1.Text = players[1].Funds.ToString();
+        }
+        private void FundBoxPlayer3_FundsChanged(object sender, EventArgs e)
+        {
+            FundBoxPlayer1.Text = players[2].Funds.ToString();
+        }
+        private void FundBoxPlayer4_FundsChanged(object sender, EventArgs e)
+        {
+            FundBoxPlayer1.Text = players[3].Funds.ToString();
         }
     }
 }
