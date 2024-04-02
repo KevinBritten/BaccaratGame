@@ -139,5 +139,69 @@ namespace BaccaratGame
         {
             FundBoxPlayer1.Text = players[3].Funds.ToString();
         }
+
+        private void PlayerBetPlayer1_ValueChanged(object sender, EventArgs e)
+        {
+            updateBet(0, PlayerBetPlayer1.Value, players[0]);
+        }
+
+        private void PlayerBetPlayer2_ValueChanged(object sender, EventArgs e)
+        {
+            updateBet(0, PlayerBetPlayer1.Value, players[1]);
+        }
+
+        private void PlayerBetPlayer3_ValueChanged(object sender, EventArgs e)
+        {
+            updateBet(0, PlayerBetPlayer1.Value, players[2]);
+        }
+
+        private void PlayerBetPlayer4_ValueChanged(object sender, EventArgs e)
+        {
+            updateBet(0, PlayerBetPlayer1.Value, players[3]);
+        }
+
+        private void DealerBetPlayer1_ValueChanged(object sender, EventArgs e)
+        {
+            updateBet(1, PlayerBetPlayer1.Value, players[0]);
+        }
+
+        private void DealerBetPlayer2_ValueChanged(object sender, EventArgs e)
+        {
+            updateBet(1, PlayerBetPlayer1.Value, players[1]);
+        }
+
+        private void DealerBetPlayer3_ValueChanged(object sender, EventArgs e)
+        {
+            updateBet(1, PlayerBetPlayer1.Value, players[2]);
+        }
+
+        private void DealerBetPlayer4_ValueChanged(object sender, EventArgs e)
+        {
+            updateBet(1, PlayerBetPlayer1.Value, players[3]);
+        }
+
+        private void TieBetPlayer1_ValueChanged(object sender, EventArgs e)
+        {
+            updateBet(2, PlayerBetPlayer1.Value, players[0]);
+        }
+
+        private void TieBetPlayer2_ValueChanged(object sender, EventArgs e)
+        {
+            updateBet(2, PlayerBetPlayer1.Value, players[1]);
+        }
+
+        private void TieBetPlayer3_ValueChanged(object sender, EventArgs e)
+        {
+            updateBet(2, PlayerBetPlayer1.Value, players[2]);
+        }
+
+        private void TieBetPlayer4_ValueChanged(object sender, EventArgs e)
+        {
+            updateBet(2, PlayerBetPlayer1.Value, players[3]);
+        }
+        private void updateBet(int index, decimal value, Player player)
+        {
+            player.updateBet(index, (int)value);
+        }
     }
 }

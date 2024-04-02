@@ -636,6 +636,7 @@
             TieBetPlayer3.Name = "TieBetPlayer3";
             TieBetPlayer3.Size = new Size(64, 27);
             TieBetPlayer3.TabIndex = 3;
+            TieBetPlayer3.ValueChanged += TieBetPlayer3_ValueChanged;
             // 
             // DealerBetPlayer3
             // 
@@ -643,6 +644,7 @@
             DealerBetPlayer3.Name = "DealerBetPlayer3";
             DealerBetPlayer3.Size = new Size(64, 27);
             DealerBetPlayer3.TabIndex = 2;
+            DealerBetPlayer3.ValueChanged += DealerBetPlayer3_ValueChanged;
             // 
             // PlayerBetPlayer3
             // 
@@ -650,6 +652,7 @@
             PlayerBetPlayer3.Name = "PlayerBetPlayer3";
             PlayerBetPlayer3.Size = new Size(64, 27);
             PlayerBetPlayer3.TabIndex = 1;
+            PlayerBetPlayer3.ValueChanged += PlayerBetPlayer3_ValueChanged;
             // 
             // FundBoxPlayer3
             // 
@@ -686,6 +689,7 @@
             TieBetPlayer4.Name = "TieBetPlayer4";
             TieBetPlayer4.Size = new Size(64, 27);
             TieBetPlayer4.TabIndex = 3;
+            TieBetPlayer4.ValueChanged += TieBetPlayer4_ValueChanged;
             // 
             // DealerBetPlayer4
             // 
@@ -693,6 +697,7 @@
             DealerBetPlayer4.Name = "DealerBetPlayer4";
             DealerBetPlayer4.Size = new Size(64, 27);
             DealerBetPlayer4.TabIndex = 2;
+            DealerBetPlayer4.ValueChanged += DealerBetPlayer4_ValueChanged;
             // 
             // PlayerBetPlayer4
             // 
@@ -700,6 +705,7 @@
             PlayerBetPlayer4.Name = "PlayerBetPlayer4";
             PlayerBetPlayer4.Size = new Size(64, 27);
             PlayerBetPlayer4.TabIndex = 1;
+            PlayerBetPlayer4.ValueChanged += PlayerBetPlayer4_ValueChanged;
             // 
             // FundBoxPlayer4
             // 
@@ -736,6 +742,7 @@
             TieBetPlayer2.Name = "TieBetPlayer2";
             TieBetPlayer2.Size = new Size(64, 27);
             TieBetPlayer2.TabIndex = 3;
+            TieBetPlayer2.ValueChanged += TieBetPlayer2_ValueChanged;
             // 
             // DealerBetPlayer2
             // 
@@ -743,6 +750,7 @@
             DealerBetPlayer2.Name = "DealerBetPlayer2";
             DealerBetPlayer2.Size = new Size(64, 27);
             DealerBetPlayer2.TabIndex = 2;
+            DealerBetPlayer2.ValueChanged += DealerBetPlayer2_ValueChanged;
             // 
             // PlayerBetPlayer2
             // 
@@ -750,6 +758,7 @@
             PlayerBetPlayer2.Name = "PlayerBetPlayer2";
             PlayerBetPlayer2.Size = new Size(64, 27);
             PlayerBetPlayer2.TabIndex = 1;
+            PlayerBetPlayer2.ValueChanged += PlayerBetPlayer2_ValueChanged;
             // 
             // FundBoxPlayer2
             // 
@@ -786,6 +795,7 @@
             TieBetPlayer1.Name = "TieBetPlayer1";
             TieBetPlayer1.Size = new Size(64, 27);
             TieBetPlayer1.TabIndex = 3;
+            TieBetPlayer1.ValueChanged += TieBetPlayer1_ValueChanged;
             // 
             // DealerBetPlayer1
             // 
@@ -793,6 +803,7 @@
             DealerBetPlayer1.Name = "DealerBetPlayer1";
             DealerBetPlayer1.Size = new Size(64, 27);
             DealerBetPlayer1.TabIndex = 2;
+            DealerBetPlayer1.ValueChanged += DealerBetPlayer1_ValueChanged;
             // 
             // PlayerBetPlayer1
             // 
@@ -800,6 +811,7 @@
             PlayerBetPlayer1.Name = "PlayerBetPlayer1";
             PlayerBetPlayer1.Size = new Size(64, 27);
             PlayerBetPlayer1.TabIndex = 1;
+            PlayerBetPlayer1.ValueChanged += PlayerBetPlayer1_ValueChanged;
             // 
             // FundBoxPlayer1
             // 
