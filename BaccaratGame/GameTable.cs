@@ -33,9 +33,9 @@ namespace BaccaratGame
             for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
 
             //TODO: test player, remove after implimenting player add function
-            players[0] = new Player("Test", 10m, "empty");
+            players[0] = new Player("Test", 10, "empty");
             players[0].FundsChanged += FundBoxPlayer1_FundsChanged;
-            players[0].Funds = 11m;
+            players[0].Funds = 11;
         }
 
         private void GameControlButton_Click(object sender, EventArgs e)

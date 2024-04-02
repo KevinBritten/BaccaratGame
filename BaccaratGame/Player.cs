@@ -9,12 +9,12 @@ namespace BaccaratGame
     internal class Player
     {
         private String _name;
-        private decimal _funds;
+        private int _funds;
         //TODO: add avatar files
         //private Image _avatar;
         private int[] _bets = new int[3]; 
 
-        public Player(String name, decimal funds, String avatarFilePath)
+        public Player(String name, int funds, String avatarFilePath)
         {
             _name = name;
             _funds = funds;
@@ -26,7 +26,7 @@ namespace BaccaratGame
             get { return _name; }
         }
 
-        public decimal Funds
+        public int Funds
         {
             get { return _funds; }
             set {
