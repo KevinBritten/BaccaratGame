@@ -12,9 +12,7 @@ namespace BaccaratGame
         private decimal _funds;
         //TODO: add avatar files
         //private Image _avatar;
-        private decimal _playerBet;
-        private decimal _dealerBet;
-        private decimal _tieBet;
+        private int[] _bets = new int[3]; 
 
         public Player(String name, decimal funds, String avatarFilePath)
         {
@@ -42,27 +40,17 @@ namespace BaccaratGame
         //    get { return _avatar; }
         //}
 
-        public decimal PlayerBet
+        public int[] Bets
         {
-            get { return _playerBet; }
-            set { _playerBet = value; }
-        } 
-        public decimal DealerBet
-        {
-            get { return _dealerBet; }
-            set { _dealerBet = value; }
-        }
-        public decimal TieBet
-        {
-            get { return _tieBet; }
-            set { _tieBet = value; }
+            get { return _bets; }
         }
     
 
         public void clearAllBets() { 
-            _playerBet = 0;
-            _dealerBet = 0;
-            _tieBet = 0;
+            for (int i = 0; i < _bets.Length; i++)
+            {
+                _bets[i] = 0;
+            }
         }
 
         public event EventHandler FundsChanged;
