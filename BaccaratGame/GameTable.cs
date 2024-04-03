@@ -40,25 +40,17 @@ namespace BaccaratGame
 
         private void GameControlButton_Click(object sender, EventArgs e)
         {
-            PlayingCards PC = new PlayingCards();
             Hand H = new Hand();
             int i;
-
             //Checking the conditions of the shoe
-            for (i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; }
-            if (S.CheckCutCard())
-            {
+            ResetShoeBoxes();
+            if (S.CheckCutCard()) {
                 int[] CardD = S.DrainingShoe();
-                string Results = "Draining the shoe; discarded cards:";
-                for (i = 0; i < CardD.Length; i++) { Results = Results + "   " + PC.GetAbbrCardID(CardD[i]); }
                 for (i = 0; i < CardD.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[CardD[i]]; }
             }
-            for (i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; }
-            if (S.Position() == 0)
-            {
+            ResetShoeBoxes();
+            if (S.Position() == 0) {
                 int[] CardP = S.PrimingShoe();
-                string Results = "Priming the shoe; discarded cards:";
-                for (i = 0; i < CardP.Length; i++) { Results = Results + "   " + PC.GetAbbrCardID(CardP[i]); }
                 ShoeBoxes[0].Image = PlayingCardsList.Images[CardP[0]];
                 for (i = 1; i < CardP.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[52]; }
             }
@@ -66,8 +58,7 @@ namespace BaccaratGame
             int[] CardH = new int[4];
             for (i = 0; i < CardH.Length; i++) { CardH[i] = S.PickCard(); }
             H.DistributeFourCards(CardH);
-            if (H.NoNaturalHand())
-            {
+            if (H.NoNaturalHand()) {
                 if (H.NeedPlayerThirdCard()) { H.GetPlayerThirdCard(S.PickCard()); }
                 if (H.NeedBankerThirdCard()) { H.GetBankerThirdCard(S.PickCard()); }
             }
@@ -78,14 +69,13 @@ namespace BaccaratGame
             int[] PlayerH = H.Player();
             int[] BankerH = H.Banker();
             int[] Scores = H.Scores();
-            for (i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; }
+            ResetShoeBoxes();
             for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
             for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
             ShoeBoxes[0].Image = PlayingCardsList.Images[PlayerH[0]]; ShoeBoxes[1].Image = PlayingCardsList.Images[BankerH[0]];
             ShoeBoxes[2].Image = PlayingCardsList.Images[PlayerH[1]]; ShoeBoxes[3].Image = PlayingCardsList.Images[BankerH[1]];
             if (ThirdCard[0] == 1) { ShoeBoxes[4].Image = PlayingCardsList.Images[PlayerH[2]]; }
-            if (ThirdCard[1] == 1)
-            {
+            if (ThirdCard[1] == 1) {
                 if (ThirdCard[0] == 0) { ShoeBoxes[4].Image = PlayingCardsList.Images[BankerH[2]]; }
                 else { ShoeBoxes[5].Image = PlayingCardsList.Images[BankerH[2]]; }
             }
@@ -97,11 +87,7 @@ namespace BaccaratGame
             BankerScoreV.Text = Convert.ToString(Scores[1]);
         }
 
-        private void RulesButton_Click(object sender, EventArgs e)
-        {
-            Rules SecondForm = new Rules();
-            SecondForm.ShowDialog();
-        }
+        private void ResetShoeBoxes() { for (int i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; } }
 
         private void Seat1ControlButton_Click(object sender, EventArgs e)
         {
@@ -202,6 +188,24 @@ namespace BaccaratGame
         private void updateBet(int index, decimal value, Player player)
         {
             player.updateBet(index, (int)value);
+        }
+
+        private void RulesButton_Click(object sender, EventArgs e)
+        {
+            Rules SecondForm = new Rules();
+            SecondForm.ShowDialog();
+        }
+
+        private void AboutButton_Click(object sender, EventArgs e)
+        {
+            About SecondForm = new About();
+            SecondForm.ShowDialog();
+
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
