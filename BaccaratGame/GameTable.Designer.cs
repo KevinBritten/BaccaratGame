@@ -66,25 +66,25 @@
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
-            panel3 = new Panel();
+            BetControlsPanelPlayer3 = new Panel();
             TieBetPlayer3 = new NumericUpDown();
             DealerBetPlayer3 = new NumericUpDown();
             PlayerBetPlayer3 = new NumericUpDown();
             FundBoxPlayer3 = new TextBox();
             label3 = new Label();
-            panel4 = new Panel();
+            BetControlsPanelPlayer4 = new Panel();
             TieBetPlayer4 = new NumericUpDown();
             DealerBetPlayer4 = new NumericUpDown();
             PlayerBetPlayer4 = new NumericUpDown();
             FundBoxPlayer4 = new TextBox();
             label4 = new Label();
-            panel2 = new Panel();
+            BetControlsPanelPlayer2 = new Panel();
             TieBetPlayer2 = new NumericUpDown();
             DealerBetPlayer2 = new NumericUpDown();
             PlayerBetPlayer2 = new NumericUpDown();
             FundBoxPlayer2 = new TextBox();
             label2 = new Label();
-            panel1 = new Panel();
+            BetControlsPanelPlayer1 = new Panel();
             TieBetPlayer1 = new NumericUpDown();
             DealerBetPlayer1 = new NumericUpDown();
             PlayerBetPlayer1 = new NumericUpDown();
@@ -121,19 +121,19 @@
             groupBox1.SuspendLayout();
             BettingAreaGroupBox.SuspendLayout();
             panel5.SuspendLayout();
-            panel3.SuspendLayout();
+            BetControlsPanelPlayer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer3).BeginInit();
-            panel4.SuspendLayout();
+            BetControlsPanelPlayer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer4).BeginInit();
-            panel2.SuspendLayout();
+            BetControlsPanelPlayer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer2).BeginInit();
-            panel1.SuspendLayout();
+            BetControlsPanelPlayer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer1).BeginInit();
@@ -523,10 +523,10 @@
             // BettingAreaGroupBox
             // 
             BettingAreaGroupBox.Controls.Add(panel5);
-            BettingAreaGroupBox.Controls.Add(panel3);
-            BettingAreaGroupBox.Controls.Add(panel4);
-            BettingAreaGroupBox.Controls.Add(panel2);
-            BettingAreaGroupBox.Controls.Add(panel1);
+            BettingAreaGroupBox.Controls.Add(BetControlsPanelPlayer3);
+            BettingAreaGroupBox.Controls.Add(BetControlsPanelPlayer4);
+            BettingAreaGroupBox.Controls.Add(BetControlsPanelPlayer2);
+            BettingAreaGroupBox.Controls.Add(BetControlsPanelPlayer1);
             BettingAreaGroupBox.Location = new Point(886, 187);
             BettingAreaGroupBox.Name = "BettingAreaGroupBox";
             BettingAreaGroupBox.Size = new Size(415, 532);
@@ -580,17 +580,18 @@
             label5.TabIndex = 0;
             label5.Text = "Funds";
             // 
-            // panel3
+            // BetControlsPanelPlayer3
             // 
-            panel3.Controls.Add(TieBetPlayer3);
-            panel3.Controls.Add(DealerBetPlayer3);
-            panel3.Controls.Add(PlayerBetPlayer3);
-            panel3.Controls.Add(FundBoxPlayer3);
-            panel3.Controls.Add(label3);
-            panel3.Location = new Point(0, 256);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(415, 49);
-            panel3.TabIndex = 5;
+            BetControlsPanelPlayer3.Controls.Add(TieBetPlayer3);
+            BetControlsPanelPlayer3.Controls.Add(DealerBetPlayer3);
+            BetControlsPanelPlayer3.Controls.Add(PlayerBetPlayer3);
+            BetControlsPanelPlayer3.Controls.Add(FundBoxPlayer3);
+            BetControlsPanelPlayer3.Controls.Add(label3);
+            BetControlsPanelPlayer3.Enabled = false;
+            BetControlsPanelPlayer3.Location = new Point(0, 256);
+            BetControlsPanelPlayer3.Name = "BetControlsPanelPlayer3";
+            BetControlsPanelPlayer3.Size = new Size(415, 49);
+            BetControlsPanelPlayer3.TabIndex = 5;
             // 
             // TieBetPlayer3
             // 
@@ -633,17 +634,18 @@
             label3.TabIndex = 0;
             label3.Text = "Player 3";
             // 
-            // panel4
+            // BetControlsPanelPlayer4
             // 
-            panel4.Controls.Add(TieBetPlayer4);
-            panel4.Controls.Add(DealerBetPlayer4);
-            panel4.Controls.Add(PlayerBetPlayer4);
-            panel4.Controls.Add(FundBoxPlayer4);
-            panel4.Controls.Add(label4);
-            panel4.Location = new Point(0, 324);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(415, 49);
-            panel4.TabIndex = 6;
+            BetControlsPanelPlayer4.Controls.Add(TieBetPlayer4);
+            BetControlsPanelPlayer4.Controls.Add(DealerBetPlayer4);
+            BetControlsPanelPlayer4.Controls.Add(PlayerBetPlayer4);
+            BetControlsPanelPlayer4.Controls.Add(FundBoxPlayer4);
+            BetControlsPanelPlayer4.Controls.Add(label4);
+            BetControlsPanelPlayer4.Enabled = false;
+            BetControlsPanelPlayer4.Location = new Point(0, 324);
+            BetControlsPanelPlayer4.Name = "BetControlsPanelPlayer4";
+            BetControlsPanelPlayer4.Size = new Size(415, 49);
+            BetControlsPanelPlayer4.TabIndex = 6;
             // 
             // TieBetPlayer4
             // 
@@ -686,17 +688,18 @@
             label4.TabIndex = 0;
             label4.Text = "Player 4";
             // 
-            // panel2
+            // BetControlsPanelPlayer2
             // 
-            panel2.Controls.Add(TieBetPlayer2);
-            panel2.Controls.Add(DealerBetPlayer2);
-            panel2.Controls.Add(PlayerBetPlayer2);
-            panel2.Controls.Add(FundBoxPlayer2);
-            panel2.Controls.Add(label2);
-            panel2.Location = new Point(0, 188);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(415, 49);
-            panel2.TabIndex = 4;
+            BetControlsPanelPlayer2.Controls.Add(TieBetPlayer2);
+            BetControlsPanelPlayer2.Controls.Add(DealerBetPlayer2);
+            BetControlsPanelPlayer2.Controls.Add(PlayerBetPlayer2);
+            BetControlsPanelPlayer2.Controls.Add(FundBoxPlayer2);
+            BetControlsPanelPlayer2.Controls.Add(label2);
+            BetControlsPanelPlayer2.Enabled = false;
+            BetControlsPanelPlayer2.Location = new Point(0, 188);
+            BetControlsPanelPlayer2.Name = "BetControlsPanelPlayer2";
+            BetControlsPanelPlayer2.Size = new Size(415, 49);
+            BetControlsPanelPlayer2.TabIndex = 4;
             // 
             // TieBetPlayer2
             // 
@@ -739,17 +742,18 @@
             label2.TabIndex = 0;
             label2.Text = "Player 2";
             // 
-            // panel1
+            // BetControlsPanelPlayer1
             // 
-            panel1.Controls.Add(TieBetPlayer1);
-            panel1.Controls.Add(DealerBetPlayer1);
-            panel1.Controls.Add(PlayerBetPlayer1);
-            panel1.Controls.Add(FundBoxPlayer1);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(0, 120);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(415, 49);
-            panel1.TabIndex = 0;
+            BetControlsPanelPlayer1.Controls.Add(TieBetPlayer1);
+            BetControlsPanelPlayer1.Controls.Add(DealerBetPlayer1);
+            BetControlsPanelPlayer1.Controls.Add(PlayerBetPlayer1);
+            BetControlsPanelPlayer1.Controls.Add(FundBoxPlayer1);
+            BetControlsPanelPlayer1.Controls.Add(label1);
+            BetControlsPanelPlayer1.Enabled = false;
+            BetControlsPanelPlayer1.Location = new Point(0, 120);
+            BetControlsPanelPlayer1.Name = "BetControlsPanelPlayer1";
+            BetControlsPanelPlayer1.Size = new Size(415, 49);
+            BetControlsPanelPlayer1.TabIndex = 0;
             // 
             // TieBetPlayer1
             // 
@@ -834,6 +838,7 @@
             Seat4ControlButton.TabIndex = 13;
             Seat4ControlButton.Text = "Seat 4 free";
             Seat4ControlButton.UseVisualStyleBackColor = true;
+            Seat4ControlButton.Click += Seat4ControlButton_Click;
             // 
             // Seat3ControButton
             // 
@@ -844,6 +849,7 @@
             Seat3ControButton.TabIndex = 12;
             Seat3ControButton.Text = "Seat 3 free";
             Seat3ControButton.UseVisualStyleBackColor = true;
+            Seat3ControButton.Click += Seat3ControButton_Click;
             // 
             // Seat2ControlButton
             // 
@@ -854,6 +860,7 @@
             Seat2ControlButton.TabIndex = 11;
             Seat2ControlButton.Text = "Seat 2 free";
             Seat2ControlButton.UseVisualStyleBackColor = true;
+            Seat2ControlButton.Click += Seat2ControlButton_Click;
             // 
             // Seat1ControlButton
             // 
@@ -864,6 +871,7 @@
             Seat1ControlButton.TabIndex = 10;
             Seat1ControlButton.Text = "Seat 1 free";
             Seat1ControlButton.UseVisualStyleBackColor = true;
+            Seat1ControlButton.Click += Seat1ControlButton_Click;
             // 
             // GameTable
             // 
@@ -907,23 +915,23 @@
             BettingAreaGroupBox.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            BetControlsPanelPlayer3.ResumeLayout(false);
+            BetControlsPanelPlayer3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer3).EndInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer3).EndInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer3).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            BetControlsPanelPlayer4.ResumeLayout(false);
+            BetControlsPanelPlayer4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer4).EndInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer4).EndInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer4).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            BetControlsPanelPlayer2.ResumeLayout(false);
+            BetControlsPanelPlayer2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer2).EndInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer2).EndInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer2).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            BetControlsPanelPlayer1.ResumeLayout(false);
+            BetControlsPanelPlayer1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer1).EndInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer1).EndInit();
@@ -964,7 +972,7 @@
         private GroupBox groupBox1;
         private Button RulesButton;
         private GroupBox BettingAreaGroupBox;
-        private Panel panel1;
+        private Panel BetControlsPanelPlayer1;
         private Label label1;
         private NumericUpDown TieBetPlayer1;
         private NumericUpDown DealerBetPlayer1;
@@ -972,19 +980,19 @@
         private TextBox FundBoxPlayer1;
         private Panel panel5;
         private Label label5;
-        private Panel panel3;
+        private Panel BetControlsPanelPlayer3;
         private NumericUpDown TieBetPlayer3;
         private NumericUpDown DealerBetPlayer3;
         private NumericUpDown PlayerBetPlayer3;
         private TextBox FundBoxPlayer3;
         private Label label3;
-        private Panel panel4;
+        private Panel BetControlsPanelPlayer4;
         private NumericUpDown TieBetPlayer4;
         private NumericUpDown DealerBetPlayer4;
         private NumericUpDown PlayerBetPlayer4;
         private TextBox FundBoxPlayer4;
         private Label label4;
-        private Panel panel2;
+        private Panel BetControlsPanelPlayer2;
         private NumericUpDown TieBetPlayer2;
         private NumericUpDown DealerBetPlayer2;
         private NumericUpDown PlayerBetPlayer2;

@@ -35,11 +35,6 @@ namespace BaccaratGame
             for (i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; }
             for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
             for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
-
-            //TODO: test player, remove after implimenting player add function
-            players[0] = new Player("Test", 10, "empty");
-            players[0].FundsChanged += FundBoxPlayer1_FundsChanged;
-            players[0].Funds = 11;
             disableControlsBasedOnGameState();
             setActionButtonText();
         }
@@ -129,22 +124,32 @@ namespace BaccaratGame
 
         private void Seat1ControlButton_Click(object sender, EventArgs e)
         {
-            //Until we develop the sitplayer, busted and withdraw forms...
+            sitPlayer(0, 10, new EventHandler(FundBoxPlayer1_FundsChanged));
         }
 
         private void Seat2ControlButton_Click(object sender, EventArgs e)
         {
-            //Until we develop the sitplayer, busted and withdraw forms...
+            sitPlayer(1, 15, new EventHandler(FundBoxPlayer2_FundsChanged));
         }
 
         private void Seat3ControButton_Click(object sender, EventArgs e)
         {
-            //Until we develop the sitplayer, busted and withdraw forms...
+            sitPlayer(2, 13, new EventHandler(FundBoxPlayer3_FundsChanged));
         }
 
         private void Seat4ControlButton_Click(object sender, EventArgs e)
         {
-            //Until we develop the sitplayer, busted and withdraw forms...
+            sitPlayer(3, 3555, new EventHandler(FundBoxPlayer4_FundsChanged));
+        }
+
+        private void sitPlayer(int position, int funds, EventHandler fundsChangedCallback)
+        {
+            players[position] = new Player("placeholder",funds, "placeholder");
+            players[position].FundsChanged += fundsChangedCallback;
+            players[position].Funds = funds;
+            string controlPanelName = $"BetControlsPanelPlayer{position+1}";
+            BettingAreaGroupBox.Controls.Find(controlPanelName, false)[0].Enabled = true;
+
         }
 
         private void FundBoxPlayer1_FundsChanged(object sender, EventArgs e)
@@ -153,15 +158,15 @@ namespace BaccaratGame
         }
         private void FundBoxPlayer2_FundsChanged(object sender, EventArgs e)
         {
-            FundBoxPlayer1.Text = players[1].Funds.ToString();
+            FundBoxPlayer2.Text = players[1].Funds.ToString();
         }
         private void FundBoxPlayer3_FundsChanged(object sender, EventArgs e)
         {
-            FundBoxPlayer1.Text = players[2].Funds.ToString();
+            FundBoxPlayer3.Text = players[2].Funds.ToString();
         }
         private void FundBoxPlayer4_FundsChanged(object sender, EventArgs e)
         {
-            FundBoxPlayer1.Text = players[3].Funds.ToString();
+            FundBoxPlayer4.Text = players[3].Funds.ToString();
         }
 
         private void PlayerBetPlayer1_ValueChanged(object sender, EventArgs e)
