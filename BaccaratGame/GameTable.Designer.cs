@@ -463,7 +463,7 @@
             GameControlButton.Name = "GameControlButton";
             GameControlButton.Size = new Size(100, 30);
             GameControlButton.TabIndex = 3;
-            GameControlButton.Text = "Play";
+            GameControlButton.Text = "Bet";
             GameControlButton.UseVisualStyleBackColor = true;
             GameControlButton.Click += GameControlButton_Click;
             // 

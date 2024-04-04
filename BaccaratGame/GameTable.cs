@@ -14,10 +14,14 @@ namespace BaccaratGame
     public partial class GameTable : Form
     {
         Shoe S = new Shoe();
+        Hand H = new Hand();
         PictureBox[] ShoeBoxes = new PictureBox[11];
         PictureBox[] PlayerBoxes = new PictureBox[3];
         PictureBox[] BankerBoxes = new PictureBox[3];
         Player[] players = new Player[4];
+        Boolean PLAYER = true; Boolean BANKER = false;
+        int GameState = 1;
+        
 
         public GameTable()
         {
@@ -40,51 +44,66 @@ namespace BaccaratGame
 
         private void GameControlButton_Click(object sender, EventArgs e)
         {
-            Hand H = new Hand();
-            int i;
-            //Checking the conditions of the shoe
-            ResetShoeBoxes();
-            if (S.CheckCutCard()) {
-                int[] CardD = S.DrainingShoe();
-                for (i = 0; i < CardD.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[CardD[i]]; }
+            switch (GameState) {
+                case 1:
+                    GameState = 2;
+                    GameControlButton.Text = "Play";
+                    break;
+                case 2:
+                    int i;
+                    //Checking the conditions of the shoe
+                    ResetShoeBoxes();
+                    if (S.CheckCutCard()) {
+                        int[] CardD = S.DrainingShoe();
+                        for (i = 0; i < CardD.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[CardD[i]]; }
+                    }
+                    ResetShoeBoxes();
+                    if (S.Position() == 0) {
+                        int[] CardP = S.PrimingShoe();
+                        ShoeBoxes[0].Image = PlayingCardsList.Images[CardP[0]];
+                        for (i = 1; i < CardP.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[52]; }
+                    }
+                    //Play a hand for the Player and Banker
+                    int[] CardH = new int[4];
+                    for (i = 0; i < CardH.Length; i++) { CardH[i] = S.PickCard(); }
+                    H.DistributeFourCards(CardH);
+                    if (H.NoNaturalHand()) {
+                        if (H.NeedPlayerThirdCard()) { H.GetThirdCard(S.PickCard(), PLAYER); }
+                        if (H.NeedBankerThirdCard()) { H.GetThirdCard(S.PickCard(), BANKER); }
+                    }
+                    H.DetermineWinningHand();
+                    ShoeProgressBar.Value = 100 * (S.DeckN() * S.CardN() - S.Position()) / (S.DeckN() * S.CardN());
+                    //Summarizing the result of the play
+                    Boolean[] ThirdCard = H.ThirdCard();
+                    int[] PlayerH = H.Player();
+                    int[] BankerH = H.Banker();
+                    int[] Scores = H.Scores();
+                    ResetShoeBoxes();
+                    for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
+                    for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
+                    ShoeBoxes[0].Image = PlayingCardsList.Images[PlayerH[0]]; ShoeBoxes[1].Image = PlayingCardsList.Images[BankerH[0]];
+                    ShoeBoxes[2].Image = PlayingCardsList.Images[PlayerH[1]]; ShoeBoxes[3].Image = PlayingCardsList.Images[BankerH[1]];
+                    if (ThirdCard[0]) { ShoeBoxes[4].Image = PlayingCardsList.Images[PlayerH[2]]; }
+                    if (ThirdCard[1]) {
+                        if (!ThirdCard[0]) { ShoeBoxes[4].Image = PlayingCardsList.Images[BankerH[2]]; }
+                        else { ShoeBoxes[5].Image = PlayingCardsList.Images[BankerH[2]]; }
+                    }
+                    PlayerBoxes[0].Image = PlayingCardsList.Images[PlayerH[0]]; PlayerBoxes[1].Image = PlayingCardsList.Images[PlayerH[1]];
+                    BankerBoxes[0].Image = PlayingCardsList.Images[BankerH[0]]; BankerBoxes[1].Image = PlayingCardsList.Images[BankerH[1]];
+                    if (ThirdCard[0]) { PlayerBoxes[2].Image = PlayingCardsList.Images[PlayerH[2]]; }
+                    if (ThirdCard[1]) { BankerBoxes[2].Image = PlayingCardsList.Images[BankerH[2]]; }
+                    PlayerScoreV.Text = Convert.ToString(Scores[0]);
+                    BankerScoreV.Text = Convert.ToString(Scores[1]);
+                    H.ResetHand();
+                    GameState = 3;
+                    GameControlButton.Text = "Settle bet";
+                    break;
+                case 3:
+                    GameState = 1;
+                    GameControlButton.Text = "Bet";
+                    break;
+                default: break;
             }
-            ResetShoeBoxes();
-            if (S.Position() == 0) {
-                int[] CardP = S.PrimingShoe();
-                ShoeBoxes[0].Image = PlayingCardsList.Images[CardP[0]];
-                for (i = 1; i < CardP.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[52]; }
-            }
-            //Play a hand for the Player and Banker
-            int[] CardH = new int[4];
-            for (i = 0; i < CardH.Length; i++) { CardH[i] = S.PickCard(); }
-            H.DistributeFourCards(CardH);
-            if (H.NoNaturalHand()) {
-                if (H.NeedPlayerThirdCard()) { H.GetPlayerThirdCard(S.PickCard()); }
-                if (H.NeedBankerThirdCard()) { H.GetBankerThirdCard(S.PickCard()); }
-            }
-            H.DetermineWinningHand();
-            ShoeProgressBar.Value = 100 * (S.DeckN() * S.CardN() - S.Position()) / (S.DeckN() * S.CardN());
-            //Summarizing the result of the play
-            int[] ThirdCard = H.ThirdCard();
-            int[] PlayerH = H.Player();
-            int[] BankerH = H.Banker();
-            int[] Scores = H.Scores();
-            ResetShoeBoxes();
-            for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
-            for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
-            ShoeBoxes[0].Image = PlayingCardsList.Images[PlayerH[0]]; ShoeBoxes[1].Image = PlayingCardsList.Images[BankerH[0]];
-            ShoeBoxes[2].Image = PlayingCardsList.Images[PlayerH[1]]; ShoeBoxes[3].Image = PlayingCardsList.Images[BankerH[1]];
-            if (ThirdCard[0] == 1) { ShoeBoxes[4].Image = PlayingCardsList.Images[PlayerH[2]]; }
-            if (ThirdCard[1] == 1) {
-                if (ThirdCard[0] == 0) { ShoeBoxes[4].Image = PlayingCardsList.Images[BankerH[2]]; }
-                else { ShoeBoxes[5].Image = PlayingCardsList.Images[BankerH[2]]; }
-            }
-            PlayerBoxes[0].Image = PlayingCardsList.Images[PlayerH[0]]; PlayerBoxes[1].Image = PlayingCardsList.Images[PlayerH[1]];
-            BankerBoxes[0].Image = PlayingCardsList.Images[BankerH[0]]; BankerBoxes[1].Image = PlayingCardsList.Images[BankerH[1]];
-            if (ThirdCard[0] == 1) { PlayerBoxes[2].Image = PlayingCardsList.Images[PlayerH[2]]; }
-            if (ThirdCard[1] == 1) { BankerBoxes[2].Image = PlayingCardsList.Images[BankerH[2]]; }
-            PlayerScoreV.Text = Convert.ToString(Scores[0]);
-            BankerScoreV.Text = Convert.ToString(Scores[1]);
         }
 
         private void ResetShoeBoxes() { for (int i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; } }
