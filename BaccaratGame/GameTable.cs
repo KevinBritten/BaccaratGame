@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace BaccaratGame
 {
@@ -18,6 +19,9 @@ namespace BaccaratGame
         PictureBox[] PlayerBoxes = new PictureBox[3];
         PictureBox[] BankerBoxes = new PictureBox[3];
         Player[] players = new Player[4];
+        int currentGameState = 0;
+        String[] gameStates = { "Sit", "Bet", "Play", "Settle" };
+
 
         public GameTable()
         {
@@ -36,6 +40,38 @@ namespace BaccaratGame
             players[0] = new Player("Test", 10, "empty");
             players[0].FundsChanged += FundBoxPlayer1_FundsChanged;
             players[0].Funds = 11;
+            disableControlsBasedOnGameState();
+            setActionButtonText();
+        }
+
+        public void advanceGameState()
+        {
+            currentGameState = (currentGameState + 1) % gameStates.Length;
+            disableControlsBasedOnGameState();
+            setActionButtonText();
+        }
+
+        public void disableControlsBasedOnGameState()
+        {
+            if (currentGameState == 0)
+            {
+                BettingAreaGroupBox.Enabled = false;
+                SitPlayerPanel.Enabled = true;
+            }
+            else if (currentGameState == 1)
+            {
+                BettingAreaGroupBox.Enabled = true;
+                SitPlayerPanel.Enabled = false;
+            } else
+            {
+                BettingAreaGroupBox.Enabled = false;
+                SitPlayerPanel.Enabled = false;
+            }
+        }
+
+        public void setActionButtonText()
+        {
+            GameControlButton.Text = gameStates[(currentGameState + 1) % gameStates.Length];
         }
 
         private void GameControlButton_Click(object sender, EventArgs e)

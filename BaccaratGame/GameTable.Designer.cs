@@ -60,40 +60,41 @@
             GameControlButton = new Button();
             groupBox1 = new GroupBox();
             RulesButton = new Button();
-            Seat1ControlButton = new Button();
-            Seat2ControlButton = new Button();
-            Seat3ControButton = new Button();
-            Seat4ControlButton = new Button();
             BettingAreaGroupBox = new GroupBox();
             panel5 = new Panel();
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
-            panel3 = new Panel();
+            BettingAreaPanelPlayer3 = new Panel();
             TieBetPlayer3 = new NumericUpDown();
             DealerBetPlayer3 = new NumericUpDown();
             PlayerBetPlayer3 = new NumericUpDown();
             FundBoxPlayer3 = new TextBox();
             label3 = new Label();
-            panel4 = new Panel();
+            BettingAreaPanelPlayer4 = new Panel();
             TieBetPlayer4 = new NumericUpDown();
             DealerBetPlayer4 = new NumericUpDown();
             PlayerBetPlayer4 = new NumericUpDown();
             FundBoxPlayer4 = new TextBox();
             label4 = new Label();
-            panel2 = new Panel();
+            BettingAreaPanelPlayer2 = new Panel();
             TieBetPlayer2 = new NumericUpDown();
             DealerBetPlayer2 = new NumericUpDown();
             PlayerBetPlayer2 = new NumericUpDown();
             FundBoxPlayer2 = new TextBox();
             label2 = new Label();
-            panel1 = new Panel();
+            BettingAreaPanelPlayer1 = new Panel();
             TieBetPlayer1 = new NumericUpDown();
             DealerBetPlayer1 = new NumericUpDown();
             PlayerBetPlayer1 = new NumericUpDown();
             FundBoxPlayer1 = new TextBox();
             label1 = new Label();
+            SitPlayerPanel = new Panel();
+            Seat4ControlButton = new Button();
+            Seat3ControButton = new Button();
+            Seat2ControlButton = new Button();
+            Seat1ControlButton = new Button();
             ShoeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ShoeBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ShoeBox9).BeginInit();
@@ -118,22 +119,23 @@
             groupBox1.SuspendLayout();
             BettingAreaGroupBox.SuspendLayout();
             panel5.SuspendLayout();
-            panel3.SuspendLayout();
+            BettingAreaPanelPlayer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer3).BeginInit();
-            panel4.SuspendLayout();
+            BettingAreaPanelPlayer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer4).BeginInit();
-            panel2.SuspendLayout();
+            BettingAreaPanelPlayer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer2).BeginInit();
-            panel1.SuspendLayout();
+            BettingAreaPanelPlayer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer1).BeginInit();
+            SitPlayerPanel.SuspendLayout();
             SuspendLayout();
             // 
             // ShoeGroupBox
@@ -514,57 +516,14 @@
             RulesButton.UseVisualStyleBackColor = true;
             RulesButton.Click += RulesButton_Click;
             // 
-            // Seat1ControlButton
-            // 
-            Seat1ControlButton.Location = new Point(34, 743);
-            Seat1ControlButton.Margin = new Padding(3, 4, 3, 4);
-            Seat1ControlButton.Name = "Seat1ControlButton";
-            Seat1ControlButton.Size = new Size(114, 40);
-            Seat1ControlButton.TabIndex = 6;
-            Seat1ControlButton.Text = "Seat 1 free";
-            Seat1ControlButton.UseVisualStyleBackColor = true;
-            Seat1ControlButton.Click += Seat1ControlButton_Click;
-            // 
-            // Seat2ControlButton
-            // 
-            Seat2ControlButton.Location = new Point(254, 743);
-            Seat2ControlButton.Margin = new Padding(3, 4, 3, 4);
-            Seat2ControlButton.Name = "Seat2ControlButton";
-            Seat2ControlButton.Size = new Size(114, 40);
-            Seat2ControlButton.TabIndex = 7;
-            Seat2ControlButton.Text = "Seat 2 free";
-            Seat2ControlButton.UseVisualStyleBackColor = true;
-            Seat2ControlButton.Click += Seat2ControlButton_Click;
-            // 
-            // Seat3ControButton
-            // 
-            Seat3ControButton.Location = new Point(489, 743);
-            Seat3ControButton.Margin = new Padding(3, 4, 3, 4);
-            Seat3ControButton.Name = "Seat3ControButton";
-            Seat3ControButton.Size = new Size(114, 40);
-            Seat3ControButton.TabIndex = 8;
-            Seat3ControButton.Text = "Seat 3 free";
-            Seat3ControButton.UseVisualStyleBackColor = true;
-            Seat3ControButton.Click += Seat3ControButton_Click;
-            // 
-            // Seat4ControlButton
-            // 
-            Seat4ControlButton.Location = new Point(715, 743);
-            Seat4ControlButton.Margin = new Padding(3, 4, 3, 4);
-            Seat4ControlButton.Name = "Seat4ControlButton";
-            Seat4ControlButton.Size = new Size(114, 40);
-            Seat4ControlButton.TabIndex = 9;
-            Seat4ControlButton.Text = "Seat 4 free";
-            Seat4ControlButton.UseVisualStyleBackColor = true;
-            Seat4ControlButton.Click += Seat4ControlButton_Click;
-            // 
             // BettingAreaGroupBox
             // 
             BettingAreaGroupBox.Controls.Add(panel5);
-            BettingAreaGroupBox.Controls.Add(panel3);
-            BettingAreaGroupBox.Controls.Add(panel4);
-            BettingAreaGroupBox.Controls.Add(panel2);
-            BettingAreaGroupBox.Controls.Add(panel1);
+            BettingAreaGroupBox.Controls.Add(BettingAreaPanelPlayer3);
+            BettingAreaGroupBox.Controls.Add(BettingAreaPanelPlayer4);
+            BettingAreaGroupBox.Controls.Add(BettingAreaPanelPlayer2);
+            BettingAreaGroupBox.Controls.Add(BettingAreaPanelPlayer1);
+            BettingAreaGroupBox.Enabled = false;
             BettingAreaGroupBox.Location = new Point(886, 187);
             BettingAreaGroupBox.Name = "BettingAreaGroupBox";
             BettingAreaGroupBox.Size = new Size(415, 532);
@@ -618,17 +577,17 @@
             label5.TabIndex = 0;
             label5.Text = "Funds";
             // 
-            // panel3
+            // BettingAreaPanelPlayer3
             // 
-            panel3.Controls.Add(TieBetPlayer3);
-            panel3.Controls.Add(DealerBetPlayer3);
-            panel3.Controls.Add(PlayerBetPlayer3);
-            panel3.Controls.Add(FundBoxPlayer3);
-            panel3.Controls.Add(label3);
-            panel3.Location = new Point(0, 256);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(415, 49);
-            panel3.TabIndex = 5;
+            BettingAreaPanelPlayer3.Controls.Add(TieBetPlayer3);
+            BettingAreaPanelPlayer3.Controls.Add(DealerBetPlayer3);
+            BettingAreaPanelPlayer3.Controls.Add(PlayerBetPlayer3);
+            BettingAreaPanelPlayer3.Controls.Add(FundBoxPlayer3);
+            BettingAreaPanelPlayer3.Controls.Add(label3);
+            BettingAreaPanelPlayer3.Location = new Point(0, 256);
+            BettingAreaPanelPlayer3.Name = "BettingAreaPanelPlayer3";
+            BettingAreaPanelPlayer3.Size = new Size(415, 49);
+            BettingAreaPanelPlayer3.TabIndex = 5;
             // 
             // TieBetPlayer3
             // 
@@ -671,17 +630,17 @@
             label3.TabIndex = 0;
             label3.Text = "Player 3";
             // 
-            // panel4
+            // BettingAreaPanelPlayer4
             // 
-            panel4.Controls.Add(TieBetPlayer4);
-            panel4.Controls.Add(DealerBetPlayer4);
-            panel4.Controls.Add(PlayerBetPlayer4);
-            panel4.Controls.Add(FundBoxPlayer4);
-            panel4.Controls.Add(label4);
-            panel4.Location = new Point(0, 324);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(415, 49);
-            panel4.TabIndex = 6;
+            BettingAreaPanelPlayer4.Controls.Add(TieBetPlayer4);
+            BettingAreaPanelPlayer4.Controls.Add(DealerBetPlayer4);
+            BettingAreaPanelPlayer4.Controls.Add(PlayerBetPlayer4);
+            BettingAreaPanelPlayer4.Controls.Add(FundBoxPlayer4);
+            BettingAreaPanelPlayer4.Controls.Add(label4);
+            BettingAreaPanelPlayer4.Location = new Point(0, 324);
+            BettingAreaPanelPlayer4.Name = "BettingAreaPanelPlayer4";
+            BettingAreaPanelPlayer4.Size = new Size(415, 49);
+            BettingAreaPanelPlayer4.TabIndex = 6;
             // 
             // TieBetPlayer4
             // 
@@ -724,17 +683,17 @@
             label4.TabIndex = 0;
             label4.Text = "Player 4";
             // 
-            // panel2
+            // BettingAreaPanelPlayer2
             // 
-            panel2.Controls.Add(TieBetPlayer2);
-            panel2.Controls.Add(DealerBetPlayer2);
-            panel2.Controls.Add(PlayerBetPlayer2);
-            panel2.Controls.Add(FundBoxPlayer2);
-            panel2.Controls.Add(label2);
-            panel2.Location = new Point(0, 188);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(415, 49);
-            panel2.TabIndex = 4;
+            BettingAreaPanelPlayer2.Controls.Add(TieBetPlayer2);
+            BettingAreaPanelPlayer2.Controls.Add(DealerBetPlayer2);
+            BettingAreaPanelPlayer2.Controls.Add(PlayerBetPlayer2);
+            BettingAreaPanelPlayer2.Controls.Add(FundBoxPlayer2);
+            BettingAreaPanelPlayer2.Controls.Add(label2);
+            BettingAreaPanelPlayer2.Location = new Point(0, 188);
+            BettingAreaPanelPlayer2.Name = "BettingAreaPanelPlayer2";
+            BettingAreaPanelPlayer2.Size = new Size(415, 49);
+            BettingAreaPanelPlayer2.TabIndex = 4;
             // 
             // TieBetPlayer2
             // 
@@ -777,17 +736,17 @@
             label2.TabIndex = 0;
             label2.Text = "Player 2";
             // 
-            // panel1
+            // BettingAreaPanelPlayer1
             // 
-            panel1.Controls.Add(TieBetPlayer1);
-            panel1.Controls.Add(DealerBetPlayer1);
-            panel1.Controls.Add(PlayerBetPlayer1);
-            panel1.Controls.Add(FundBoxPlayer1);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(0, 120);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(415, 49);
-            panel1.TabIndex = 0;
+            BettingAreaPanelPlayer1.Controls.Add(TieBetPlayer1);
+            BettingAreaPanelPlayer1.Controls.Add(DealerBetPlayer1);
+            BettingAreaPanelPlayer1.Controls.Add(PlayerBetPlayer1);
+            BettingAreaPanelPlayer1.Controls.Add(FundBoxPlayer1);
+            BettingAreaPanelPlayer1.Controls.Add(label1);
+            BettingAreaPanelPlayer1.Location = new Point(0, 120);
+            BettingAreaPanelPlayer1.Name = "BettingAreaPanelPlayer1";
+            BettingAreaPanelPlayer1.Size = new Size(415, 49);
+            BettingAreaPanelPlayer1.TabIndex = 0;
             // 
             // TieBetPlayer1
             // 
@@ -830,16 +789,64 @@
             label1.TabIndex = 0;
             label1.Text = "Player 1";
             // 
+            // SitPlayerPanel
+            // 
+            SitPlayerPanel.Controls.Add(Seat4ControlButton);
+            SitPlayerPanel.Controls.Add(Seat3ControButton);
+            SitPlayerPanel.Controls.Add(Seat2ControlButton);
+            SitPlayerPanel.Controls.Add(Seat1ControlButton);
+            SitPlayerPanel.Location = new Point(14, 733);
+            SitPlayerPanel.Name = "SitPlayerPanel";
+            SitPlayerPanel.Size = new Size(866, 74);
+            SitPlayerPanel.TabIndex = 11;
+            // 
+            // Seat4ControlButton
+            // 
+            Seat4ControlButton.Location = new Point(717, 17);
+            Seat4ControlButton.Margin = new Padding(3, 4, 3, 4);
+            Seat4ControlButton.Name = "Seat4ControlButton";
+            Seat4ControlButton.Size = new Size(114, 40);
+            Seat4ControlButton.TabIndex = 13;
+            Seat4ControlButton.Text = "Seat 4 free";
+            Seat4ControlButton.UseVisualStyleBackColor = true;
+            // 
+            // Seat3ControButton
+            // 
+            Seat3ControButton.Location = new Point(491, 17);
+            Seat3ControButton.Margin = new Padding(3, 4, 3, 4);
+            Seat3ControButton.Name = "Seat3ControButton";
+            Seat3ControButton.Size = new Size(114, 40);
+            Seat3ControButton.TabIndex = 12;
+            Seat3ControButton.Text = "Seat 3 free";
+            Seat3ControButton.UseVisualStyleBackColor = true;
+            // 
+            // Seat2ControlButton
+            // 
+            Seat2ControlButton.Location = new Point(256, 17);
+            Seat2ControlButton.Margin = new Padding(3, 4, 3, 4);
+            Seat2ControlButton.Name = "Seat2ControlButton";
+            Seat2ControlButton.Size = new Size(114, 40);
+            Seat2ControlButton.TabIndex = 11;
+            Seat2ControlButton.Text = "Seat 2 free";
+            Seat2ControlButton.UseVisualStyleBackColor = true;
+            // 
+            // Seat1ControlButton
+            // 
+            Seat1ControlButton.Location = new Point(36, 17);
+            Seat1ControlButton.Margin = new Padding(3, 4, 3, 4);
+            Seat1ControlButton.Name = "Seat1ControlButton";
+            Seat1ControlButton.Size = new Size(114, 40);
+            Seat1ControlButton.TabIndex = 10;
+            Seat1ControlButton.Text = "Seat 1 free";
+            Seat1ControlButton.UseVisualStyleBackColor = true;
+            // 
             // GameTable
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1314, 812);
+            Controls.Add(SitPlayerPanel);
             Controls.Add(BettingAreaGroupBox);
-            Controls.Add(Seat4ControlButton);
-            Controls.Add(Seat3ControButton);
-            Controls.Add(Seat2ControlButton);
-            Controls.Add(Seat1ControlButton);
             Controls.Add(RulesButton);
             Controls.Add(groupBox1);
             Controls.Add(GameControlButton);
@@ -873,26 +880,27 @@
             BettingAreaGroupBox.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            BettingAreaPanelPlayer3.ResumeLayout(false);
+            BettingAreaPanelPlayer3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer3).EndInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer3).EndInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer3).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            BettingAreaPanelPlayer4.ResumeLayout(false);
+            BettingAreaPanelPlayer4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer4).EndInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer4).EndInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer4).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            BettingAreaPanelPlayer2.ResumeLayout(false);
+            BettingAreaPanelPlayer2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer2).EndInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer2).EndInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer2).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            BettingAreaPanelPlayer1.ResumeLayout(false);
+            BettingAreaPanelPlayer1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TieBetPlayer1).EndInit();
             ((System.ComponentModel.ISupportInitialize)DealerBetPlayer1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PlayerBetPlayer1).EndInit();
+            SitPlayerPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -928,12 +936,8 @@
         private Button GameControlButton;
         private GroupBox groupBox1;
         private Button RulesButton;
-        private Button Seat1ControlButton;
-        private Button Seat2ControlButton;
-        private Button Seat3ControButton;
-        private Button Seat4ControlButton;
         private GroupBox BettingAreaGroupBox;
-        private Panel panel1;
+        private Panel BettingAreaPanelPlayer1;
         private Label label1;
         private NumericUpDown TieBetPlayer1;
         private NumericUpDown DealerBetPlayer1;
@@ -941,19 +945,19 @@
         private TextBox FundBoxPlayer1;
         private Panel panel5;
         private Label label5;
-        private Panel panel3;
+        private Panel BettingAreaPanelPlayer3;
         private NumericUpDown TieBetPlayer3;
         private NumericUpDown DealerBetPlayer3;
         private NumericUpDown PlayerBetPlayer3;
         private TextBox FundBoxPlayer3;
         private Label label3;
-        private Panel panel4;
+        private Panel BettingAreaPanelPlayer4;
         private NumericUpDown TieBetPlayer4;
         private NumericUpDown DealerBetPlayer4;
         private NumericUpDown PlayerBetPlayer4;
         private TextBox FundBoxPlayer4;
         private Label label4;
-        private Panel panel2;
+        private Panel BettingAreaPanelPlayer2;
         private NumericUpDown TieBetPlayer2;
         private NumericUpDown DealerBetPlayer2;
         private NumericUpDown PlayerBetPlayer2;
@@ -962,5 +966,10 @@
         private Label label8;
         private Label label7;
         private Label label6;
+        private Panel SitPlayerPanel;
+        private Button Seat4ControlButton;
+        private Button Seat3ControButton;
+        private Button Seat2ControlButton;
+        private Button Seat1ControlButton;
     }
 }
