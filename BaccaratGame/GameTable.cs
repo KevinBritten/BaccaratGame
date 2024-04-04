@@ -21,7 +21,7 @@ namespace BaccaratGame
         Player[] players = new Player[4];
         Boolean PLAYER = true; Boolean BANKER = false;
         int GameState = 1;
-        
+
 
         public GameTable()
         {
@@ -37,14 +37,15 @@ namespace BaccaratGame
             for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
 
             //TODO: test player, remove after implimenting player add function
-            players[0] = new Player("Test", 10, "empty");
-            players[0].FundsChanged += FundBoxPlayer1_FundsChanged;
-            players[0].Funds = 11;
+            //players[0] = new Player("Test", 10, "empty");
+            //players[0].FundsChanged += FundBoxPlayer1_FundsChanged;
+            //players[0].Funds = 11;
         }
 
         private void GameControlButton_Click(object sender, EventArgs e)
         {
-            switch (GameState) {
+            switch (GameState)
+            {
                 case 1:
                     GameState = 2;
                     GameControlButton.Text = "Play";
@@ -53,12 +54,14 @@ namespace BaccaratGame
                     int i;
                     //Checking the conditions of the shoe
                     ResetShoeBoxes();
-                    if (S.CheckCutCard()) {
+                    if (S.CheckCutCard())
+                    {
                         int[] CardD = S.DrainingShoe();
                         for (i = 0; i < CardD.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[CardD[i]]; }
                     }
                     ResetShoeBoxes();
-                    if (S.Position() == 0) {
+                    if (S.Position() == 0)
+                    {
                         int[] CardP = S.PrimingShoe();
                         ShoeBoxes[0].Image = PlayingCardsList.Images[CardP[0]];
                         for (i = 1; i < CardP.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[52]; }
@@ -67,7 +70,8 @@ namespace BaccaratGame
                     int[] CardH = new int[4];
                     for (i = 0; i < CardH.Length; i++) { CardH[i] = S.PickCard(); }
                     H.DistributeFourCards(CardH);
-                    if (H.NoNaturalHand()) {
+                    if (H.NoNaturalHand())
+                    {
                         if (H.NeedPlayerThirdCard()) { H.GetThirdCard(S.PickCard(), PLAYER); }
                         if (H.NeedBankerThirdCard()) { H.GetThirdCard(S.PickCard(), BANKER); }
                     }
@@ -84,7 +88,8 @@ namespace BaccaratGame
                     ShoeBoxes[0].Image = PlayingCardsList.Images[PlayerH[0]]; ShoeBoxes[1].Image = PlayingCardsList.Images[BankerH[0]];
                     ShoeBoxes[2].Image = PlayingCardsList.Images[PlayerH[1]]; ShoeBoxes[3].Image = PlayingCardsList.Images[BankerH[1]];
                     if (ThirdCard[0]) { ShoeBoxes[4].Image = PlayingCardsList.Images[PlayerH[2]]; }
-                    if (ThirdCard[1]) {
+                    if (ThirdCard[1])
+                    {
                         if (!ThirdCard[0]) { ShoeBoxes[4].Image = PlayingCardsList.Images[BankerH[2]]; }
                         else { ShoeBoxes[5].Image = PlayingCardsList.Images[BankerH[2]]; }
                     }
@@ -111,10 +116,11 @@ namespace BaccaratGame
         private void Seat1ControlButton_Click(object sender, EventArgs e)
         {
             int PlayerState = 1;
-            switch (PlayerState) {
-                case 1: ActivatePlayerSitForm(1);  break;
+            switch (PlayerState)
+            {
+                case 1: ActivatePlayerSitForm(0, FundBoxPlayer1_FundsChanged); break;
                 case 2: ActivatePlayerBustedForm(1); break;
-                case 3: ActivatePlayerWithdrawForm(1);  break;
+                case 3: ActivatePlayerWithdrawForm(1); break;
                 default: break;
             }
         }
@@ -124,7 +130,7 @@ namespace BaccaratGame
             int PlayerState = 1;
             switch (PlayerState)
             {
-                case 1: ActivatePlayerSitForm(2); break;
+                case 1: ActivatePlayerSitForm(1, FundBoxPlayer2_FundsChanged); break;
                 case 2: ActivatePlayerBustedForm(2); break;
                 case 3: ActivatePlayerWithdrawForm(2); break;
                 default: break;
@@ -133,10 +139,10 @@ namespace BaccaratGame
 
         private void Seat3ControButton_Click(object sender, EventArgs e)
         {
-            int PlayerState = 2;
+            int PlayerState = 1;
             switch (PlayerState)
             {
-                case 1: ActivatePlayerSitForm(3); break;
+                case 1: ActivatePlayerSitForm(2, FundBoxPlayer3_FundsChanged); break;
                 case 2: ActivatePlayerBustedForm(3); break;
                 case 3: ActivatePlayerWithdrawForm(3); break;
                 default: break;
@@ -145,18 +151,19 @@ namespace BaccaratGame
 
         private void Seat4ControlButton_Click(object sender, EventArgs e)
         {
-            int PlayerState = 4;
+            int PlayerState = 1;
             switch (PlayerState)
             {
-                case 1: ActivatePlayerSitForm(4); break;
+                case 1: ActivatePlayerSitForm(3, FundBoxPlayer4_FundsChanged); break;
                 case 2: ActivatePlayerBustedForm(4); break;
                 case 3: ActivatePlayerWithdrawForm(4); break;
                 default: break;
             }
         }
 
-        public void ActivatePlayerSitForm(int P) {
-            PlayerSit SecondForm = new PlayerSit(P);
+        public void ActivatePlayerSitForm(int P, EventHandler fundsChangedCallback)
+        {
+            PlayerSit SecondForm = new PlayerSit(P, players, fundsChangedCallback);
             SecondForm.ShowDialog();
         }
 
@@ -178,15 +185,15 @@ namespace BaccaratGame
         }
         private void FundBoxPlayer2_FundsChanged(object sender, EventArgs e)
         {
-            FundBoxPlayer1.Text = players[1].Funds.ToString();
+            FundBoxPlayer2.Text = players[1].Funds.ToString();
         }
         private void FundBoxPlayer3_FundsChanged(object sender, EventArgs e)
         {
-            FundBoxPlayer1.Text = players[2].Funds.ToString();
+            FundBoxPlayer3.Text = players[2].Funds.ToString();
         }
         private void FundBoxPlayer4_FundsChanged(object sender, EventArgs e)
         {
-            FundBoxPlayer1.Text = players[3].Funds.ToString();
+            FundBoxPlayer4.Text = players[3].Funds.ToString();
         }
 
         private void PlayerBetPlayer1_ValueChanged(object sender, EventArgs e)

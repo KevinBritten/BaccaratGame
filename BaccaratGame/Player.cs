@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaccaratGame
 {
-    internal class Player
+    public class Player
     {
         private String _name;
         private int _funds;
@@ -30,8 +30,8 @@ namespace BaccaratGame
         {
             get { return _funds; }
             set {
+                _funds = value;
                 OnMyFundsChanged();
-                _funds = value; 
             }
         }
 
