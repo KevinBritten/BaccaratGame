@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace BaccaratGame
 {
@@ -19,6 +20,7 @@ namespace BaccaratGame
         PictureBox[] PlayerBoxes = new PictureBox[3];
         PictureBox[] BankerBoxes = new PictureBox[3];
         Player[] players = new Player[4];
+        int[] playerStates = { 0, 0, 0, 0 };
         Boolean PLAYER = true; Boolean BANKER = false;
         int GameState = 1;
 
@@ -115,56 +117,57 @@ namespace BaccaratGame
 
         private void Seat1ControlButton_Click(object sender, EventArgs e)
         {
-            int PlayerState = 1;
+            int PlayerState = playerStates[0];
             switch (PlayerState)
             {
-                case 1: ActivatePlayerSitForm(0, FundBoxPlayer1_FundsChanged); break;
-                case 2: ActivatePlayerBustedForm(1); break;
-                case 3: ActivatePlayerWithdrawForm(1); break;
+                case 0: ActivatePlayerSitForm(0, FundBoxPlayer1_FundsChanged); break;
+                case 1: ActivatePlayerBustedForm(0); break;
+                case 2: ActivatePlayerWithdrawForm(0); break;
                 default: break;
             }
         }
 
         private void Seat2ControlButton_Click(object sender, EventArgs e)
         {
-            int PlayerState = 1;
+            int PlayerState = playerStates[1];
             switch (PlayerState)
             {
-                case 1: ActivatePlayerSitForm(1, FundBoxPlayer2_FundsChanged); break;
-                case 2: ActivatePlayerBustedForm(2); break;
-                case 3: ActivatePlayerWithdrawForm(2); break;
+                case 0: ActivatePlayerSitForm(1, FundBoxPlayer2_FundsChanged); break;
+                case 1: ActivatePlayerBustedForm(1); break;
+                case 2: ActivatePlayerWithdrawForm(1); break;
                 default: break;
             }
         }
 
         private void Seat3ControButton_Click(object sender, EventArgs e)
         {
-            int PlayerState = 1;
+            int PlayerState = playerStates[2];
             switch (PlayerState)
             {
-                case 1: ActivatePlayerSitForm(2, FundBoxPlayer3_FundsChanged); break;
-                case 2: ActivatePlayerBustedForm(3); break;
-                case 3: ActivatePlayerWithdrawForm(3); break;
+                case 0: ActivatePlayerSitForm(2, FundBoxPlayer3_FundsChanged); break;
+                case 1: ActivatePlayerBustedForm(2); break;
+                case 2: ActivatePlayerWithdrawForm(2); break;
                 default: break;
             }
         }
 
         private void Seat4ControlButton_Click(object sender, EventArgs e)
         {
-            int PlayerState = 1;
+            int PlayerState = playerStates[3];
             switch (PlayerState)
             {
-                case 1: ActivatePlayerSitForm(3, FundBoxPlayer4_FundsChanged); break;
-                case 2: ActivatePlayerBustedForm(4); break;
-                case 3: ActivatePlayerWithdrawForm(4); break;
+                case 0: ActivatePlayerSitForm(3, FundBoxPlayer4_FundsChanged); break;
+                case 1: ActivatePlayerBustedForm(3); break;
+                case 2: ActivatePlayerWithdrawForm(3); break;
                 default: break;
             }
         }
 
         public void ActivatePlayerSitForm(int P, EventHandler fundsChangedCallback)
         {
-            PlayerSit SecondForm = new PlayerSit(P, players, fundsChangedCallback);
+            PlayerSit SecondForm = new PlayerSit(P, players, fundsChangedCallback, playerStates);
             SecondForm.ShowDialog();
+            UpdatePlayerSitButtonText();
         }
 
         public void ActivatePlayerBustedForm(int P)
@@ -177,6 +180,19 @@ namespace BaccaratGame
         {
             PlayerWithdraw SecondForm = new PlayerWithdraw();
             SecondForm.ShowDialog();
+        }
+
+        public void UpdatePlayerSitButtonText()
+        {
+
+            for (int i = 0; i < playerStates.Length; i++)
+            {
+                int playerNumber = i + 1;
+                String[] buttonTexts = { $"Seat {playerNumber} free", $"Player {playerNumber} Busted", $"Cashout Player {playerNumber}" };
+                String controlName = $"Seat{playerNumber.ToString()}ControlButton";
+                SitPlayerButtonsPanel.Controls.Find(controlName, false)[0].Text = buttonTexts[playerStates[i]];
+
+            }
         }
 
         private void FundBoxPlayer1_FundsChanged(object sender, EventArgs e)
