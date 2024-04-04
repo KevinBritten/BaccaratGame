@@ -41,9 +41,10 @@
             // 
             // ReturnButton
             // 
-            ReturnButton.Location = new Point(693, 407);
+            ReturnButton.Location = new Point(606, 305);
+            ReturnButton.Margin = new Padding(3, 2, 3, 2);
             ReturnButton.Name = "ReturnButton";
-            ReturnButton.Size = new Size(94, 29);
+            ReturnButton.Size = new Size(82, 22);
             ReturnButton.TabIndex = 2;
             ReturnButton.Text = "Return";
             ReturnButton.UseVisualStyleBackColor = true;
@@ -52,10 +53,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(45, 53);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(39, 40);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(137, 240);
+            pictureBox1.Size = new Size(120, 180);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -63,10 +63,9 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(146, 167);
-            pictureBox2.Margin = new Padding(3, 4, 3, 4);
+            pictureBox2.Location = new Point(128, 125);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(137, 240);
+            pictureBox2.Size = new Size(120, 180);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
@@ -75,41 +74,42 @@
             // 
             ProjectTiltleLabel.AutoSize = true;
             ProjectTiltleLabel.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ProjectTiltleLabel.Location = new Point(246, 25);
+            ProjectTiltleLabel.Location = new Point(215, 19);
             ProjectTiltleLabel.Name = "ProjectTiltleLabel";
-            ProjectTiltleLabel.Size = new Size(581, 62);
+            ProjectTiltleLabel.Size = new Size(462, 50);
             ProjectTiltleLabel.TabIndex = 5;
             ProjectTiltleLabel.Text = "Baccarat Game Simulator";
             // 
             // PurposeLabel
             // 
             PurposeLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            PurposeLabel.Location = new Point(317, 111);
+            PurposeLabel.Location = new Point(277, 83);
             PurposeLabel.Name = "PurposeLabel";
-            PurposeLabel.Size = new Size(400, 133);
+            PurposeLabel.Size = new Size(350, 100);
             PurposeLabel.TabIndex = 6;
             PurposeLabel.Text = "Project for Course 420-910, Programming Concepts 1, Vanier College, April 2024 ";
             // 
             // AuthorLabel
             // 
             AuthorLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            AuthorLabel.Location = new Point(317, 279);
+            AuthorLabel.Location = new Point(277, 209);
             AuthorLabel.Name = "AuthorLabel";
-            AuthorLabel.Size = new Size(298, 94);
+            AuthorLabel.Size = new Size(240, 70);
             AuthorLabel.TabIndex = 7;
             AuthorLabel.Text = "By Kevin Britten and Nicolas Lauzon";
             // 
             // About
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(923, 473);
+            ClientSize = new Size(700, 338);
             Controls.Add(AuthorLabel);
             Controls.Add(PurposeLabel);
             Controls.Add(ProjectTiltleLabel);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(ReturnButton);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "About";
             Text = "About";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

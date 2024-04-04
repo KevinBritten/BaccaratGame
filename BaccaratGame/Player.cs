@@ -30,9 +30,8 @@ namespace BaccaratGame
         {
             get { return _funds; }
             set {
-                _funds = value;
                 OnMyFundsChanged();
-             
+                _funds = value; 
             }
         }
 

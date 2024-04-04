@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace BaccaratGame
 {
@@ -20,15 +19,9 @@ namespace BaccaratGame
         PictureBox[] PlayerBoxes = new PictureBox[3];
         PictureBox[] BankerBoxes = new PictureBox[3];
         Player[] players = new Player[4];
-<<<<<<< HEAD
         Boolean PLAYER = true; Boolean BANKER = false;
         int GameState = 1;
         
-=======
-        int currentGameState = 0;
-        String[] gameStates = { "Sit", "Bet", "Play", "Settle" };
-
->>>>>>> de94c098206f10d7d66d1432117120b36e2ba9b0
 
         public GameTable()
         {
@@ -42,38 +35,11 @@ namespace BaccaratGame
             for (i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; }
             for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
             for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
-            disableControlsBasedOnGameState();
-            setActionButtonText();
-        }
 
-        public void advanceGameState()
-        {
-            currentGameState = (currentGameState + 1) % gameStates.Length;
-            disableControlsBasedOnGameState();
-            setActionButtonText();
-        }
-
-        public void disableControlsBasedOnGameState()
-        {
-            if (currentGameState == 0)
-            {
-                BettingAreaGroupBox.Enabled = false;
-                SitPlayerPanel.Enabled = true;
-            }
-            else if (currentGameState == 1)
-            {
-                BettingAreaGroupBox.Enabled = true;
-                SitPlayerPanel.Enabled = false;
-            } else
-            {
-                BettingAreaGroupBox.Enabled = false;
-                SitPlayerPanel.Enabled = false;
-            }
-        }
-
-        public void setActionButtonText()
-        {
-            GameControlButton.Text = gameStates[(currentGameState + 1) % gameStates.Length];
+            //TODO: test player, remove after implimenting player add function
+            players[0] = new Player("Test", 10, "empty");
+            players[0].FundsChanged += FundBoxPlayer1_FundsChanged;
+            players[0].Funds = 11;
         }
 
         private void GameControlButton_Click(object sender, EventArgs e)
@@ -138,80 +104,28 @@ namespace BaccaratGame
                     break;
                 default: break;
             }
-<<<<<<< HEAD
-=======
-            ResetShoeBoxes();
-            if (S.Position() == 0) {
-                int[] CardP = S.PrimingShoe();
-                ShoeBoxes[0].Image = PlayingCardsList.Images[CardP[0]];
-                for (i = 1; i < CardP.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[52]; }
-            }
-            //Play a hand for the Player and Banker
-            int[] CardH = new int[4];
-            for (i = 0; i < CardH.Length; i++) { CardH[i] = S.PickCard(); }
-            H.DistributeFourCards(CardH);
-            if (H.NoNaturalHand()) {
-                if (H.NeedPlayerThirdCard()) { H.GetPlayerThirdCard(S.PickCard()); }
-                if (H.NeedBankerThirdCard()) { H.GetBankerThirdCard(S.PickCard()); }
-            }
-            H.DetermineWinningHand();
-            ShoeProgressBar.Value = 100 * (S.DeckN() * S.CardN() - S.Position()) / (S.DeckN() * S.CardN());
-            //Summarizing the result of the play
-            int[] ThirdCard = H.ThirdCard();
-            int[] PlayerH = H.Player();
-            int[] BankerH = H.Banker();
-            int[] Scores = H.Scores();
-            ResetShoeBoxes();
-            for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
-            for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
-            ShoeBoxes[0].Image = PlayingCardsList.Images[PlayerH[0]]; ShoeBoxes[1].Image = PlayingCardsList.Images[BankerH[0]];
-            ShoeBoxes[2].Image = PlayingCardsList.Images[PlayerH[1]]; ShoeBoxes[3].Image = PlayingCardsList.Images[BankerH[1]];
-            if (ThirdCard[0] == 1) { ShoeBoxes[4].Image = PlayingCardsList.Images[PlayerH[2]]; }
-            if (ThirdCard[1] == 1) {
-                if (ThirdCard[0] == 0) { ShoeBoxes[4].Image = PlayingCardsList.Images[BankerH[2]]; }
-                else { ShoeBoxes[5].Image = PlayingCardsList.Images[BankerH[2]]; }
-            }
-            PlayerBoxes[0].Image = PlayingCardsList.Images[PlayerH[0]]; PlayerBoxes[1].Image = PlayingCardsList.Images[PlayerH[1]];
-            BankerBoxes[0].Image = PlayingCardsList.Images[BankerH[0]]; BankerBoxes[1].Image = PlayingCardsList.Images[BankerH[1]];
-            if (ThirdCard[0] == 1) { PlayerBoxes[2].Image = PlayingCardsList.Images[PlayerH[2]]; }
-            if (ThirdCard[1] == 1) { BankerBoxes[2].Image = PlayingCardsList.Images[BankerH[2]]; }
-            PlayerScoreV.Text = Convert.ToString(Scores[0]);
-            BankerScoreV.Text = Convert.ToString(Scores[1]);
-            //TODO: Only advance when it is appropriate, function call below is only for testing
-            advanceGameState();
->>>>>>> de94c098206f10d7d66d1432117120b36e2ba9b0
         }
 
         private void ResetShoeBoxes() { for (int i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; } }
 
         private void Seat1ControlButton_Click(object sender, EventArgs e)
         {
-            sitPlayer(0, 10, new EventHandler(FundBoxPlayer1_FundsChanged));
+            //Until we develop the sitplayer, busted and withdraw forms...
         }
 
         private void Seat2ControlButton_Click(object sender, EventArgs e)
         {
-            sitPlayer(1, 15, new EventHandler(FundBoxPlayer2_FundsChanged));
+            //Until we develop the sitplayer, busted and withdraw forms...
         }
 
         private void Seat3ControButton_Click(object sender, EventArgs e)
         {
-            sitPlayer(2, 13, new EventHandler(FundBoxPlayer3_FundsChanged));
+            //Until we develop the sitplayer, busted and withdraw forms...
         }
 
         private void Seat4ControlButton_Click(object sender, EventArgs e)
         {
-            sitPlayer(3, 3555, new EventHandler(FundBoxPlayer4_FundsChanged));
-        }
-
-        private void sitPlayer(int position, int funds, EventHandler fundsChangedCallback)
-        {
-            players[position] = new Player("placeholder",funds, "placeholder");
-            players[position].FundsChanged += fundsChangedCallback;
-            players[position].Funds = funds;
-            string controlPanelName = $"BetControlsPanelPlayer{position+1}";
-            BettingAreaGroupBox.Controls.Find(controlPanelName, false)[0].Enabled = true;
-
+            //Until we develop the sitplayer, busted and withdraw forms...
         }
 
         private void FundBoxPlayer1_FundsChanged(object sender, EventArgs e)
@@ -220,15 +134,15 @@ namespace BaccaratGame
         }
         private void FundBoxPlayer2_FundsChanged(object sender, EventArgs e)
         {
-            FundBoxPlayer2.Text = players[1].Funds.ToString();
+            FundBoxPlayer1.Text = players[1].Funds.ToString();
         }
         private void FundBoxPlayer3_FundsChanged(object sender, EventArgs e)
         {
-            FundBoxPlayer3.Text = players[2].Funds.ToString();
+            FundBoxPlayer1.Text = players[2].Funds.ToString();
         }
         private void FundBoxPlayer4_FundsChanged(object sender, EventArgs e)
         {
-            FundBoxPlayer4.Text = players[3].Funds.ToString();
+            FundBoxPlayer1.Text = players[3].Funds.ToString();
         }
 
         private void PlayerBetPlayer1_ValueChanged(object sender, EventArgs e)
