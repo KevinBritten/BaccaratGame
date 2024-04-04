@@ -12,9 +12,20 @@ namespace BaccaratGame
 {
     public partial class PlayerSit : Form
     {
-        public PlayerSit()
+        public PlayerSit(int S)
         {
             InitializeComponent();
+            SeatNumberLabel.Text = "Let's occupy seat " + S.ToString();
+        }
+
+        private void ConfirmButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

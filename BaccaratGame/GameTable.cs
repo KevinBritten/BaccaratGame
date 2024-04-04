@@ -110,22 +110,66 @@ namespace BaccaratGame
 
         private void Seat1ControlButton_Click(object sender, EventArgs e)
         {
-            //Until we develop the sitplayer, busted and withdraw forms...
+            int PlayerState = 1;
+            switch (PlayerState) {
+                case 1: ActivatePlayerSitForm(1);  break;
+                case 2: ActivatePlayerBustedForm(1); break;
+                case 3: ActivatePlayerWithdrawForm(1);  break;
+                default: break;
+            }
         }
 
         private void Seat2ControlButton_Click(object sender, EventArgs e)
         {
-            //Until we develop the sitplayer, busted and withdraw forms...
+            int PlayerState = 1;
+            switch (PlayerState)
+            {
+                case 1: ActivatePlayerSitForm(2); break;
+                case 2: ActivatePlayerBustedForm(2); break;
+                case 3: ActivatePlayerWithdrawForm(2); break;
+                default: break;
+            }
         }
 
         private void Seat3ControButton_Click(object sender, EventArgs e)
         {
-            //Until we develop the sitplayer, busted and withdraw forms...
+            int PlayerState = 2;
+            switch (PlayerState)
+            {
+                case 1: ActivatePlayerSitForm(3); break;
+                case 2: ActivatePlayerBustedForm(3); break;
+                case 3: ActivatePlayerWithdrawForm(3); break;
+                default: break;
+            }
         }
 
         private void Seat4ControlButton_Click(object sender, EventArgs e)
         {
-            //Until we develop the sitplayer, busted and withdraw forms...
+            int PlayerState = 4;
+            switch (PlayerState)
+            {
+                case 1: ActivatePlayerSitForm(4); break;
+                case 2: ActivatePlayerBustedForm(4); break;
+                case 3: ActivatePlayerWithdrawForm(4); break;
+                default: break;
+            }
+        }
+
+        public void ActivatePlayerSitForm(int P) {
+            PlayerSit SecondForm = new PlayerSit(P);
+            SecondForm.ShowDialog();
+        }
+
+        public void ActivatePlayerBustedForm(int P)
+        {
+            PlayerBusted SecondForm = new PlayerBusted();
+            SecondForm.ShowDialog();
+        }
+
+        public void ActivatePlayerWithdrawForm(int P)
+        {
+            PlayerWithdraw SecondForm = new PlayerWithdraw();
+            SecondForm.ShowDialog();
         }
 
         private void FundBoxPlayer1_FundsChanged(object sender, EventArgs e)
