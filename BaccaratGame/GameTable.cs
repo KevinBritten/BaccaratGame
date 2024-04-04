@@ -37,6 +37,7 @@ namespace BaccaratGame
             for (i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; }
             for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
             for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
+            panel1.Enabled = false; panel2.Enabled = false; panel3.Enabled = false; panel4.Enabled = false;
 
             //TODO: test player, remove after implimenting player add function
             //players[0] = new Player("Test", 10, "empty");
@@ -49,10 +50,21 @@ namespace BaccaratGame
             switch (GameState)
             {
                 case 1:
-                    GameState = 2;
+                    if (NoPlayerAtTable()) { break; }
+                    if (BustedPlayerAtTable()) { break; }
+                    if (playerStates[0] == 2) { panel1.Enabled = true; }
+                    if (playerStates[1] == 2) { panel2.Enabled = true; }
+                    if (playerStates[2] == 2) { panel3.Enabled = true; }
+                    if (playerStates[3] == 2) { panel4.Enabled = true; }
+                    Seat1ControlButton.Enabled = false;
+                    Seat2ControlButton.Enabled = false;
+                    Seat3ControlButton.Enabled = false;
+                    Seat4ControlButton.Enabled = false;
                     GameControlButton.Text = "Play";
+                    GameState = 2;
                     break;
                 case 2:
+                    if (NoBetMadeAtTable()) { break; }
                     int i;
                     //Checking the conditions of the shoe
                     ResetShoeBoxes();
@@ -111,6 +123,34 @@ namespace BaccaratGame
                     break;
                 default: break;
             }
+        }
+
+        private Boolean NoPlayerAtTable() {
+            if ((playerStates[0] + playerStates[1] + playerStates[2] + playerStates[3]) == 0) { return true; }
+            else { return false; }
+        }
+
+        private Boolean BustedPlayerAtTable () {
+            int Busted = 0;
+            for (int i = 0; i < playerStates.Length; i++) { if (playerStates[i] == 1) { Busted++; } }
+            if (Busted > 0) { return true;} else { return false; }
+        }
+
+        private Boolean NoBetMadeAtTable() {
+            int ShyPlayer = 0;
+            if ((playerStates[0] == 2)) {
+                if ((PlayerBetPlayer1.Value + DealerBetPlayer1.Value + TieBetPlayer1.Value) == 0) { ShyPlayer++; }
+            }
+            if ((playerStates[1] == 2)) {
+                if ((PlayerBetPlayer2.Value + DealerBetPlayer2.Value + TieBetPlayer2.Value) == 0) { ShyPlayer++; }
+            }
+            if ((playerStates[2] == 2)) {
+                if ((PlayerBetPlayer3.Value + DealerBetPlayer3.Value + TieBetPlayer3.Value) == 0) { ShyPlayer++; }
+            }
+            if ((playerStates[3] == 2)) {
+                if ((PlayerBetPlayer4.Value + DealerBetPlayer4.Value + TieBetPlayer4.Value) == 0) { ShyPlayer++; }
+            }
+            if (ShyPlayer > 0) { return true; } else { return false; }
         }
 
         private void ResetShoeBoxes() { for (int i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; } }
