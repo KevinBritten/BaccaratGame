@@ -119,11 +119,8 @@ namespace BaccaratGame
                     break;
                 case 3:
                     AdjustPlayersFunds();
+                    ClearPlayerBets();
                     CheckForBustedPlayer();
-                    //FundBoxPlayer1.Text = players[0].Funds.ToString();
-                    //FundBoxPlayer2.Text = players[1].Funds.ToString();
-                    //FundBoxPlayer3.Text = players[2].Funds.ToString();
-                    //FundBoxPlayer4.Text = players[3].Funds.ToString();
                     if (playerStates[0] == 2) {
                         PlayerBetPlayer1.Value = PlayerBetPlayer1.Minimum;
                         DealerBetPlayer1.Value = DealerBetPlayer1.Minimum;
@@ -171,10 +168,10 @@ namespace BaccaratGame
         }
 
         private void CheckForBustedPlayer() {
-            if (players[0] != null) { if (players[0].Funds < 100) { playerStates[0] = 1; } }
-            if (players[1] != null) { if (players[1].Funds < 100) { playerStates[1] = 1; } }
-            if (players[2] != null) { if (players[2].Funds < 100) { playerStates[2] = 1; } }
-            if (players[3] != null) { if (players[3].Funds < 100) { playerStates[3] = 1; } }
+            if (playerStates[0] == 2) { if (players[0].Funds < 100) { playerStates[0] = 1; UpdatePlayerSitButtonText(); } }
+            if (playerStates[1] == 2) { if (players[1].Funds < 100) { playerStates[1] = 1; UpdatePlayerSitButtonText(); } }
+            if (playerStates[2] == 2) { if (players[2].Funds < 100) { playerStates[2] = 1; UpdatePlayerSitButtonText(); } }
+            if (playerStates[3] == 2) { if (players[3].Funds < 100) { playerStates[3] = 1; UpdatePlayerSitButtonText(); } }
         }
 
         private Boolean NoBetMadeAtTable() {
@@ -195,8 +192,7 @@ namespace BaccaratGame
         }
 
         private void AdjustPlayersFunds() {
-            int Win = H.Result();
-            switch(Win) {
+            switch(H.Result()) {
                 case 0:
                     if ((playerStates[0] == 2)) { 
                         players[0].Funds += (int)PlayerBetPlayer1.Value;
@@ -245,22 +241,22 @@ namespace BaccaratGame
                     if ((playerStates[0] == 2)) {
                         players[0].Funds -= (int)PlayerBetPlayer1.Value;
                         players[0].Funds -= (int)DealerBetPlayer1.Value;
-                        players[0].Funds += (8 * (int)DealerBetPlayer1.Value); 
+                        players[0].Funds += 8 * (int)TieBetPlayer1.Value; 
                     }
                     if ((playerStates[1] == 2)) {
                         players[1].Funds -= (int)PlayerBetPlayer2.Value;
                         players[1].Funds -= (int)DealerBetPlayer2.Value;
-                        players[1].Funds += (8 * (int)DealerBetPlayer2.Value); 
+                        players[1].Funds += 8 * (int)TieBetPlayer2.Value; 
                     }
                     if ((playerStates[2] == 2)) {
                         players[2].Funds -= (int)PlayerBetPlayer3.Value;
                         players[2].Funds -= (int)DealerBetPlayer3.Value;
-                        players[2].Funds += (8 * (int)DealerBetPlayer3.Value); 
+                        players[2].Funds += 8 * (int)TieBetPlayer3.Value; 
                     }
                     if ((playerStates[3] == 2)) {
                         players[3].Funds -= (int)PlayerBetPlayer4.Value;
                         players[3].Funds -= (int)DealerBetPlayer4.Value;
-                        players[3].Funds += (8 * (int)DealerBetPlayer4.Value); 
+                        players[3].Funds += 8 * (int)TieBetPlayer4.Value; 
                     }
                     break;
                 default: break;
@@ -452,6 +448,13 @@ namespace BaccaratGame
         private void updateBet(int index, decimal value, Player player)
         {
             player.updateBet(index, (int)value);
+        }
+
+        private void ClearPlayerBets() {
+            if (playerStates[0] == 2) { players[0].clearAllBets(); }
+            if (playerStates[1] == 2) { players[1].clearAllBets(); }
+            if (playerStates[2] == 2) { players[2].clearAllBets(); }
+            if (playerStates[3] == 2) { players[3].clearAllBets(); }
         }
 
         private void RulesButton_Click(object sender, EventArgs e)
