@@ -60,8 +60,8 @@ namespace BaccaratGame
                     Seat2ControlButton.Enabled = false;
                     Seat3ControlButton.Enabled = false;
                     Seat4ControlButton.Enabled = false;
-                    GameControlButton.Text = "Play";
                     GameState = 2;
+                    GameControlButton.Text = "Play";
                     break;
                 case 2:
                     if (NoBetMadeAtTable()) { break; }
@@ -118,6 +118,40 @@ namespace BaccaratGame
                     GameControlButton.Text = "Settle bet";
                     break;
                 case 3:
+                    AdjustPlayersFunds();
+                    CheckForBustedPlayer();
+                    //FundBoxPlayer1.Text = players[0].Funds.ToString();
+                    //FundBoxPlayer2.Text = players[1].Funds.ToString();
+                    //FundBoxPlayer3.Text = players[2].Funds.ToString();
+                    //FundBoxPlayer4.Text = players[3].Funds.ToString();
+                    if (playerStates[0] == 2) {
+                        PlayerBetPlayer1.Value = PlayerBetPlayer1.Minimum;
+                        DealerBetPlayer1.Value = DealerBetPlayer1.Minimum;
+                        TieBetPlayer1.Value = TieBetPlayer1.Minimum;
+                        panel1.Enabled = false; 
+                    }
+                    if (playerStates[1] == 2) {
+                        PlayerBetPlayer2.Value = PlayerBetPlayer2.Minimum;
+                        DealerBetPlayer2.Value = DealerBetPlayer2.Minimum;
+                        TieBetPlayer2.Value = TieBetPlayer2.Minimum;
+                        panel2.Enabled = false; 
+                    }
+                    if (playerStates[2] == 2) {
+                        PlayerBetPlayer3.Value = PlayerBetPlayer3.Minimum;
+                        DealerBetPlayer3.Value = DealerBetPlayer3.Minimum;
+                        TieBetPlayer3.Value = TieBetPlayer3.Minimum;
+                        panel3.Enabled = false;
+                    }
+                    if (playerStates[3] == 2) {
+                        PlayerBetPlayer4.Value = PlayerBetPlayer3.Minimum;
+                        DealerBetPlayer4.Value = DealerBetPlayer3.Minimum;
+                        TieBetPlayer4.Value = TieBetPlayer4.Minimum;
+                        panel4.Enabled = false; 
+                    }
+                    Seat1ControlButton.Enabled = true;
+                    Seat2ControlButton.Enabled = true;
+                    Seat3ControlButton.Enabled = true;
+                    Seat4ControlButton.Enabled = true;
                     GameState = 1;
                     GameControlButton.Text = "Bet";
                     break;
@@ -136,6 +170,13 @@ namespace BaccaratGame
             if (Busted > 0) { return true;} else { return false; }
         }
 
+        private void CheckForBustedPlayer() {
+            if (players[0] != null) { if (players[0].Funds < 100) { playerStates[0] = 1; } }
+            if (players[1] != null) { if (players[1].Funds < 100) { playerStates[1] = 1; } }
+            if (players[2] != null) { if (players[2].Funds < 100) { playerStates[2] = 1; } }
+            if (players[3] != null) { if (players[3].Funds < 100) { playerStates[3] = 1; } }
+        }
+
         private Boolean NoBetMadeAtTable() {
             int ShyPlayer = 0;
             if ((playerStates[0] == 2)) {
@@ -151,6 +192,79 @@ namespace BaccaratGame
                 if ((PlayerBetPlayer4.Value + DealerBetPlayer4.Value + TieBetPlayer4.Value) == 0) { ShyPlayer++; }
             }
             if (ShyPlayer > 0) { return true; } else { return false; }
+        }
+
+        private void AdjustPlayersFunds() {
+            int Win = H.Result();
+            switch(Win) {
+                case 0:
+                    if ((playerStates[0] == 2)) { 
+                        players[0].Funds += (int)PlayerBetPlayer1.Value;
+                        players[0].Funds -= (int)DealerBetPlayer1.Value;
+                        players[0].Funds -= (int)TieBetPlayer1.Value;
+                    }
+                    if ((playerStates[1] == 2)) { 
+                        players[1].Funds += (int)PlayerBetPlayer2.Value;
+                        players[1].Funds -= (int)DealerBetPlayer2.Value;
+                        players[1].Funds -= (int)TieBetPlayer2.Value;
+                    }
+                    if ((playerStates[2] == 2)) {
+                        players[2].Funds += (int)PlayerBetPlayer3.Value;
+                        players[2].Funds -= (int)DealerBetPlayer3.Value;
+                        players[2].Funds -= (int)TieBetPlayer3.Value;
+                    }
+                    if ((playerStates[3] == 2)) { 
+                        players[3].Funds += (int)PlayerBetPlayer4.Value;
+                        players[3].Funds -= (int)DealerBetPlayer4.Value;
+                        players[3].Funds -= (int)TieBetPlayer4.Value;
+                    }
+                    break;
+                case 1:
+                    if ((playerStates[0] == 2)) {
+                        players[0].Funds -= (int)PlayerBetPlayer1.Value;
+                        players[0].Funds += (int)(0.95 * (int)DealerBetPlayer1.Value);
+                        players[0].Funds -= (int)TieBetPlayer1.Value;
+                    }
+                    if ((playerStates[1] == 2)) {
+                        players[1].Funds -= (int)PlayerBetPlayer2.Value;
+                        players[1].Funds += (int)(0.95 * (int)DealerBetPlayer2.Value);
+                        players[1].Funds -= (int)TieBetPlayer2.Value;
+                    }
+                    if ((playerStates[2] == 2)) {
+                        players[2].Funds -= (int)PlayerBetPlayer3.Value;
+                        players[2].Funds += (int)(0.95 * (int)DealerBetPlayer3.Value);
+                        players[2].Funds -= (int)TieBetPlayer3.Value;
+                    }
+                    if ((playerStates[3] == 2)) {
+                        players[3].Funds -= (int)PlayerBetPlayer4.Value;
+                        players[3].Funds += (int)(0.95 * (int)DealerBetPlayer4.Value);
+                        players[3].Funds -= (int)TieBetPlayer4.Value;
+                    }
+                    break;
+                case 2:
+                    if ((playerStates[0] == 2)) {
+                        players[0].Funds -= (int)PlayerBetPlayer1.Value;
+                        players[0].Funds -= (int)DealerBetPlayer1.Value;
+                        players[0].Funds += (8 * (int)DealerBetPlayer1.Value); 
+                    }
+                    if ((playerStates[1] == 2)) {
+                        players[1].Funds -= (int)PlayerBetPlayer2.Value;
+                        players[1].Funds -= (int)DealerBetPlayer2.Value;
+                        players[1].Funds += (8 * (int)DealerBetPlayer2.Value); 
+                    }
+                    if ((playerStates[2] == 2)) {
+                        players[2].Funds -= (int)PlayerBetPlayer3.Value;
+                        players[2].Funds -= (int)DealerBetPlayer3.Value;
+                        players[2].Funds += (8 * (int)DealerBetPlayer3.Value); 
+                    }
+                    if ((playerStates[3] == 2)) {
+                        players[3].Funds -= (int)PlayerBetPlayer4.Value;
+                        players[3].Funds -= (int)DealerBetPlayer4.Value;
+                        players[3].Funds += (8 * (int)DealerBetPlayer4.Value); 
+                    }
+                    break;
+                default: break;
+            }
         }
 
         private void ResetShoeBoxes() { for (int i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; } }
@@ -254,61 +368,85 @@ namespace BaccaratGame
 
         private void PlayerBetPlayer1_ValueChanged(object sender, EventArgs e)
         {
+            int S = players[0].Funds - (int)DealerBetPlayer1.Value - (int)TieBetPlayer1.Value;
+            if (PlayerBetPlayer1.Value > S) { PlayerBetPlayer1.Value -= PlayerBetPlayer1.Increment; }
             updateBet(0, PlayerBetPlayer1.Value, players[0]);
         }
 
         private void PlayerBetPlayer2_ValueChanged(object sender, EventArgs e)
         {
+            int S = players[1].Funds - (int)DealerBetPlayer2.Value - (int)TieBetPlayer2.Value;
+            if (PlayerBetPlayer2.Value > S) { PlayerBetPlayer2.Value -= PlayerBetPlayer2.Increment; }
             updateBet(0, PlayerBetPlayer2.Value, players[1]);
         }
 
         private void PlayerBetPlayer3_ValueChanged(object sender, EventArgs e)
         {
+            int S = players[2].Funds - (int)DealerBetPlayer3.Value - (int)TieBetPlayer3.Value;
+            if (PlayerBetPlayer3.Value > S) { PlayerBetPlayer3.Value -= PlayerBetPlayer3.Increment; }
             updateBet(0, PlayerBetPlayer3.Value, players[2]);
         }
 
         private void PlayerBetPlayer4_ValueChanged(object sender, EventArgs e)
         {
+            int S = players[3].Funds - (int)DealerBetPlayer4.Value - (int)TieBetPlayer4.Value;
+            if (PlayerBetPlayer4.Value > S) { PlayerBetPlayer4.Value -= PlayerBetPlayer4.Increment; }
             updateBet(0, PlayerBetPlayer4.Value, players[3]);
         }
 
         private void DealerBetPlayer1_ValueChanged(object sender, EventArgs e)
         {
+            int S = players[0].Funds - (int)PlayerBetPlayer1.Value - (int)TieBetPlayer1.Value;
+            if (DealerBetPlayer1.Value > S) { DealerBetPlayer1.Value -= DealerBetPlayer1.Increment; }
             updateBet(1, DealerBetPlayer1.Value, players[0]);
         }
 
         private void DealerBetPlayer2_ValueChanged(object sender, EventArgs e)
         {
+            int S = players[1].Funds - (int)PlayerBetPlayer2.Value - (int)TieBetPlayer2.Value;
+            if (DealerBetPlayer2.Value > S) { DealerBetPlayer2.Value -= DealerBetPlayer2.Increment; }
             updateBet(1, DealerBetPlayer2.Value, players[1]);
         }
 
         private void DealerBetPlayer3_ValueChanged(object sender, EventArgs e)
         {
+            int S = players[2].Funds - (int)PlayerBetPlayer3.Value - (int)TieBetPlayer3.Value;
+            if (DealerBetPlayer3.Value > S) { DealerBetPlayer3.Value -= DealerBetPlayer3.Increment; }
             updateBet(1, DealerBetPlayer3.Value, players[2]);
         }
 
         private void DealerBetPlayer4_ValueChanged(object sender, EventArgs e)
         {
+            int S = players[3].Funds - (int)PlayerBetPlayer4.Value - (int)TieBetPlayer4.Value;
+            if (DealerBetPlayer4.Value > S) { DealerBetPlayer4.Value -= DealerBetPlayer4.Increment; }
             updateBet(1, DealerBetPlayer4.Value, players[3]);
         }
 
         private void TieBetPlayer1_ValueChanged(object sender, EventArgs e)
         {
+            int S = players[0].Funds - (int)PlayerBetPlayer1.Value - (int)DealerBetPlayer1.Value;
+            if (TieBetPlayer1.Value > S) { TieBetPlayer1.Value -= TieBetPlayer1.Increment; }
             updateBet(2, TieBetPlayer1.Value, players[0]);
         }
 
         private void TieBetPlayer2_ValueChanged(object sender, EventArgs e)
         {
+            int S = players[1].Funds - (int)PlayerBetPlayer2.Value - (int)DealerBetPlayer2.Value;
+            if (TieBetPlayer2.Value > S) { TieBetPlayer2.Value -= TieBetPlayer2.Increment; }
             updateBet(2, TieBetPlayer2.Value, players[1]);
         }
 
         private void TieBetPlayer3_ValueChanged(object sender, EventArgs e)
         {
+            int S = players[2].Funds - (int)PlayerBetPlayer3.Value - (int)DealerBetPlayer3.Value;
+            if (TieBetPlayer3.Value > S) { TieBetPlayer3.Value -= TieBetPlayer3.Increment; }
             updateBet(2, TieBetPlayer3.Value, players[2]);
         }
 
         private void TieBetPlayer4_ValueChanged(object sender, EventArgs e)
         {
+            int S = players[3].Funds - (int)PlayerBetPlayer4.Value - (int)DealerBetPlayer4.Value;
+            if (TieBetPlayer4.Value > S) { TieBetPlayer4.Value -= TieBetPlayer4.Increment; }
             updateBet(2, TieBetPlayer4.Value, players[3]);
         }
         private void updateBet(int index, decimal value, Player player)
