@@ -120,7 +120,7 @@ namespace BaccaratGame
                 case 3:
                     AdjustPlayersFunds();
                     ClearPlayerBets();
-                    CheckForBustedPlayer();
+                    UpdatePlayerStates();
                     ClearAndDisableAllBettingInputs();
                     Seat1ControlButton.Enabled = true;
                     Seat2ControlButton.Enabled = true;
@@ -146,14 +146,22 @@ namespace BaccaratGame
             if (Busted > 0) { return true; } else { return false; }
         }
 
-        private void CheckForBustedPlayer()
+        private void UpdatePlayerStates()
         {
-            if (playerStates[0] == 2) { if (players[0].Funds < 100) { playerStates[0] = 1; UpdatePlayerSitButtonText(); } }
-            if (playerStates[1] == 2) { if (players[1].Funds < 100) { playerStates[1] = 1; UpdatePlayerSitButtonText(); } }
-            if (playerStates[2] == 2) { if (players[2].Funds < 100) { playerStates[2] = 1; UpdatePlayerSitButtonText(); } }
-            if (playerStates[3] == 2) { if (players[3].Funds < 100) { playerStates[3] = 1; UpdatePlayerSitButtonText(); } }
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i] == null) { playerStates[i] = 0; }
+                else
+                {
+                    if (players[i].Funds < 100)
+                    {
+                        playerStates[i] = 1;
+                    }
+                    else { playerStates[i] = 2; }
+                }
+            }
+            UpdatePlayerSitButtonText();
         }
-
         private void ClearAndDisableAllBettingInputs()
         {
             Panel[] bettingPanels = { panel1, panel2, panel3, panel4 };
@@ -170,7 +178,7 @@ namespace BaccaratGame
             }
         }
 
-  
+
 
         private Boolean NoBetMadeAtTable()
         {
