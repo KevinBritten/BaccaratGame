@@ -13,17 +13,15 @@ namespace BaccaratGame
     public partial class PlayerSit : Form
     {
         Player[] _players;
-        int[] _playerStates;
         int _position;
         EventHandler _fundsChangedCallback;
-        public PlayerSit(int S, Player[] players, EventHandler fundsChangedCallback,int[] playerStates)
+        public PlayerSit(int S, Player[] players, EventHandler fundsChangedCallback)
         {
             InitializeComponent();
             SeatNumberLabel.Text = "Let's occupy seat " + (S + 1).ToString();
             _position = S;
             _players = players;
             _fundsChangedCallback = fundsChangedCallback;
-            _playerStates = playerStates;
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
@@ -34,7 +32,6 @@ namespace BaccaratGame
             _players[_position] = new Player(name, 0, "placeholder");
             _players[_position].FundsChanged += _fundsChangedCallback;
             _players[_position].Funds = funds;
-            _playerStates[_position] = 2;
             this.Close();
         }
 

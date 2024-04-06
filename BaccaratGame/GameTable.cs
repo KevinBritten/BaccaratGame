@@ -340,9 +340,9 @@ namespace BaccaratGame
 
         public void ActivatePlayerSitForm(int P, EventHandler fundsChangedCallback)
         {
-            PlayerSit SecondForm = new PlayerSit(P, players, fundsChangedCallback, playerStates);
+            PlayerSit SecondForm = new PlayerSit(P, players, fundsChangedCallback);
             SecondForm.ShowDialog();
-            UpdatePlayerSitButtonText();
+            UpdatePlayerStates();
         }
 
         public void ActivatePlayerBustedForm(int P)
