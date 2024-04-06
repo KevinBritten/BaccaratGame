@@ -121,30 +121,7 @@ namespace BaccaratGame
                     AdjustPlayersFunds();
                     ClearPlayerBets();
                     CheckForBustedPlayer();
-                    if (playerStates[0] == 2) {
-                        PlayerBetPlayer1.Value = PlayerBetPlayer1.Minimum;
-                        DealerBetPlayer1.Value = DealerBetPlayer1.Minimum;
-                        TieBetPlayer1.Value = TieBetPlayer1.Minimum;
-                        panel1.Enabled = false; 
-                    }
-                    if (playerStates[1] == 2) {
-                        PlayerBetPlayer2.Value = PlayerBetPlayer2.Minimum;
-                        DealerBetPlayer2.Value = DealerBetPlayer2.Minimum;
-                        TieBetPlayer2.Value = TieBetPlayer2.Minimum;
-                        panel2.Enabled = false; 
-                    }
-                    if (playerStates[2] == 2) {
-                        PlayerBetPlayer3.Value = PlayerBetPlayer3.Minimum;
-                        DealerBetPlayer3.Value = DealerBetPlayer3.Minimum;
-                        TieBetPlayer3.Value = TieBetPlayer3.Minimum;
-                        panel3.Enabled = false;
-                    }
-                    if (playerStates[3] == 2) {
-                        PlayerBetPlayer4.Value = PlayerBetPlayer3.Minimum;
-                        DealerBetPlayer4.Value = DealerBetPlayer3.Minimum;
-                        TieBetPlayer4.Value = TieBetPlayer4.Minimum;
-                        panel4.Enabled = false; 
-                    }
+                    ClearAndDisableAllBettingInputs();
                     Seat1ControlButton.Enabled = true;
                     Seat2ControlButton.Enabled = true;
                     Seat3ControlButton.Enabled = true;
@@ -156,107 +133,147 @@ namespace BaccaratGame
             }
         }
 
-        private Boolean NoPlayerAtTable() {
+        private Boolean NoPlayerAtTable()
+        {
             if ((playerStates[0] + playerStates[1] + playerStates[2] + playerStates[3]) == 0) { return true; }
             else { return false; }
         }
 
-        private Boolean BustedPlayerAtTable () {
+        private Boolean BustedPlayerAtTable()
+        {
             int Busted = 0;
             for (int i = 0; i < playerStates.Length; i++) { if (playerStates[i] == 1) { Busted++; } }
-            if (Busted > 0) { return true;} else { return false; }
+            if (Busted > 0) { return true; } else { return false; }
         }
 
-        private void CheckForBustedPlayer() {
+        private void CheckForBustedPlayer()
+        {
             if (playerStates[0] == 2) { if (players[0].Funds < 100) { playerStates[0] = 1; UpdatePlayerSitButtonText(); } }
             if (playerStates[1] == 2) { if (players[1].Funds < 100) { playerStates[1] = 1; UpdatePlayerSitButtonText(); } }
             if (playerStates[2] == 2) { if (players[2].Funds < 100) { playerStates[2] = 1; UpdatePlayerSitButtonText(); } }
             if (playerStates[3] == 2) { if (players[3].Funds < 100) { playerStates[3] = 1; UpdatePlayerSitButtonText(); } }
         }
 
-        private Boolean NoBetMadeAtTable() {
+        private void ClearAndDisableAllBettingInputs()
+        {
+            Panel[] bettingPanels = { panel1, panel2, panel3, panel4 };
+            foreach (Panel panel in bettingPanels)
+            {
+                foreach (Control control in panel.Controls)
+                {
+                    if (control is NumericUpDown numericUpDown)
+                    {
+                        numericUpDown.Value = numericUpDown.Minimum;
+                    }
+                }
+                panel.Enabled = false;
+            }
+        }
+
+  
+
+        private Boolean NoBetMadeAtTable()
+        {
             int ShyPlayer = 0;
-            if ((playerStates[0] == 2)) {
+            if ((playerStates[0] == 2))
+            {
                 if ((PlayerBetPlayer1.Value + DealerBetPlayer1.Value + TieBetPlayer1.Value) == 0) { ShyPlayer++; }
             }
-            if ((playerStates[1] == 2)) {
+            if ((playerStates[1] == 2))
+            {
                 if ((PlayerBetPlayer2.Value + DealerBetPlayer2.Value + TieBetPlayer2.Value) == 0) { ShyPlayer++; }
             }
-            if ((playerStates[2] == 2)) {
+            if ((playerStates[2] == 2))
+            {
                 if ((PlayerBetPlayer3.Value + DealerBetPlayer3.Value + TieBetPlayer3.Value) == 0) { ShyPlayer++; }
             }
-            if ((playerStates[3] == 2)) {
+            if ((playerStates[3] == 2))
+            {
                 if ((PlayerBetPlayer4.Value + DealerBetPlayer4.Value + TieBetPlayer4.Value) == 0) { ShyPlayer++; }
             }
             if (ShyPlayer > 0) { return true; } else { return false; }
         }
 
-        private void AdjustPlayersFunds() {
-            switch(H.Result()) {
+        private void AdjustPlayersFunds()
+        {
+            switch (H.Result())
+            {
                 case 0:
-                    if ((playerStates[0] == 2)) { 
+                    if ((playerStates[0] == 2))
+                    {
                         players[0].Funds += (int)PlayerBetPlayer1.Value;
                         players[0].Funds -= (int)DealerBetPlayer1.Value;
                         players[0].Funds -= (int)TieBetPlayer1.Value;
                     }
-                    if ((playerStates[1] == 2)) { 
+                    if ((playerStates[1] == 2))
+                    {
                         players[1].Funds += (int)PlayerBetPlayer2.Value;
                         players[1].Funds -= (int)DealerBetPlayer2.Value;
                         players[1].Funds -= (int)TieBetPlayer2.Value;
                     }
-                    if ((playerStates[2] == 2)) {
+                    if ((playerStates[2] == 2))
+                    {
                         players[2].Funds += (int)PlayerBetPlayer3.Value;
                         players[2].Funds -= (int)DealerBetPlayer3.Value;
                         players[2].Funds -= (int)TieBetPlayer3.Value;
                     }
-                    if ((playerStates[3] == 2)) { 
+                    if ((playerStates[3] == 2))
+                    {
                         players[3].Funds += (int)PlayerBetPlayer4.Value;
                         players[3].Funds -= (int)DealerBetPlayer4.Value;
                         players[3].Funds -= (int)TieBetPlayer4.Value;
                     }
                     break;
                 case 1:
-                    if ((playerStates[0] == 2)) {
+                    if ((playerStates[0] == 2))
+                    {
                         players[0].Funds -= (int)PlayerBetPlayer1.Value;
                         players[0].Funds += (int)(0.95 * (int)DealerBetPlayer1.Value);
                         players[0].Funds -= (int)TieBetPlayer1.Value;
                     }
-                    if ((playerStates[1] == 2)) {
+                    if ((playerStates[1] == 2))
+                    {
                         players[1].Funds -= (int)PlayerBetPlayer2.Value;
                         players[1].Funds += (int)(0.95 * (int)DealerBetPlayer2.Value);
                         players[1].Funds -= (int)TieBetPlayer2.Value;
                     }
-                    if ((playerStates[2] == 2)) {
+                    if ((playerStates[2] == 2))
+                    {
                         players[2].Funds -= (int)PlayerBetPlayer3.Value;
                         players[2].Funds += (int)(0.95 * (int)DealerBetPlayer3.Value);
                         players[2].Funds -= (int)TieBetPlayer3.Value;
                     }
-                    if ((playerStates[3] == 2)) {
+                    if ((playerStates[3] == 2))
+                    {
                         players[3].Funds -= (int)PlayerBetPlayer4.Value;
                         players[3].Funds += (int)(0.95 * (int)DealerBetPlayer4.Value);
                         players[3].Funds -= (int)TieBetPlayer4.Value;
                     }
                     break;
                 case 2:
-                    if ((playerStates[0] == 2)) {
+                    if ((playerStates[0] == 2))
+                    {
                         players[0].Funds -= (int)PlayerBetPlayer1.Value;
                         players[0].Funds -= (int)DealerBetPlayer1.Value;
-                        players[0].Funds += 8 * (int)TieBetPlayer1.Value; 
+                        players[0].Funds += 8 * (int)TieBetPlayer1.Value;
                     }
-                    if ((playerStates[1] == 2)) {
+                    if ((playerStates[1] == 2))
+                    {
                         players[1].Funds -= (int)PlayerBetPlayer2.Value;
                         players[1].Funds -= (int)DealerBetPlayer2.Value;
-                        players[1].Funds += 8 * (int)TieBetPlayer2.Value; 
+                        players[1].Funds += 8 * (int)TieBetPlayer2.Value;
                     }
-                    if ((playerStates[2] == 2)) {
+                    if ((playerStates[2] == 2))
+                    {
                         players[2].Funds -= (int)PlayerBetPlayer3.Value;
                         players[2].Funds -= (int)DealerBetPlayer3.Value;
-                        players[2].Funds += 8 * (int)TieBetPlayer3.Value; 
+                        players[2].Funds += 8 * (int)TieBetPlayer3.Value;
                     }
-                    if ((playerStates[3] == 2)) {
+                    if ((playerStates[3] == 2))
+                    {
                         players[3].Funds -= (int)PlayerBetPlayer4.Value;
                         players[3].Funds -= (int)DealerBetPlayer4.Value;
-                        players[3].Funds += 8 * (int)TieBetPlayer4.Value; 
+                        players[3].Funds += 8 * (int)TieBetPlayer4.Value;
                     }
                     break;
                 default: break;
@@ -450,10 +467,11 @@ namespace BaccaratGame
             player.updateBet(index, (int)value);
         }
 
-        private void ClearPlayerBets() {
+        private void ClearPlayerBets()
+        {
             for (int i = 0; i < players.Length; i++)
             {
-                if (players[i] != null) { players[i].clearAllBets();}
+                if (players[i] != null) { players[i].clearAllBets(); }
             }
         }
 
