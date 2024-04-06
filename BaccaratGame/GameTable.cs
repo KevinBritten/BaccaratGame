@@ -451,10 +451,10 @@ namespace BaccaratGame
         }
 
         private void ClearPlayerBets() {
-            if (playerStates[0] == 2) { players[0].clearAllBets(); }
-            if (playerStates[1] == 2) { players[1].clearAllBets(); }
-            if (playerStates[2] == 2) { players[2].clearAllBets(); }
-            if (playerStates[3] == 2) { players[3].clearAllBets(); }
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i] != null) { players[i].clearAllBets();}
+            }
         }
 
         private void RulesButton_Click(object sender, EventArgs e)
