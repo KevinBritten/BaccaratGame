@@ -390,84 +390,133 @@ namespace BaccaratGame
         private void PlayerBetPlayer1_ValueChanged(object sender, EventArgs e)
         {
             int S = players[0].Funds - (int)DealerBetPlayer1.Value - (int)TieBetPlayer1.Value;
-            if (PlayerBetPlayer1.Value > S) { PlayerBetPlayer1.Value -= PlayerBetPlayer1.Increment; }
+            if (PlayerBetPlayer1.Value > S)
+            {
+                decimal newValue = PlayerBetPlayer1.Value - PlayerBetPlayer1.Increment;
+                PlayerBetPlayer1.Value = newValue < 0 ? 0 : newValue;
+            }
             updateBet(0, PlayerBetPlayer1.Value, players[0]);
         }
 
         private void PlayerBetPlayer2_ValueChanged(object sender, EventArgs e)
         {
             int S = players[1].Funds - (int)DealerBetPlayer2.Value - (int)TieBetPlayer2.Value;
-            if (PlayerBetPlayer2.Value > S) { PlayerBetPlayer2.Value -= PlayerBetPlayer2.Increment; }
+            if (PlayerBetPlayer2.Value > S)
+            {
+
+                decimal newValue = PlayerBetPlayer2.Value - PlayerBetPlayer2.Increment;
+                PlayerBetPlayer2.Value = newValue < 0 ? 0 : newValue;
+            }
             updateBet(0, PlayerBetPlayer2.Value, players[1]);
         }
 
         private void PlayerBetPlayer3_ValueChanged(object sender, EventArgs e)
         {
             int S = players[2].Funds - (int)DealerBetPlayer3.Value - (int)TieBetPlayer3.Value;
-            if (PlayerBetPlayer3.Value > S) { PlayerBetPlayer3.Value -= PlayerBetPlayer3.Increment; }
+            if (PlayerBetPlayer3.Value > S)
+            {
+                decimal newValue = PlayerBetPlayer3.Value - PlayerBetPlayer3.Increment;
+                PlayerBetPlayer3.Value = newValue < 0 ? 0 : newValue;
+            }
             updateBet(0, PlayerBetPlayer3.Value, players[2]);
         }
 
         private void PlayerBetPlayer4_ValueChanged(object sender, EventArgs e)
         {
             int S = players[3].Funds - (int)DealerBetPlayer4.Value - (int)TieBetPlayer4.Value;
-            if (PlayerBetPlayer4.Value > S) { PlayerBetPlayer4.Value -= PlayerBetPlayer4.Increment; }
+            if (PlayerBetPlayer4.Value > S)
+            {
+                decimal newValue = PlayerBetPlayer4.Value - PlayerBetPlayer4.Increment;
+                PlayerBetPlayer4.Value = newValue < 0 ? 0 : newValue;
+            }
             updateBet(0, PlayerBetPlayer4.Value, players[3]);
         }
 
         private void DealerBetPlayer1_ValueChanged(object sender, EventArgs e)
         {
             int S = players[0].Funds - (int)PlayerBetPlayer1.Value - (int)TieBetPlayer1.Value;
-            if (DealerBetPlayer1.Value > S) { DealerBetPlayer1.Value -= DealerBetPlayer1.Increment; }
+            if (DealerBetPlayer1.Value > S)
+            {
+                decimal newValue = DealerBetPlayer1.Value - DealerBetPlayer1.Increment;
+                DealerBetPlayer1.Value = newValue < 0 ? 0 : newValue;
+            }
             updateBet(1, DealerBetPlayer1.Value, players[0]);
         }
 
         private void DealerBetPlayer2_ValueChanged(object sender, EventArgs e)
         {
             int S = players[1].Funds - (int)PlayerBetPlayer2.Value - (int)TieBetPlayer2.Value;
-            if (DealerBetPlayer2.Value > S) { DealerBetPlayer2.Value -= DealerBetPlayer2.Increment; }
+            if (DealerBetPlayer2.Value > S)
+            {
+                decimal newValue = DealerBetPlayer2.Value - DealerBetPlayer2.Increment;
+                DealerBetPlayer2.Value = newValue < 0 ? 0 : newValue;
+            }
             updateBet(1, DealerBetPlayer2.Value, players[1]);
         }
 
         private void DealerBetPlayer3_ValueChanged(object sender, EventArgs e)
         {
             int S = players[2].Funds - (int)PlayerBetPlayer3.Value - (int)TieBetPlayer3.Value;
-            if (DealerBetPlayer3.Value > S) { DealerBetPlayer3.Value -= DealerBetPlayer3.Increment; }
+            if (DealerBetPlayer3.Value > S)
+            {
+                decimal newValue = DealerBetPlayer3.Value - DealerBetPlayer3.Increment;
+                DealerBetPlayer3.Value = newValue < 0 ? 0 : newValue;
+            }
             updateBet(1, DealerBetPlayer3.Value, players[2]);
         }
 
         private void DealerBetPlayer4_ValueChanged(object sender, EventArgs e)
         {
             int S = players[3].Funds - (int)PlayerBetPlayer4.Value - (int)TieBetPlayer4.Value;
-            if (DealerBetPlayer4.Value > S) { DealerBetPlayer4.Value -= DealerBetPlayer4.Increment; }
+            if (DealerBetPlayer4.Value > S)
+            {
+                decimal newValue = DealerBetPlayer4.Value - DealerBetPlayer4.Increment;
+                DealerBetPlayer4.Value = newValue < 0 ? 0 : newValue;
+            }
             updateBet(1, DealerBetPlayer4.Value, players[3]);
         }
 
         private void TieBetPlayer1_ValueChanged(object sender, EventArgs e)
         {
             int S = players[0].Funds - (int)PlayerBetPlayer1.Value - (int)DealerBetPlayer1.Value;
-            if (TieBetPlayer1.Value > S) { TieBetPlayer1.Value -= TieBetPlayer1.Increment; }
+            if (TieBetPlayer1.Value > S)
+            {
+                decimal newValue = TieBetPlayer1.Value - TieBetPlayer1.Increment;
+                TieBetPlayer1.Value = newValue < 0 ? 0 : newValue;
+            }
             updateBet(2, TieBetPlayer1.Value, players[0]);
         }
 
         private void TieBetPlayer2_ValueChanged(object sender, EventArgs e)
         {
             int S = players[1].Funds - (int)PlayerBetPlayer2.Value - (int)DealerBetPlayer2.Value;
-            if (TieBetPlayer2.Value > S) { TieBetPlayer2.Value -= TieBetPlayer2.Increment; }
+            if (TieBetPlayer2.Value > S)
+            {
+                decimal newValue = TieBetPlayer2.Value - TieBetPlayer2.Increment;
+                TieBetPlayer2.Value = newValue < 0 ? 0 : newValue;
+            }
             updateBet(2, TieBetPlayer2.Value, players[1]);
         }
 
         private void TieBetPlayer3_ValueChanged(object sender, EventArgs e)
         {
             int S = players[2].Funds - (int)PlayerBetPlayer3.Value - (int)DealerBetPlayer3.Value;
-            if (TieBetPlayer3.Value > S) { TieBetPlayer3.Value -= TieBetPlayer3.Increment; }
+            if (TieBetPlayer3.Value > S)
+            {
+                decimal newValue = TieBetPlayer3.Value - TieBetPlayer3.Increment;
+                TieBetPlayer3.Value = newValue < 0 ? 0 : newValue;
+            }
             updateBet(2, TieBetPlayer3.Value, players[2]);
         }
 
         private void TieBetPlayer4_ValueChanged(object sender, EventArgs e)
         {
             int S = players[3].Funds - (int)PlayerBetPlayer4.Value - (int)DealerBetPlayer4.Value;
-            if (TieBetPlayer4.Value > S) { TieBetPlayer4.Value -= TieBetPlayer4.Increment; }
+            if (TieBetPlayer4.Value > S)
+            {
+                decimal newValue = TieBetPlayer4.Value - TieBetPlayer4.Increment;
+                TieBetPlayer4.Value = newValue < 0 ? 0 : newValue;
+            }
             updateBet(2, TieBetPlayer4.Value, players[3]);
         }
         private void updateBet(int index, decimal value, Player player)
