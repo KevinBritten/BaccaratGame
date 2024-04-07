@@ -12,14 +12,25 @@ namespace BaccaratGame
 {
     public partial class PlayerWithdraw : Form
     {
-        public PlayerWithdraw()
+        int[] _playerStates;
+        int _playerIndex;
+        public PlayerWithdraw(int playerIndex, int[] playerStates)
         {
             InitializeComponent();
+            _playerStates = playerStates;
+            _playerIndex = playerIndex;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
+        private void WithdrawButton_Click(object sender, EventArgs e)
+        {
+            _playerStates[_playerIndex] = 1;
+            this.Close();
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

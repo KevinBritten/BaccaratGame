@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             SeatNumberLabel = new Label();
-            button1 = new Button();
+            WithdrawButton = new Button();
             panel1 = new Panel();
-            button2 = new Button();
+            CloseButton = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,34 +45,34 @@
             SeatNumberLabel.TabIndex = 2;
             SeatNumberLabel.Text = "Would you like to take your winnings and leave?";
             // 
-            // button1
+            // WithdrawButton
             // 
-            button1.Location = new Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 3;
-            button1.Text = "Yes!";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            WithdrawButton.Location = new Point(3, 3);
+            WithdrawButton.Name = "WithdrawButton";
+            WithdrawButton.Size = new Size(94, 29);
+            WithdrawButton.TabIndex = 3;
+            WithdrawButton.Text = "Yes!";
+            WithdrawButton.UseVisualStyleBackColor = true;
+            WithdrawButton.Click += WithdrawButton_Click;
             // 
             // panel1
             // 
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(CloseButton);
+            panel1.Controls.Add(WithdrawButton);
             panel1.Location = new Point(214, 91);
             panel1.Name = "panel1";
             panel1.Size = new Size(296, 41);
             panel1.TabIndex = 4;
             // 
-            // button2
+            // CloseButton
             // 
-            button2.Location = new Point(103, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(187, 29);
-            button2.TabIndex = 4;
-            button2.Text = "No, keep playing.";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += this.button2_Click;
+            CloseButton.Location = new Point(103, 3);
+            CloseButton.Name = "CloseButton";
+            CloseButton.Size = new Size(187, 29);
+            CloseButton.TabIndex = 4;
+            CloseButton.Text = "No, keep playing.";
+            CloseButton.UseVisualStyleBackColor = true;
+            CloseButton.Click += CloseButton_Click;
             // 
             // PlayerWithdraw
             // 
@@ -92,8 +92,8 @@
         #endregion
 
         private Label SeatNumberLabel;
-        private Button button1;
+        private Button WithdrawButton;
         private Panel panel1;
-        private Button button2;
+        private Button CloseButton;
     }
 }
