@@ -94,7 +94,7 @@ namespace BaccaratGame
                     switch (H.ResultName())
                     {
                         case "Player": UpdateMessageBox(3); break;
-                        case "Dealer": UpdateMessageBox(4); break;
+                        case "Banker": UpdateMessageBox(4); break;
                         case "Tie": UpdateMessageBox(5); break;
                         default: break;
                     }
@@ -155,7 +155,9 @@ namespace BaccaratGame
             messageBox.Text = messages[messageCode];
         }
 
-      private void ClearMessageBox()
+        private void UpdateMessageBox(String message) { messageBox.Text = message; }
+
+        private void ClearMessageBox()
         {
             messageBox.Text = "";
         }
@@ -231,6 +233,16 @@ namespace BaccaratGame
 
         private void AdjustPlayersFunds()
         {
+            String messageString = "";
+            //Store player funds before adjustment
+            int[] previousPlayerFunds = new int[players.Length];
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (playerStates[i] == 2)
+                {
+                    previousPlayerFunds[i] = players[i].Funds;
+                }
+            }
             switch (H.Result())
             {
                 case 0:
@@ -313,6 +325,18 @@ namespace BaccaratGame
                     break;
                 default: break;
             }
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (playerStates[i] == 2)
+                {
+                    int fundsDifference = players[i].Funds - previousPlayerFunds[i];
+                    if (fundsDifference > 0) { messageString += $"{players[i].Name} won ${fundsDifference}."; }
+                    else if (fundsDifference < 0) { messageString += $"{players[i].Name} lost ${fundsDifference * -1}."; }
+                    else { messageString += $"{players[i].Name} came out even."; }
+                    messageString += " ";
+                }
+            }
+            UpdateMessageBox(messageString);
         }
 
         private void ResetShoeBoxes() { for (int i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; } }
