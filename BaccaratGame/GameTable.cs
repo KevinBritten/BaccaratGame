@@ -47,11 +47,12 @@ namespace BaccaratGame
 
         private void GameControlButton_Click(object sender, EventArgs e)
         {
+            ClearMessageBox();
             switch (GameState)
             {
                 case 1:
-                    if (NoPlayerAtTable()) { break; }
-                    if (BustedPlayerAtTable()) { break; }
+                    if (NoPlayerAtTable()) { UpdateMessageBox(0); break; }
+                    if (BustedPlayerAtTable()) { UpdateMessageBox(1); break; }
                     if (playerStates[0] == 2) { panel1.Enabled = true; }
                     if (playerStates[1] == 2) { panel2.Enabled = true; }
                     if (playerStates[2] == 2) { panel3.Enabled = true; }
@@ -64,7 +65,7 @@ namespace BaccaratGame
                     GameControlButton.Text = "Play";
                     break;
                 case 2:
-                    if (NoBetMadeAtTable()) { break; }
+                    if (NoBetMadeAtTable()) { UpdateMessageBox(2); break; }
                     int i;
                     //Checking the conditions of the shoe
                     ResetShoeBoxes();
@@ -90,6 +91,13 @@ namespace BaccaratGame
                         if (H.NeedBankerThirdCard()) { H.GetThirdCard(S.PickCard(), BANKER); }
                     }
                     H.DetermineWinningHand();
+                    switch (H.ResultName())
+                    {
+                        case "Player": UpdateMessageBox(3); break;
+                        case "Dealer": UpdateMessageBox(4); break;
+                        case "Tie": UpdateMessageBox(5); break;
+                        default: break;
+                    }
                     ShoeProgressBar.Value = 100 * (S.DeckN() * S.CardN() - S.Position()) / (S.DeckN() * S.CardN());
                     //Summarizing the result of the play
                     Boolean[] ThirdCard = H.ThirdCard();
@@ -131,6 +139,25 @@ namespace BaccaratGame
                     break;
                 default: break;
             }
+        }
+
+        private void UpdateMessageBox(int messageCode)
+        {
+            String[] messages =
+            {
+                "Please seat at least one player to make bets",
+                "Please make sure there are no busted players at the table before making bets",
+                "Please make sure all players have bet to play",
+                "Player hand wins!",
+                "Dealer hand wins!",
+                "This round is a tie."
+            };
+            messageBox.Text = messages[messageCode];
+        }
+
+      private void ClearMessageBox()
+        {
+            messageBox.Text = "";
         }
 
         private Boolean NoPlayerAtTable()
