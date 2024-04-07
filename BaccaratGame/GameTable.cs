@@ -368,6 +368,7 @@ namespace BaccaratGame
 
         private void WithdrawPlayer(int playerIndex)
         {
+            BettingAreaGroupBox.Controls.Find($"FundBoxPlayer{playerIndex + 1}", true)[0].Text = "";
             players[playerIndex].unsubscribeAllListeners();
             players[playerIndex] = null;
             UpdatePlayerStates();
