@@ -347,14 +347,25 @@ namespace BaccaratGame
 
         public void ActivatePlayerBustedForm(int P)
         {
-            PlayerBusted SecondForm = new PlayerBusted();
+            PlayerBusted SecondForm = new PlayerBusted(P,players);
             SecondForm.ShowDialog();
+            UpdatePlayerStates();
+            if (playerStates[P]==1) {
+                WithdrawPlayer(P);
+            }
         }
 
         public void ActivatePlayerWithdrawForm(int P)
         {
             PlayerWithdraw SecondForm = new PlayerWithdraw();
             SecondForm.ShowDialog();
+        }
+
+        private void WithdrawPlayer(int playerIndex)
+        {
+            players[playerIndex].unsubscribeAllListeners();
+            players[playerIndex] = null;
+            UpdatePlayerStates();
         }
 
         public void UpdatePlayerSitButtonText()

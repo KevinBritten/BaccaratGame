@@ -60,6 +60,11 @@ namespace BaccaratGame
             FundsChanged?.Invoke(this, EventArgs.Empty);
         }
 
+        public void unsubscribeAllListeners()
+        {
+            FundsChanged = null;
+        }
+
         public void updateBet(int index, int value)
         {
             _bets[index] = value;
