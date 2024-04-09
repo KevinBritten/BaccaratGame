@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Play {
     internal class PlayingCards {
         private string[] _color = { "Spade", "Diamond", "Club", "Hearth" };
+        
         private string[] _face = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
 
         private string[] _abbr = { "A-S", "2-S", "3-S", "4-S", "5-S", "6-S", "7-S", "8-S", "9-S", "10S", "J-S", "Q-S", "K-S",
@@ -19,11 +20,33 @@ namespace Play {
             {12,2}, {11,2}, {10,2}, {9,2}, {8,2}, {7,2}, {6,2}, {5,2}, {4,2}, {3,2}, {2,2}, {1,2}, {0,2},
             {12,3}, {11,3}, {10,3}, {9,3}, {8,3}, {7,3}, {6,3}, {5,3}, {4,3}, {3,3}, {2,3}, {1,3}, {0,3} };
 
-        public PlayingCards() { }
+        private string _file1Label = "Play#;PH1;PH2;PH3;BH1;BH2;BH3;Result;P1N;P1A;P1F;P1PB;P1BB;P1BT;P2N;P2A;P2F;P2PB;P2BB;P2BT;" +
+            "P3N;P3A;P3F;P3PB;P3BB;P3BT;P4N;P4A;P4F;P4PB;P4BB;P4BT;";
+        private string _file2Label = "Event#;Type;";
+
+        private string _playLine = "";
+        private string _eventLine = "";
+
+        public PlayingCards() { for (int i = 0; i < _abbr.Length; i++) { _file2Label += _abbr[i] + ";"; } }
 
         public string Color(int n) { return _color[n]; }
         public string Face(int n) { return _face[n]; }
         public string GetLongCardID(int n) { return (Face(_pack[n, 0]) + " of " + Color(_pack[n, 1])); }
         public string GetAbbrCardID(int n) { return _abbr[n]; }
+
+        public string LineUpHands(int Play, int[] Player, int[] Banker, Boolean[] ThirdCard, string Results) {
+            string HandData = "Play#" + Play + ";" + _abbr[Player[0]] + ";" + _abbr[Player[1]] + ";";
+            if (ThirdCard[0]) { HandData += _abbr[Player[2]] + ";"; } else { HandData += ";"; }
+            HandData += _abbr[Banker[0]] + ";" + _abbr[Banker[1]] + ";";
+            if (ThirdCard[1]) { HandData += _abbr[Banker[2]] + ";"; } else { HandData += ";"; }
+            HandData += Results + ";";
+            return HandData;
+        }
+
+        public string LineUpPlayer(int PlayerState, string Name, int Avatar, int Funds, int[] Bets) {
+            string PlayerData = ";;;;;;";
+            if (PlayerState != 0) { PlayerData += Name + ";" + Avatar + ";" + Funds + ";" + Bets[0] + ";" + Bets[1] + ";" + Bets[2] + ";"; }
+            return PlayerData; 
+        }
     }
 }
