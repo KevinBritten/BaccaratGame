@@ -53,6 +53,7 @@ namespace BaccaratGame
                     if (playerStates[1] == 2) { panel2.Enabled = true; }
                     if (playerStates[2] == 2) { panel3.Enabled = true; }
                     if (playerStates[3] == 2) { panel4.Enabled = true; }
+                    SetBettingAreaEnabled();
                     Seat1ControlButton.Enabled = false;
                     Seat2ControlButton.Enabled = false;
                     Seat3ControlButton.Enabled = false;
@@ -118,6 +119,7 @@ namespace BaccaratGame
                     PlayerScoreV.Text = Convert.ToString(Scores[0]);
                     BankerScoreV.Text = Convert.ToString(Scores[1]);
                     H.ResetHand();
+                    SetBettingAreaEnabled();
                     GameState = 3;
                     GameControlButton.Text = "Settle bet";
                     break;
@@ -134,6 +136,17 @@ namespace BaccaratGame
                     GameControlButton.Text = "Bet";
                     break;
                 default: break;
+            }
+        }
+
+        private void SetBettingAreaEnabled()
+        {
+            if (GameState == 1)
+            {
+                BettingAreaGroupBox.Enabled = true;
+            } else
+            {
+                BettingAreaGroupBox.Enabled = false;
             }
         }
 

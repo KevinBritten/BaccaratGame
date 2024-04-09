@@ -537,6 +537,7 @@
             BettingAreaGroupBox.Controls.Add(panel4);
             BettingAreaGroupBox.Controls.Add(panel2);
             BettingAreaGroupBox.Controls.Add(panel1);
+            BettingAreaGroupBox.Enabled = false;
             BettingAreaGroupBox.Location = new Point(886, 187);
             BettingAreaGroupBox.Name = "BettingAreaGroupBox";
             BettingAreaGroupBox.Size = new Size(480, 532);
