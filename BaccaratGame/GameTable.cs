@@ -38,11 +38,7 @@ namespace BaccaratGame
             for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
             for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
             panel1.Enabled = false; panel2.Enabled = false; panel3.Enabled = false; panel4.Enabled = false;
-
-            //TODO: test player, remove after implimenting player add function
-            //players[0] = new Player("Test", 10, "empty");
-            //players[0].FundsChanged += FundBoxPlayer1_FundsChanged;
-            //players[0].Funds = 11;
+            UpdateAllPlayerNamesInBettingArea();
         }
 
         private void GameControlButton_Click(object sender, EventArgs e)
@@ -394,6 +390,7 @@ namespace BaccaratGame
             PlayerSit SecondForm = new PlayerSit(P, players, fundsChangedCallback);
             SecondForm.ShowDialog();
             UpdatePlayerStates();
+            UpdatePlayerNameInBettingArea(P);
         }
 
         public void ActivatePlayerBustedForm(int P)
@@ -417,12 +414,35 @@ namespace BaccaratGame
             }
         }
 
+        public void UpdatePlayerNameInBettingArea(int playerIndex)
+        {
+            string playerLabelString = $"NameLabelPlayer{playerIndex+1}";
+            Control playerLabel = BettingAreaGroupBox.Controls.Find(playerLabelString, true)[0];
+            if (players[playerIndex] != null)
+            {
+               
+                playerLabel.Text = players[playerIndex].Name;
+            } else
+            {
+                playerLabel.Text = $"Empty Seat {playerIndex+1}";
+            }
+        }
+
+        public void UpdateAllPlayerNamesInBettingArea()
+        {
+            for (int i =0;i < players.Length;i++)
+            {
+                UpdatePlayerNameInBettingArea(i);
+            }
+        }
+
         private void WithdrawPlayer(int playerIndex)
         {
             BettingAreaGroupBox.Controls.Find($"FundBoxPlayer{playerIndex + 1}", true)[0].Text = "";
             players[playerIndex].unsubscribeAllListeners();
             players[playerIndex] = null;
             UpdatePlayerStates();
+            UpdatePlayerNameInBettingArea(playerIndex);
         }
 
         public void UpdatePlayerSitButtonText()

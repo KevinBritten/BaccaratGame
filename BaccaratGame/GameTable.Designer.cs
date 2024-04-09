@@ -72,25 +72,25 @@
             DealerBetPlayer3 = new NumericUpDown();
             PlayerBetPlayer3 = new NumericUpDown();
             FundBoxPlayer3 = new TextBox();
-            label3 = new Label();
+            NameLabelPlayer3 = new Label();
             panel4 = new Panel();
             TieBetPlayer4 = new NumericUpDown();
             DealerBetPlayer4 = new NumericUpDown();
             PlayerBetPlayer4 = new NumericUpDown();
             FundBoxPlayer4 = new TextBox();
-            label4 = new Label();
+            NameLabelPlayer4 = new Label();
             panel2 = new Panel();
             TieBetPlayer2 = new NumericUpDown();
             DealerBetPlayer2 = new NumericUpDown();
             PlayerBetPlayer2 = new NumericUpDown();
             FundBoxPlayer2 = new TextBox();
-            label2 = new Label();
+            NameLabelPlayer2 = new Label();
             panel1 = new Panel();
             TieBetPlayer1 = new NumericUpDown();
             DealerBetPlayer1 = new NumericUpDown();
             PlayerBetPlayer1 = new NumericUpDown();
             FundBoxPlayer1 = new TextBox();
-            label1 = new Label();
+            NameLabelPlayer1 = new Label();
             AboutButton = new Button();
             CloseButton = new Button();
             SitPlayerButtonsPanel = new Panel();
@@ -487,7 +487,7 @@
             // 
             // GameControlButton
             // 
-            GameControlButton.Location = new Point(1035, 743);
+            GameControlButton.Location = new Point(1097, 742);
             GameControlButton.Margin = new Padding(3, 4, 3, 4);
             GameControlButton.Name = "GameControlButton";
             GameControlButton.Size = new Size(114, 40);
@@ -521,7 +521,7 @@
             // 
             // RulesButton
             // 
-            RulesButton.Location = new Point(1187, 16);
+            RulesButton.Location = new Point(1252, 16);
             RulesButton.Margin = new Padding(3, 4, 3, 4);
             RulesButton.Name = "RulesButton";
             RulesButton.Size = new Size(114, 40);
@@ -539,7 +539,7 @@
             BettingAreaGroupBox.Controls.Add(panel1);
             BettingAreaGroupBox.Location = new Point(886, 187);
             BettingAreaGroupBox.Name = "BettingAreaGroupBox";
-            BettingAreaGroupBox.Size = new Size(415, 532);
+            BettingAreaGroupBox.Size = new Size(480, 532);
             BettingAreaGroupBox.TabIndex = 10;
             BettingAreaGroupBox.TabStop = false;
             // 
@@ -551,13 +551,13 @@
             panel5.Controls.Add(label5);
             panel5.Location = new Point(0, 72);
             panel5.Name = "panel5";
-            panel5.Size = new Size(415, 43);
+            panel5.Size = new Size(480, 43);
             panel5.TabIndex = 7;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(355, 11);
+            label8.Location = new Point(416, 11);
             label8.Name = "label8";
             label8.Size = new Size(29, 20);
             label8.TabIndex = 3;
@@ -566,7 +566,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(269, 11);
+            label7.Location = new Point(330, 11);
             label7.Name = "label7";
             label7.Size = new Size(53, 20);
             label7.TabIndex = 2;
@@ -575,7 +575,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(182, 11);
+            label6.Location = new Point(243, 11);
             label6.Name = "label6";
             label6.Size = new Size(49, 20);
             label6.TabIndex = 1;
@@ -584,7 +584,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(95, 11);
+            label5.Location = new Point(156, 11);
             label5.Name = "label5";
             label5.Size = new Size(47, 20);
             label5.TabIndex = 0;
@@ -596,16 +596,16 @@
             panel3.Controls.Add(DealerBetPlayer3);
             panel3.Controls.Add(PlayerBetPlayer3);
             panel3.Controls.Add(FundBoxPlayer3);
-            panel3.Controls.Add(label3);
+            panel3.Controls.Add(NameLabelPlayer3);
             panel3.Location = new Point(0, 256);
             panel3.Name = "panel3";
-            panel3.Size = new Size(415, 49);
+            panel3.Size = new Size(480, 49);
             panel3.TabIndex = 5;
             // 
             // TieBetPlayer3
             // 
             TieBetPlayer3.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            TieBetPlayer3.Location = new Point(345, 12);
+            TieBetPlayer3.Location = new Point(406, 12);
             TieBetPlayer3.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             TieBetPlayer3.Name = "TieBetPlayer3";
             TieBetPlayer3.Size = new Size(64, 27);
@@ -615,7 +615,7 @@
             // DealerBetPlayer3
             // 
             DealerBetPlayer3.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            DealerBetPlayer3.Location = new Point(261, 12);
+            DealerBetPlayer3.Location = new Point(322, 12);
             DealerBetPlayer3.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             DealerBetPlayer3.Name = "DealerBetPlayer3";
             DealerBetPlayer3.Size = new Size(64, 27);
@@ -625,7 +625,7 @@
             // PlayerBetPlayer3
             // 
             PlayerBetPlayer3.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            PlayerBetPlayer3.Location = new Point(175, 12);
+            PlayerBetPlayer3.Location = new Point(236, 12);
             PlayerBetPlayer3.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             PlayerBetPlayer3.Name = "PlayerBetPlayer3";
             PlayerBetPlayer3.Size = new Size(64, 27);
@@ -634,20 +634,20 @@
             // 
             // FundBoxPlayer3
             // 
-            FundBoxPlayer3.Location = new Point(87, 12);
+            FundBoxPlayer3.Location = new Point(148, 12);
             FundBoxPlayer3.Name = "FundBoxPlayer3";
             FundBoxPlayer3.ReadOnly = true;
             FundBoxPlayer3.Size = new Size(67, 27);
             FundBoxPlayer3.TabIndex = 1;
             // 
-            // label3
+            // NameLabelPlayer3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(5, 15);
-            label3.Name = "label3";
-            label3.Size = new Size(61, 20);
-            label3.TabIndex = 0;
-            label3.Text = "Player 3";
+            NameLabelPlayer3.AutoSize = true;
+            NameLabelPlayer3.Location = new Point(5, 15);
+            NameLabelPlayer3.Name = "NameLabelPlayer3";
+            NameLabelPlayer3.Size = new Size(61, 20);
+            NameLabelPlayer3.TabIndex = 0;
+            NameLabelPlayer3.Text = "Player 3";
             // 
             // panel4
             // 
@@ -655,16 +655,16 @@
             panel4.Controls.Add(DealerBetPlayer4);
             panel4.Controls.Add(PlayerBetPlayer4);
             panel4.Controls.Add(FundBoxPlayer4);
-            panel4.Controls.Add(label4);
+            panel4.Controls.Add(NameLabelPlayer4);
             panel4.Location = new Point(0, 324);
             panel4.Name = "panel4";
-            panel4.Size = new Size(415, 49);
+            panel4.Size = new Size(480, 49);
             panel4.TabIndex = 6;
             // 
             // TieBetPlayer4
             // 
             TieBetPlayer4.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            TieBetPlayer4.Location = new Point(345, 12);
+            TieBetPlayer4.Location = new Point(406, 12);
             TieBetPlayer4.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             TieBetPlayer4.Name = "TieBetPlayer4";
             TieBetPlayer4.Size = new Size(64, 27);
@@ -674,7 +674,7 @@
             // DealerBetPlayer4
             // 
             DealerBetPlayer4.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            DealerBetPlayer4.Location = new Point(261, 12);
+            DealerBetPlayer4.Location = new Point(322, 12);
             DealerBetPlayer4.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             DealerBetPlayer4.Name = "DealerBetPlayer4";
             DealerBetPlayer4.Size = new Size(64, 27);
@@ -684,7 +684,7 @@
             // PlayerBetPlayer4
             // 
             PlayerBetPlayer4.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            PlayerBetPlayer4.Location = new Point(175, 12);
+            PlayerBetPlayer4.Location = new Point(236, 12);
             PlayerBetPlayer4.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             PlayerBetPlayer4.Name = "PlayerBetPlayer4";
             PlayerBetPlayer4.Size = new Size(64, 27);
@@ -693,20 +693,20 @@
             // 
             // FundBoxPlayer4
             // 
-            FundBoxPlayer4.Location = new Point(87, 12);
+            FundBoxPlayer4.Location = new Point(148, 12);
             FundBoxPlayer4.Name = "FundBoxPlayer4";
             FundBoxPlayer4.ReadOnly = true;
             FundBoxPlayer4.Size = new Size(67, 27);
             FundBoxPlayer4.TabIndex = 1;
             // 
-            // label4
+            // NameLabelPlayer4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(5, 15);
-            label4.Name = "label4";
-            label4.Size = new Size(61, 20);
-            label4.TabIndex = 0;
-            label4.Text = "Player 4";
+            NameLabelPlayer4.AutoSize = true;
+            NameLabelPlayer4.Location = new Point(5, 15);
+            NameLabelPlayer4.Name = "NameLabelPlayer4";
+            NameLabelPlayer4.Size = new Size(61, 20);
+            NameLabelPlayer4.TabIndex = 0;
+            NameLabelPlayer4.Text = "Player 4";
             // 
             // panel2
             // 
@@ -714,16 +714,16 @@
             panel2.Controls.Add(DealerBetPlayer2);
             panel2.Controls.Add(PlayerBetPlayer2);
             panel2.Controls.Add(FundBoxPlayer2);
-            panel2.Controls.Add(label2);
+            panel2.Controls.Add(NameLabelPlayer2);
             panel2.Location = new Point(0, 188);
             panel2.Name = "panel2";
-            panel2.Size = new Size(415, 49);
+            panel2.Size = new Size(480, 49);
             panel2.TabIndex = 4;
             // 
             // TieBetPlayer2
             // 
             TieBetPlayer2.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            TieBetPlayer2.Location = new Point(345, 12);
+            TieBetPlayer2.Location = new Point(406, 12);
             TieBetPlayer2.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             TieBetPlayer2.Name = "TieBetPlayer2";
             TieBetPlayer2.Size = new Size(64, 27);
@@ -733,7 +733,7 @@
             // DealerBetPlayer2
             // 
             DealerBetPlayer2.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            DealerBetPlayer2.Location = new Point(261, 12);
+            DealerBetPlayer2.Location = new Point(322, 12);
             DealerBetPlayer2.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             DealerBetPlayer2.Name = "DealerBetPlayer2";
             DealerBetPlayer2.Size = new Size(64, 27);
@@ -743,7 +743,7 @@
             // PlayerBetPlayer2
             // 
             PlayerBetPlayer2.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            PlayerBetPlayer2.Location = new Point(175, 12);
+            PlayerBetPlayer2.Location = new Point(236, 12);
             PlayerBetPlayer2.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             PlayerBetPlayer2.Name = "PlayerBetPlayer2";
             PlayerBetPlayer2.Size = new Size(64, 27);
@@ -752,20 +752,20 @@
             // 
             // FundBoxPlayer2
             // 
-            FundBoxPlayer2.Location = new Point(87, 12);
+            FundBoxPlayer2.Location = new Point(148, 12);
             FundBoxPlayer2.Name = "FundBoxPlayer2";
             FundBoxPlayer2.ReadOnly = true;
             FundBoxPlayer2.Size = new Size(67, 27);
             FundBoxPlayer2.TabIndex = 1;
             // 
-            // label2
+            // NameLabelPlayer2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(5, 15);
-            label2.Name = "label2";
-            label2.Size = new Size(61, 20);
-            label2.TabIndex = 0;
-            label2.Text = "Player 2";
+            NameLabelPlayer2.AutoSize = true;
+            NameLabelPlayer2.Location = new Point(5, 15);
+            NameLabelPlayer2.Name = "NameLabelPlayer2";
+            NameLabelPlayer2.Size = new Size(61, 20);
+            NameLabelPlayer2.TabIndex = 0;
+            NameLabelPlayer2.Text = "Player 2";
             // 
             // panel1
             // 
@@ -773,16 +773,16 @@
             panel1.Controls.Add(DealerBetPlayer1);
             panel1.Controls.Add(PlayerBetPlayer1);
             panel1.Controls.Add(FundBoxPlayer1);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(NameLabelPlayer1);
             panel1.Location = new Point(0, 120);
             panel1.Name = "panel1";
-            panel1.Size = new Size(415, 49);
+            panel1.Size = new Size(480, 49);
             panel1.TabIndex = 0;
             // 
             // TieBetPlayer1
             // 
             TieBetPlayer1.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            TieBetPlayer1.Location = new Point(345, 12);
+            TieBetPlayer1.Location = new Point(406, 12);
             TieBetPlayer1.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             TieBetPlayer1.Name = "TieBetPlayer1";
             TieBetPlayer1.Size = new Size(64, 27);
@@ -792,7 +792,7 @@
             // DealerBetPlayer1
             // 
             DealerBetPlayer1.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            DealerBetPlayer1.Location = new Point(261, 12);
+            DealerBetPlayer1.Location = new Point(322, 12);
             DealerBetPlayer1.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             DealerBetPlayer1.Name = "DealerBetPlayer1";
             DealerBetPlayer1.Size = new Size(64, 27);
@@ -802,7 +802,7 @@
             // PlayerBetPlayer1
             // 
             PlayerBetPlayer1.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            PlayerBetPlayer1.Location = new Point(175, 12);
+            PlayerBetPlayer1.Location = new Point(236, 12);
             PlayerBetPlayer1.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             PlayerBetPlayer1.Name = "PlayerBetPlayer1";
             PlayerBetPlayer1.Size = new Size(64, 27);
@@ -811,24 +811,24 @@
             // 
             // FundBoxPlayer1
             // 
-            FundBoxPlayer1.Location = new Point(87, 12);
+            FundBoxPlayer1.Location = new Point(148, 12);
             FundBoxPlayer1.Name = "FundBoxPlayer1";
             FundBoxPlayer1.ReadOnly = true;
             FundBoxPlayer1.Size = new Size(67, 27);
             FundBoxPlayer1.TabIndex = 1;
             // 
-            // label1
+            // NameLabelPlayer1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(5, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(61, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Player 1";
+            NameLabelPlayer1.AutoSize = true;
+            NameLabelPlayer1.Location = new Point(5, 15);
+            NameLabelPlayer1.Name = "NameLabelPlayer1";
+            NameLabelPlayer1.Size = new Size(61, 20);
+            NameLabelPlayer1.TabIndex = 0;
+            NameLabelPlayer1.Text = "Player 1";
             // 
             // AboutButton
             // 
-            AboutButton.Location = new Point(1187, 64);
+            AboutButton.Location = new Point(1252, 64);
             AboutButton.Margin = new Padding(3, 4, 3, 4);
             AboutButton.Name = "AboutButton";
             AboutButton.Size = new Size(114, 40);
@@ -839,7 +839,7 @@
             // 
             // CloseButton
             // 
-            CloseButton.Location = new Point(1187, 112);
+            CloseButton.Location = new Point(1252, 112);
             CloseButton.Margin = new Padding(3, 4, 3, 4);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(114, 40);
@@ -907,7 +907,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1314, 812);
+            ClientSize = new Size(1378, 812);
             Controls.Add(SitPlayerButtonsPanel);
             Controls.Add(CloseButton);
             Controls.Add(AboutButton);
@@ -1004,7 +1004,7 @@
         private Button RulesButton;
         private GroupBox BettingAreaGroupBox;
         private Panel panel1;
-        private Label label1;
+        private Label NameLabelPlayer1;
         private NumericUpDown TieBetPlayer1;
         private NumericUpDown DealerBetPlayer1;
         private NumericUpDown PlayerBetPlayer1;
@@ -1016,19 +1016,19 @@
         private NumericUpDown DealerBetPlayer3;
         private NumericUpDown PlayerBetPlayer3;
         private TextBox FundBoxPlayer3;
-        private Label label3;
+        private Label NameLabelPlayer3;
         private Panel panel4;
         private NumericUpDown TieBetPlayer4;
         private NumericUpDown DealerBetPlayer4;
         private NumericUpDown PlayerBetPlayer4;
         private TextBox FundBoxPlayer4;
-        private Label label4;
+        private Label NameLabelPlayer4;
         private Panel panel2;
         private NumericUpDown TieBetPlayer2;
         private NumericUpDown DealerBetPlayer2;
         private NumericUpDown PlayerBetPlayer2;
         private TextBox FundBoxPlayer2;
-        private Label label2;
+        private Label NameLabelPlayer2;
         private Label label8;
         private Label label7;
         private Label label6;
