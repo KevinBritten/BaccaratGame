@@ -28,11 +28,18 @@ namespace BaccaratGame
         {
             String name = PlayerNameTextBox.Text;
             int funds = (int)FundCommit.Value;
-            //TODO: replace placeholder with avatar filepath
-            _players[_position] = new Player(name, 0, "placeholder");
-            _players[_position].FundsChanged += _fundsChangedCallback;
-            _players[_position].Funds = funds;
-            this.Close();
+            Boolean nameSet = !String.IsNullOrWhiteSpace(name);
+            Boolean fundsSet = !(funds == 0);
+            NameRequiredErrorLabel.Visible = !nameSet;
+            FundsRequiredErrorLabel.Visible = !fundsSet;
+            if (nameSet && fundsSet)
+            {
+                //TODO: replace placeholder with avatar filepath
+                _players[_position] = new Player(name, 0, "placeholder");
+                _players[_position].FundsChanged += _fundsChangedCallback;
+                _players[_position].Funds = funds;
+                this.Close();
+            }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
