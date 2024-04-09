@@ -294,30 +294,10 @@ namespace BaccaratGame
                     }
                     break;
                 case 2:
-                    if ((playerStates[0] == 2))
-                    {
-                        players[0].Funds -= (int)PlayerBetPlayer1.Value;
-                        players[0].Funds -= (int)DealerBetPlayer1.Value;
-                        players[0].Funds += 8 * (int)TieBetPlayer1.Value;
-                    }
-                    if ((playerStates[1] == 2))
-                    {
-                        players[1].Funds -= (int)PlayerBetPlayer2.Value;
-                        players[1].Funds -= (int)DealerBetPlayer2.Value;
-                        players[1].Funds += 8 * (int)TieBetPlayer2.Value;
-                    }
-                    if ((playerStates[2] == 2))
-                    {
-                        players[2].Funds -= (int)PlayerBetPlayer3.Value;
-                        players[2].Funds -= (int)DealerBetPlayer3.Value;
-                        players[2].Funds += 8 * (int)TieBetPlayer3.Value;
-                    }
-                    if ((playerStates[3] == 2))
-                    {
-                        players[3].Funds -= (int)PlayerBetPlayer4.Value;
-                        players[3].Funds -= (int)DealerBetPlayer4.Value;
-                        players[3].Funds += 8 * (int)TieBetPlayer4.Value;
-                    }
+                    if ((playerStates[0] == 2)) { players[0].Funds += 8 * (int)TieBetPlayer1.Value; }
+                    if ((playerStates[1] == 2)) { players[1].Funds += 8 * (int)TieBetPlayer2.Value; }
+                    if ((playerStates[2] == 2)) { players[2].Funds += 8 * (int)TieBetPlayer3.Value; }
+                    if ((playerStates[3] == 2)) { players[3].Funds += 8 * (int)TieBetPlayer4.Value; }
                     break;
                 default: break;
             }
