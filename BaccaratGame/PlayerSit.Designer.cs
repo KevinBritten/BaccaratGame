@@ -36,9 +36,29 @@
             ConfirmButton = new Button();
             CancelButton = new Button();
             AvatarBox = new GroupBox();
+            avatarPictureBox9 = new PictureBox();
+            avatarPictureBox8 = new PictureBox();
+            avatarPictureBox7 = new PictureBox();
+            avatarPictureBox6 = new PictureBox();
+            avatarPictureBox5 = new PictureBox();
+            avatarPictureBox4 = new PictureBox();
+            avatarPictureBox3 = new PictureBox();
+            avatarPictureBox2 = new PictureBox();
+            avatarPictureBox1 = new PictureBox();
             NameRequiredErrorLabel = new Label();
             FundsRequiredErrorLabel = new Label();
+            AvatarRequiredErrorLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)FundCommit).BeginInit();
+            AvatarBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox9).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox1).BeginInit();
             SuspendLayout();
             // 
             // FundCommit
@@ -117,6 +137,15 @@
             // 
             // AvatarBox
             // 
+            AvatarBox.Controls.Add(avatarPictureBox9);
+            AvatarBox.Controls.Add(avatarPictureBox8);
+            AvatarBox.Controls.Add(avatarPictureBox7);
+            AvatarBox.Controls.Add(avatarPictureBox6);
+            AvatarBox.Controls.Add(avatarPictureBox5);
+            AvatarBox.Controls.Add(avatarPictureBox4);
+            AvatarBox.Controls.Add(avatarPictureBox3);
+            AvatarBox.Controls.Add(avatarPictureBox2);
+            AvatarBox.Controls.Add(avatarPictureBox1);
             AvatarBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AvatarBox.Location = new Point(373, 16);
             AvatarBox.Margin = new Padding(3, 4, 3, 4);
@@ -126,6 +155,97 @@
             AvatarBox.TabIndex = 7;
             AvatarBox.TabStop = false;
             AvatarBox.Text = "Choices of avatars";
+            // 
+            // avatarPictureBox9
+            // 
+            avatarPictureBox9.Image = Properties.Resources.monkey;
+            avatarPictureBox9.Location = new Point(359, 381);
+            avatarPictureBox9.Name = "avatarPictureBox9";
+            avatarPictureBox9.Size = new Size(169, 171);
+            avatarPictureBox9.TabIndex = 8;
+            avatarPictureBox9.TabStop = false;
+            avatarPictureBox9.Click += avatarPictureBox9_Click;
+            // 
+            // avatarPictureBox8
+            // 
+            avatarPictureBox8.Image = Properties.Resources.monkey;
+            avatarPictureBox8.Location = new Point(179, 381);
+            avatarPictureBox8.Name = "avatarPictureBox8";
+            avatarPictureBox8.Size = new Size(169, 171);
+            avatarPictureBox8.TabIndex = 7;
+            avatarPictureBox8.TabStop = false;
+            avatarPictureBox8.Click += avatarPictureBox8_Click;
+            // 
+            // avatarPictureBox7
+            // 
+            avatarPictureBox7.Image = Properties.Resources.monkey;
+            avatarPictureBox7.Location = new Point(0, 381);
+            avatarPictureBox7.Name = "avatarPictureBox7";
+            avatarPictureBox7.Size = new Size(169, 171);
+            avatarPictureBox7.TabIndex = 6;
+            avatarPictureBox7.TabStop = false;
+            avatarPictureBox7.Click += avatarPictureBox7_Click;
+            // 
+            // avatarPictureBox6
+            // 
+            avatarPictureBox6.Image = Properties.Resources.monkey;
+            avatarPictureBox6.Location = new Point(359, 207);
+            avatarPictureBox6.Name = "avatarPictureBox6";
+            avatarPictureBox6.Size = new Size(169, 171);
+            avatarPictureBox6.TabIndex = 5;
+            avatarPictureBox6.TabStop = false;
+            avatarPictureBox6.Click += avatarPictureBox6_Click;
+            // 
+            // avatarPictureBox5
+            // 
+            avatarPictureBox5.Image = Properties.Resources.monkey;
+            avatarPictureBox5.Location = new Point(179, 207);
+            avatarPictureBox5.Name = "avatarPictureBox5";
+            avatarPictureBox5.Size = new Size(169, 171);
+            avatarPictureBox5.TabIndex = 4;
+            avatarPictureBox5.TabStop = false;
+            avatarPictureBox5.Click += avatarPictureBox5_Click;
+            // 
+            // avatarPictureBox4
+            // 
+            avatarPictureBox4.Image = Properties.Resources.monkey;
+            avatarPictureBox4.Location = new Point(0, 207);
+            avatarPictureBox4.Name = "avatarPictureBox4";
+            avatarPictureBox4.Size = new Size(169, 171);
+            avatarPictureBox4.TabIndex = 3;
+            avatarPictureBox4.TabStop = false;
+            avatarPictureBox4.Click += avatarPictureBox4_Click;
+            // 
+            // avatarPictureBox3
+            // 
+            avatarPictureBox3.Image = Properties.Resources.monkey;
+            avatarPictureBox3.Location = new Point(359, 34);
+            avatarPictureBox3.Name = "avatarPictureBox3";
+            avatarPictureBox3.Size = new Size(169, 171);
+            avatarPictureBox3.TabIndex = 2;
+            avatarPictureBox3.TabStop = false;
+            avatarPictureBox3.Click += avatarPictureBox3_Click;
+            // 
+            // avatarPictureBox2
+            // 
+            avatarPictureBox2.Image = Properties.Resources.cat;
+            avatarPictureBox2.Location = new Point(179, 34);
+            avatarPictureBox2.Name = "avatarPictureBox2";
+            avatarPictureBox2.Size = new Size(169, 171);
+            avatarPictureBox2.TabIndex = 1;
+            avatarPictureBox2.TabStop = false;
+            avatarPictureBox2.Click += avatarPictureBox2_Click;
+            // 
+            // avatarPictureBox1
+            // 
+            avatarPictureBox1.BackColor = SystemColors.Control;
+            avatarPictureBox1.Image = Properties.Resources.monkey;
+            avatarPictureBox1.Location = new Point(0, 34);
+            avatarPictureBox1.Name = "avatarPictureBox1";
+            avatarPictureBox1.Size = new Size(169, 171);
+            avatarPictureBox1.TabIndex = 0;
+            avatarPictureBox1.TabStop = false;
+            avatarPictureBox1.Click += pictureBox1_Click;
             // 
             // NameRequiredErrorLabel
             // 
@@ -151,11 +271,24 @@
             FundsRequiredErrorLabel.Text = "Please add funds when joining.";
             FundsRequiredErrorLabel.Visible = false;
             // 
+            // AvatarRequiredErrorLabel
+            // 
+            AvatarRequiredErrorLabel.AutoSize = true;
+            AvatarRequiredErrorLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            AvatarRequiredErrorLabel.ForeColor = Color.Red;
+            AvatarRequiredErrorLabel.Location = new Point(373, 571);
+            AvatarRequiredErrorLabel.Name = "AvatarRequiredErrorLabel";
+            AvatarRequiredErrorLabel.Size = new Size(169, 20);
+            AvatarRequiredErrorLabel.TabIndex = 10;
+            AvatarRequiredErrorLabel.Text = "Please select an avatar.";
+            AvatarRequiredErrorLabel.Visible = false;
+            // 
             // PlayerSit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(AvatarRequiredErrorLabel);
             Controls.Add(FundsRequiredErrorLabel);
             Controls.Add(NameRequiredErrorLabel);
             Controls.Add(AvatarBox);
@@ -170,6 +303,16 @@
             Name = "PlayerSit";
             Text = "Sitting a player at the table";
             ((System.ComponentModel.ISupportInitialize)FundCommit).EndInit();
+            AvatarBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox9).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -186,5 +329,15 @@
         private GroupBox AvatarBox;
         private Label NameRequiredErrorLabel;
         private Label FundsRequiredErrorLabel;
+        private PictureBox avatarPictureBox1;
+        private PictureBox avatarPictureBox9;
+        private PictureBox avatarPictureBox8;
+        private PictureBox avatarPictureBox7;
+        private PictureBox avatarPictureBox6;
+        private PictureBox avatarPictureBox5;
+        private PictureBox avatarPictureBox4;
+        private PictureBox avatarPictureBox3;
+        private PictureBox avatarPictureBox2;
+        private Label AvatarRequiredErrorLabel;
     }
 }
