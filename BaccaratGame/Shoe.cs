@@ -24,6 +24,7 @@ namespace Play {
         public int Position() { return _position; }
         public int[] Check() { return _check; }
         public int TallyS() { return _tallyS; }
+        public int[] Stack() { return _stack; }
 
         public Boolean CheckCutCard() {
             if ((_stack.Length - _position) <= _cutCard) { return true; } else { return false; }
