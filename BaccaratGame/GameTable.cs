@@ -144,7 +144,8 @@ namespace BaccaratGame
             if (GameState == 1)
             {
                 BettingAreaGroupBox.Enabled = true;
-            } else
+            }
+            else
             {
                 BettingAreaGroupBox.Enabled = false;
             }
@@ -335,7 +336,7 @@ namespace BaccaratGame
             int PlayerState = playerStates[0];
             switch (PlayerState)
             {
-                case 0: ActivatePlayerSitForm(0, FundBoxPlayer1_FundsChanged); break;
+                case 0: ActivatePlayerSitForm(0, FundBoxPlayer1_FundsChanged, AvatarPictureBoxPlayer1_ImageChanged); break;
                 case 1: ActivatePlayerBustedForm(0); break;
                 case 2: ActivatePlayerWithdrawForm(0); break;
                 default: break;
@@ -347,7 +348,7 @@ namespace BaccaratGame
             int PlayerState = playerStates[1];
             switch (PlayerState)
             {
-                case 0: ActivatePlayerSitForm(1, FundBoxPlayer2_FundsChanged); break;
+                case 0: ActivatePlayerSitForm(1, FundBoxPlayer2_FundsChanged, AvatarPictureBoxPlayer2_ImageChanged); break;
                 case 1: ActivatePlayerBustedForm(1); break;
                 case 2: ActivatePlayerWithdrawForm(1); break;
                 default: break;
@@ -359,7 +360,7 @@ namespace BaccaratGame
             int PlayerState = playerStates[2];
             switch (PlayerState)
             {
-                case 0: ActivatePlayerSitForm(2, FundBoxPlayer3_FundsChanged); break;
+                case 0: ActivatePlayerSitForm(2, FundBoxPlayer3_FundsChanged, AvatarPictureBoxPlayer3_ImageChanged); break;
                 case 1: ActivatePlayerBustedForm(2); break;
                 case 2: ActivatePlayerWithdrawForm(2); break;
                 default: break;
@@ -371,16 +372,16 @@ namespace BaccaratGame
             int PlayerState = playerStates[3];
             switch (PlayerState)
             {
-                case 0: ActivatePlayerSitForm(3, FundBoxPlayer4_FundsChanged); break;
+                case 0: ActivatePlayerSitForm(3, FundBoxPlayer4_FundsChanged, AvatarPictureBoxPlayer4_ImageChanged); break;
                 case 1: ActivatePlayerBustedForm(3); break;
                 case 2: ActivatePlayerWithdrawForm(3); break;
                 default: break;
             }
         }
 
-        public void ActivatePlayerSitForm(int P, EventHandler fundsChangedCallback)
+        public void ActivatePlayerSitForm(int P, EventHandler fundsChangedCallback, EventHandler avatarChangedCallback)
         {
-            PlayerSit SecondForm = new PlayerSit(P, players, fundsChangedCallback);
+            PlayerSit SecondForm = new PlayerSit(P, players, fundsChangedCallback, avatarChangedCallback);
             SecondForm.ShowDialog();
             UpdatePlayerStates();
             UpdatePlayerNameInBettingArea(P);
@@ -409,21 +410,22 @@ namespace BaccaratGame
 
         public void UpdatePlayerNameInBettingArea(int playerIndex)
         {
-            string playerLabelString = $"NameLabelPlayer{playerIndex+1}";
+            string playerLabelString = $"NameLabelPlayer{playerIndex + 1}";
             Control playerLabel = BettingAreaGroupBox.Controls.Find(playerLabelString, true)[0];
             if (players[playerIndex] != null)
             {
-               
+
                 playerLabel.Text = players[playerIndex].Name;
-            } else
+            }
+            else
             {
-                playerLabel.Text = $"Empty Seat {playerIndex+1}";
+                playerLabel.Text = $"Empty Seat {playerIndex + 1}";
             }
         }
 
         public void UpdateAllPlayerNamesInBettingArea()
         {
-            for (int i =0;i < players.Length;i++)
+            for (int i = 0; i < players.Length; i++)
             {
                 UpdatePlayerNameInBettingArea(i);
             }
@@ -432,6 +434,7 @@ namespace BaccaratGame
         private void WithdrawPlayer(int playerIndex)
         {
             BettingAreaGroupBox.Controls.Find($"FundBoxPlayer{playerIndex + 1}", true)[0].Text = "";
+            players[playerIndex].Avatar = null;
             players[playerIndex].unsubscribeAllListeners();
             players[playerIndex] = null;
             UpdatePlayerStates();
@@ -466,6 +469,23 @@ namespace BaccaratGame
         private void FundBoxPlayer4_FundsChanged(object sender, EventArgs e)
         {
             FundBoxPlayer4.Text = players[3].Funds.ToString();
+        }
+
+        private void AvatarPictureBoxPlayer1_ImageChanged(object sender, EventArgs e)
+        {
+            AvatarPictureBoxPlayer1.Image = players[0].Avatar;
+        }
+        private void AvatarPictureBoxPlayer2_ImageChanged(object sender, EventArgs e)
+        {
+            AvatarPictureBoxPlayer2.Image = players[1].Avatar;
+        }
+        private void AvatarPictureBoxPlayer3_ImageChanged(object sender, EventArgs e)
+        {
+            AvatarPictureBoxPlayer3.Image = players[2].Avatar;
+        }
+        private void AvatarPictureBoxPlayer4_ImageChanged(object sender, EventArgs e)
+        {
+            AvatarPictureBoxPlayer4.Image = players[3].Avatar;
         }
 
         private void PlayerBetPlayer1_ValueChanged(object sender, EventArgs e)

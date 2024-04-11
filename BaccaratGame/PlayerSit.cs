@@ -17,15 +17,17 @@ namespace BaccaratGame
         Player[] _players;
         int _position;
         EventHandler _fundsChangedCallback;
-        String[] avatarStrings = { "monkey", "cat", "monkey", "monkey", "monkey", "monkey", "monkey", "monkey", "monkey" };
+        EventHandler _avatarChangedCallback;
+      String[] avatarStrings = { "monkey", "cat", "monkey", "monkey", "monkey", "monkey", "monkey", "monkey", "monkey" };
         String selectedAvatar = "";
-        public PlayerSit(int S, Player[] players, EventHandler fundsChangedCallback)
+        public PlayerSit(int S, Player[] players, EventHandler fundsChangedCallback, EventHandler avatarChangedCallback)
         {
             InitializeComponent();
             SeatNumberLabel.Text = "Let's occupy seat " + (S + 1).ToString();
             _position = S;
             _players = players;
             _fundsChangedCallback = fundsChangedCallback;
+            _avatarChangedCallback = avatarChangedCallback;
             DisableChosenAvatars();
         }
 
@@ -42,9 +44,11 @@ namespace BaccaratGame
             if (nameSet && fundsSet && avatarSet)
             {
                 //TODO: replace placeholder with avatar filepath
-                _players[_position] = new Player(name, 0, selectedAvatar);
+                _players[_position] = new Player(name, 0);
                 _players[_position].FundsChanged += _fundsChangedCallback;
+                _players[_position].AvatarChanged += _avatarChangedCallback;
                 _players[_position].Funds = funds;
+                _players[_position].AvatarName = selectedAvatar;
                 this.Close();
             }
         }

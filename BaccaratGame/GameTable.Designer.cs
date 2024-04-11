@@ -59,6 +59,10 @@
             BankerBox0 = new PictureBox();
             GameControlButton = new Button();
             groupBox1 = new GroupBox();
+            AvatarPictureBoxPlayer4 = new PictureBox();
+            AvatarPictureBoxPlayer3 = new PictureBox();
+            AvatarPictureBoxPlayer2 = new PictureBox();
+            AvatarPictureBoxPlayer1 = new PictureBox();
             messageBox = new TextBox();
             RulesButton = new Button();
             BettingAreaGroupBox = new GroupBox();
@@ -120,6 +124,10 @@
             ((System.ComponentModel.ISupportInitialize)BankerBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BankerBox0).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)AvatarPictureBoxPlayer4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AvatarPictureBoxPlayer3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AvatarPictureBoxPlayer2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AvatarPictureBoxPlayer1).BeginInit();
             BettingAreaGroupBox.SuspendLayout();
             panel5.SuspendLayout();
             panel3.SuspendLayout();
@@ -500,6 +508,10 @@
             // 
             groupBox1.BackgroundImage = Properties.Resources.BaccaratTable1;
             groupBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            groupBox1.Controls.Add(AvatarPictureBoxPlayer4);
+            groupBox1.Controls.Add(AvatarPictureBoxPlayer3);
+            groupBox1.Controls.Add(AvatarPictureBoxPlayer2);
+            groupBox1.Controls.Add(AvatarPictureBoxPlayer1);
             groupBox1.Controls.Add(messageBox);
             groupBox1.Controls.Add(PlayerGroupBox);
             groupBox1.Controls.Add(BankerGroupBox);
@@ -510,6 +522,46 @@
             groupBox1.Size = new Size(866, 532);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
+            // 
+            // AvatarPictureBoxPlayer4
+            // 
+            AvatarPictureBoxPlayer4.BackColor = Color.Transparent;
+            AvatarPictureBoxPlayer4.Location = new Point(588, 355);
+            AvatarPictureBoxPlayer4.Name = "AvatarPictureBoxPlayer4";
+            AvatarPictureBoxPlayer4.Size = new Size(73, 73);
+            AvatarPictureBoxPlayer4.SizeMode = PictureBoxSizeMode.Zoom;
+            AvatarPictureBoxPlayer4.TabIndex = 7;
+            AvatarPictureBoxPlayer4.TabStop = false;
+            // 
+            // AvatarPictureBoxPlayer3
+            // 
+            AvatarPictureBoxPlayer3.BackColor = Color.Transparent;
+            AvatarPictureBoxPlayer3.Location = new Point(452, 355);
+            AvatarPictureBoxPlayer3.Name = "AvatarPictureBoxPlayer3";
+            AvatarPictureBoxPlayer3.Size = new Size(73, 73);
+            AvatarPictureBoxPlayer3.SizeMode = PictureBoxSizeMode.Zoom;
+            AvatarPictureBoxPlayer3.TabIndex = 6;
+            AvatarPictureBoxPlayer3.TabStop = false;
+            // 
+            // AvatarPictureBoxPlayer2
+            // 
+            AvatarPictureBoxPlayer2.BackColor = Color.Transparent;
+            AvatarPictureBoxPlayer2.Location = new Point(316, 355);
+            AvatarPictureBoxPlayer2.Name = "AvatarPictureBoxPlayer2";
+            AvatarPictureBoxPlayer2.Size = new Size(73, 73);
+            AvatarPictureBoxPlayer2.SizeMode = PictureBoxSizeMode.Zoom;
+            AvatarPictureBoxPlayer2.TabIndex = 5;
+            AvatarPictureBoxPlayer2.TabStop = false;
+            // 
+            // AvatarPictureBoxPlayer1
+            // 
+            AvatarPictureBoxPlayer1.BackColor = Color.Transparent;
+            AvatarPictureBoxPlayer1.Location = new Point(181, 355);
+            AvatarPictureBoxPlayer1.Name = "AvatarPictureBoxPlayer1";
+            AvatarPictureBoxPlayer1.Size = new Size(73, 73);
+            AvatarPictureBoxPlayer1.SizeMode = PictureBoxSizeMode.Zoom;
+            AvatarPictureBoxPlayer1.TabIndex = 4;
+            AvatarPictureBoxPlayer1.TabStop = false;
             // 
             // messageBox
             // 
@@ -944,6 +996,10 @@
             ((System.ComponentModel.ISupportInitialize)BankerBox0).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)AvatarPictureBoxPlayer4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AvatarPictureBoxPlayer3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AvatarPictureBoxPlayer2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AvatarPictureBoxPlayer1).EndInit();
             BettingAreaGroupBox.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
@@ -1041,5 +1097,9 @@
         private Button Seat2ControlButton;
         private Button Seat1ControlButton;
         private TextBox messageBox;
+        private PictureBox AvatarPictureBoxPlayer4;
+        private PictureBox AvatarPictureBoxPlayer3;
+        private PictureBox AvatarPictureBoxPlayer2;
+        private PictureBox AvatarPictureBoxPlayer1;
     }
 }
