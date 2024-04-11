@@ -12,12 +12,14 @@ namespace BaccaratGame
         private int _funds;
         //TODO: add avatar files
         //private Image _avatar;
+        private string _avatarName;
         private int[] _bets = new int[3]; 
 
-        public Player(String name, int funds, String avatarFilePath)
+        public Player(String name, int funds, String avatarName)
         {
             _name = name;
             _funds = funds;
+            _avatarName = avatarName;
             //_avatar = Image.FromFile(avatarFilePath);
         }
 
@@ -39,6 +41,12 @@ namespace BaccaratGame
         //{
         //    get { return _avatar; }
         //}
+
+        public string AvatarName
+        {
+            get { return _avatarName; }
+            set { _avatarName = value;}
+        }
 
         public int[] Bets
         {

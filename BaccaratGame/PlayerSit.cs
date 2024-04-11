@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +26,7 @@ namespace BaccaratGame
             _position = S;
             _players = players;
             _fundsChangedCallback = fundsChangedCallback;
+            DisableChosenAvatars();
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
@@ -64,12 +67,63 @@ namespace BaccaratGame
             selectedAvatar = avatarStrings[avatarIndex - 1];
         }
 
+        private void DisableChosenAvatars()
+        {
+            ArrayList chosenAvatars = new ArrayList();
+            foreach (Player player in _players)
+            {
+                if (player != null)
+                {
+                    chosenAvatars.Add(player.AvatarName);
+                }
+            }
+            foreach (string chosenAvatar in chosenAvatars)
+            {
+                int avatarIndex = Array.IndexOf(avatarStrings, chosenAvatar);
+                PictureBox avatarPictureBox = (PictureBox)AvatarBox.Controls.Find($"avatarPictureBox{avatarIndex + 1}", false)[0];
+                avatarPictureBox.Enabled = false;
+                Image grayScaleImage = ToolStripRenderer.CreateDisabledImage(avatarPictureBox.Image);
+                avatarPictureBox.Image = grayScaleImage;
+            }
+        }
+       
+        public static Bitmap MakeGrayscale(Image original)
+        {
+            Bitmap newBitmap = new Bitmap(original.Width, original.Height);
+            using (Graphics g = Graphics.FromImage(newBitmap))
+            {
+                ColorMatrix colorMatrix = new ColorMatrix(
+                    new float[][]
+                    {
+                new float[] {.3f, .3f, .3f, 0, 0},
+                new float[] {.59f, .59f, .59f, 0, 0},
+                new float[] {.11f, .11f, .11f, 0, 0},
+                new float[] {0, 0, 0, 1, 0},
+                new float[] {0, 0, 0, 0, 1}
+                    });
+
+                // Create image attributes
+                using (ImageAttributes attributes = new ImageAttributes())
+                {
+                    // Set the color matrix attribute
+                    attributes.SetColorMatrix(colorMatrix);
+
+                    // Draw the original image on the new image
+                    // using the grayscale color matrix
+                    g.DrawImage(original, new Rectangle(0, 0, original.Width, original.Height),
+                        0, 0, original.Width, original.Height, GraphicsUnit.Pixel, attributes);
+                }
+            }
+            return newBitmap;
+        }
+
+
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void avatarPictureBox1_Click(object sender, EventArgs e)
         {
             SelectAvatar(1);
         }
@@ -113,5 +167,7 @@ namespace BaccaratGame
         {
             SelectAvatar(9);
         }
+
+
     }
 }

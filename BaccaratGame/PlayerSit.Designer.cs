@@ -245,7 +245,7 @@
             avatarPictureBox1.Size = new Size(169, 171);
             avatarPictureBox1.TabIndex = 0;
             avatarPictureBox1.TabStop = false;
-            avatarPictureBox1.Click += pictureBox1_Click;
+            avatarPictureBox1.Click += avatarPictureBox1_Click;
             // 
             // NameRequiredErrorLabel
             // 
