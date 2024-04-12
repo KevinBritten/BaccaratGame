@@ -17,15 +17,17 @@ namespace BaccaratGame
         Player[] _players;
         int _position;
         EventHandler _fundsChangedCallback;
-        String[] avatarStrings = { "monkey", "cat", "monkey", "monkey", "monkey", "monkey", "monkey", "monkey", "monkey" };
+        EventHandler _avatarChangedCallback;
+      String[] avatarStrings = { "monkey", "cat", "monkey", "monkey", "monkey", "monkey", "monkey", "monkey", "monkey" };
         String selectedAvatar = "";
-        public PlayerSit(int S, Player[] players, EventHandler fundsChangedCallback)
+        public PlayerSit(int S, Player[] players, EventHandler fundsChangedCallback, EventHandler avatarChangedCallback)
         {
             InitializeComponent();
             SeatNumberLabel.Text = "Let's occupy seat " + (S + 1).ToString();
             _position = S;
             _players = players;
             _fundsChangedCallback = fundsChangedCallback;
+            _avatarChangedCallback = avatarChangedCallback;
             DisableChosenAvatars();
         }
 
@@ -42,9 +44,11 @@ namespace BaccaratGame
             if (nameSet && fundsSet && avatarSet)
             {
                 //TODO: replace placeholder with avatar filepath
-                _players[_position] = new Player(name, 0, selectedAvatar);
+                _players[_position] = new Player(name, 0);
                 _players[_position].FundsChanged += _fundsChangedCallback;
+                _players[_position].AvatarChanged += _avatarChangedCallback;
                 _players[_position].Funds = funds;
+                _players[_position].AvatarName = selectedAvatar;
                 this.Close();
             }
         }
@@ -86,37 +90,6 @@ namespace BaccaratGame
                 avatarPictureBox.Image = grayScaleImage;
             }
         }
-       
-        public static Bitmap MakeGrayscale(Image original)
-        {
-            Bitmap newBitmap = new Bitmap(original.Width, original.Height);
-            using (Graphics g = Graphics.FromImage(newBitmap))
-            {
-                ColorMatrix colorMatrix = new ColorMatrix(
-                    new float[][]
-                    {
-                new float[] {.3f, .3f, .3f, 0, 0},
-                new float[] {.59f, .59f, .59f, 0, 0},
-                new float[] {.11f, .11f, .11f, 0, 0},
-                new float[] {0, 0, 0, 1, 0},
-                new float[] {0, 0, 0, 0, 1}
-                    });
-
-                // Create image attributes
-                using (ImageAttributes attributes = new ImageAttributes())
-                {
-                    // Set the color matrix attribute
-                    attributes.SetColorMatrix(colorMatrix);
-
-                    // Draw the original image on the new image
-                    // using the grayscale color matrix
-                    g.DrawImage(original, new Rectangle(0, 0, original.Width, original.Height),
-                        0, 0, original.Width, original.Height, GraphicsUnit.Pixel, attributes);
-                }
-            }
-            return newBitmap;
-        }
-
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
