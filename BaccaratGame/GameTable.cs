@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -130,6 +131,7 @@ namespace BaccaratGame
                     UpdatePlayerStates();
                     ClearAndDisableAllBettingInputs();
                     PC.SaveShoe(S.TallyS(), S.Position(), S.Stack());
+                    //PC.LineUpHands(H.Player(), H.Banker(), H.ThirdCard(), H.Scores(), H.ResultName());
                     Seat1ControlButton.Enabled = true;
                     Seat2ControlButton.Enabled = true;
                     Seat3ControlButton.Enabled = true;
@@ -658,6 +660,7 @@ namespace BaccaratGame
             DialogResult result = saveDatafolderBDialog.ShowDialog();
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(saveDatafolderBDialog.SelectedPath)) {
                 PC.SetDirectoryName(saveDatafolderBDialog.SelectedPath);
+                PC.SetDirectoryKnown(true);
             }
         }
     }

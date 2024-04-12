@@ -27,7 +27,6 @@ namespace Play {
 
         private string _playLine = "";
         private string _eventLine = "";
-        private string _shoeLine = "";
         private int _playCount = 0;
         private int _eventCount = 0;
         private Boolean _diretoryKnown  = false;
@@ -47,14 +46,15 @@ namespace Play {
         public void SetDirectoryName(string DirName) { _directoryName = DirName; }
         public void SetDirectoryKnown(Boolean Known) { _diretoryKnown = Known; }
 
-        public void LineUpHands(int[] Player, int[] Banker, Boolean[] ThirdCard, string Results) {
+        public void LineUpHands(int[] Player, int[] Banker, Boolean[] ThirdCard, int[] Scores, string Results) {
             _playCount++;
             _playLine = "";
             _playLine += "Play#" + _playCount + "," + _abbr[Player[0]] + "," + _abbr[Player[1]] + ",";
             if (ThirdCard[0]) { _playLine += _abbr[Player[2]] + ","; } else { _playLine += ","; }
-            _playLine += _abbr[Banker[0]] + "," + _abbr[Banker[1]] + ",";
+            _playLine += Scores[0] + "," + _abbr[Banker[0]] + "," + _abbr[Banker[1]] + ",";
             if (ThirdCard[1]) { _playLine += _abbr[Banker[2]] + ","; } else { _playLine += ","; }
-            _playLine += Results + ",";
+            _playLine += Scores[1] + "," + Results + ",";
+            WriteinPlayFile();
         }
 
         public void LineUpPlayer(int PlayerState, string Name, int Avatar, int Funds, int[] Bets) {
@@ -63,12 +63,8 @@ namespace Play {
         }
 
         public void SaveShoe(int Tally, int Position, int[] ShoeN) {
-            _shoeLine = Tally + "," + Position + ",";
-            for (int i = 0; i < ShoeN.Length; i++) { _shoeLine += ShoeN[i] + ","; }
-            WriteInShoeFile();
+            WriteInShoeFile(Tally,Position,ShoeN);
         }
-
-        public void SavePlay() { }
 
         public void SavePlayEvent(int Play, int[] Player, int[] Banker, Boolean[] ThirdCard) {
             SetEvent();
@@ -79,17 +75,17 @@ namespace Play {
             TotalCard[0] = Player[0]; TotalCard[1] = Player[1]; TotalCard[2] = Banker[0]; TotalCard[3] = Banker[1];
             if (ThirdCard[0]) { TotalCard[4] = Player[2]; }
             if (ThirdCard[1]) { if (ThirdCard[0]) { TotalCard[5] = Banker[2]; } else { TotalCard[4] = Banker[2]; } }
-            _eventLine += "Play#" + Play + "," + SortingCards(TotalCard);
+            _eventLine += "Event#" + _eventCount + "Play#" + Play + "," + SortingCards(TotalCard);
         }
 
         public void SavePrimingEvent(int Tally, int[] CardP) {
             SetEvent();
-            _eventLine += "Priming#" + Tally + "," + SortingCards(CardP);
+            _eventLine += "Event#" + _eventCount + "Priming#" + Tally + "," + SortingCards(CardP);
         }
 
         public void SaveDrainingEvent(int Tally, int[] CarD) {
             SetEvent();
-            _eventLine += "Draining#" + Tally + "," + SortingCards(CarD);
+            _eventLine += "Event#" + _eventCount + "Draining#" + Tally + "," + SortingCards(CarD);
         }
 
         private string SortingCards(int[] CardPicked) {
@@ -104,18 +100,40 @@ namespace Play {
 
         private void SetEvent() { _eventCount++; _eventLine = ""; }
 
-        private void WriteInShoeFile() {
-            if (_diretoryKnown) { 
-            }
-            string aPath = "C:\\Users\\nicol\\OneDrive\\Documents\\Travail\\Info\\Cours\\420-910-Progr1\\Project\\Test.csv";
+        private void WriteInShoeFile(int Tally, int Position, int[] ShoeN) {
+            string aPath = "";
             TextWriter txt = null;
-            txt = new StreamWriter(aPath);
-            txt.Write(_shoeLine);
-            txt.Close();
+            if (_diretoryKnown) {
+                try {
+                    aPath = Path.Combine(_directoryName, _shoeFilename);
+                    txt = new StreamWriter(aPath);
+                    txt.WriteLine(Tally);
+                    txt.WriteLine(Position);
+                    for (int i = 0; i < ShoeN.Length; i++) { txt.WriteLine(ShoeN[i]); }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+                finally { txt.Close(); }
+            }
         }
 
         private void WriteinPlayFile() {
-            if (_diretoryKnown) { 
+            string aPath = "";
+            TextWriter txt = null;
+            if (_diretoryKnown) {
+                try {
+                    aPath = Path.Combine(_directoryName, _playFilename);
+                    if (_playCount == 1) {
+                        txt = new StreamWriter(aPath);
+                        txt.WriteLine(_playLabel);
+                        txt.WriteLine(_playLine);
+                    }
+                    else {
+                        txt = File.AppendText(aPath); 
+                        txt.WriteLine("hello");
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+                finally { txt.Close(); }
             }
         }
 
