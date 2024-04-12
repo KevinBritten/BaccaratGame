@@ -27,8 +27,13 @@ namespace Play {
 
         private string _playLine = "";
         private string _eventLine = "";
+        private string _shoeLine = "";
         private int _playCount = 0;
         private int _eventCount = 0;
+        private Boolean _diretoryKnown  = false;
+        private string _directoryName = "";
+        private Boolean _playFirstUse = true;
+        private Boolean _eventFirstUse = true;
         private string _shoeFilename = "Shoe.csv";
         private string _playFilename = "Plays.csv";
         private string _eventFilename = "Events.csv";
@@ -39,6 +44,8 @@ namespace Play {
         public string Face(int n) { return _face[n]; }
         public string GetLongCardID(int n) { return (Face(_pack[n, 0]) + " of " + Color(_pack[n, 1])); }
         public string GetAbbrCardID(int n) { return _abbr[n]; }
+        public void SetDirectoryName(string DirName) { _directoryName = DirName; }
+        public void SetDirectoryKnown(Boolean Known) { _diretoryKnown = Known; }
 
         public void LineUpHands(int[] Player, int[] Banker, Boolean[] ThirdCard, string Results) {
             _playCount++;
@@ -56,8 +63,9 @@ namespace Play {
         }
 
         public void SaveShoe(int Tally, int Position, int[] ShoeN) {
-            string ShoeS = Tally + "," + Position + ",";
-            for (int i = 0; i < ShoeN.Length; i++) { ShoeS += ShoeN[i]; }
+            _shoeLine = Tally + "," + Position + ",";
+            for (int i = 0; i < ShoeN.Length; i++) { _shoeLine += ShoeN[i] + ","; }
+            WriteInShoeFile();
         }
 
         public void SavePlay() { }
@@ -95,5 +103,25 @@ namespace Play {
         }
 
         private void SetEvent() { _eventCount++; _eventLine = ""; }
+
+        private void WriteInShoeFile() {
+            if (_diretoryKnown) { 
+            }
+            string aPath = "C:\\Users\\nicol\\OneDrive\\Documents\\Travail\\Info\\Cours\\420-910-Progr1\\Project\\Test.csv";
+            TextWriter txt = null;
+            txt = new StreamWriter(aPath);
+            txt.Write(_shoeLine);
+            txt.Close();
+        }
+
+        private void WriteinPlayFile() {
+            if (_diretoryKnown) { 
+            }
+        }
+
+        private void WriteinEventFile() {
+            if (_diretoryKnown) { 
+            }
+        }
     }
 }

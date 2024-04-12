@@ -16,6 +16,7 @@ namespace BaccaratGame
     {
         Shoe S = new Shoe();
         Hand H = new Hand();
+        PlayingCards PC = new PlayingCards();
         PictureBox[] ShoeBoxes = new PictureBox[11];
         PictureBox[] PlayerBoxes = new PictureBox[3];
         PictureBox[] BankerBoxes = new PictureBox[3];
@@ -128,6 +129,7 @@ namespace BaccaratGame
                     ClearPlayerBets();
                     UpdatePlayerStates();
                     ClearAndDisableAllBettingInputs();
+                    PC.SaveShoe(S.TallyS(), S.Position(), S.Stack());
                     Seat1ControlButton.Enabled = true;
                     Seat2ControlButton.Enabled = true;
                     Seat3ControlButton.Enabled = true;
@@ -144,7 +146,8 @@ namespace BaccaratGame
             if (GameState == 1)
             {
                 BettingAreaGroupBox.Enabled = true;
-            } else
+            }
+            else
             {
                 BettingAreaGroupBox.Enabled = false;
             }
@@ -409,21 +412,22 @@ namespace BaccaratGame
 
         public void UpdatePlayerNameInBettingArea(int playerIndex)
         {
-            string playerLabelString = $"NameLabelPlayer{playerIndex+1}";
+            string playerLabelString = $"NameLabelPlayer{playerIndex + 1}";
             Control playerLabel = BettingAreaGroupBox.Controls.Find(playerLabelString, true)[0];
             if (players[playerIndex] != null)
             {
-               
+
                 playerLabel.Text = players[playerIndex].Name;
-            } else
+            }
+            else
             {
-                playerLabel.Text = $"Empty Seat {playerIndex+1}";
+                playerLabel.Text = $"Empty Seat {playerIndex + 1}";
             }
         }
 
         public void UpdateAllPlayerNamesInBettingArea()
         {
-            for (int i =0;i < players.Length;i++)
+            for (int i = 0; i < players.Length; i++)
             {
                 UpdatePlayerNameInBettingArea(i);
             }
@@ -629,6 +633,14 @@ namespace BaccaratGame
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void SetDataSavebutton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = saveDatafolderBDialog.ShowDialog();
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(saveDatafolderBDialog.SelectedPath)) {
+                PC.SetDirectoryName(saveDatafolderBDialog.SelectedPath);
+            }
         }
     }
 }
