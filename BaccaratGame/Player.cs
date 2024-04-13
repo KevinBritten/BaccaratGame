@@ -53,11 +53,15 @@ namespace BaccaratGame
             set
             {
                 _avatarName = value;
-                ResourceManager resourceManager = new ResourceManager("BaccaratGame.Properties.Resources", Assembly.GetExecutingAssembly());
-                object imageObject = resourceManager.GetObject(value);
-                Avatar = (Image)imageObject;
-
+                Avatar = getAvatarImage(value);
             }
+        }
+
+        public Image getAvatarImage(string avatarName)
+        {
+            ResourceManager resourceManager = new ResourceManager("BaccaratGame.Properties.Resources", Assembly.GetExecutingAssembly());
+            object imageObject = resourceManager.GetObject(avatarName);
+            return (Image)imageObject;
         }
 
         public int[] Bets
@@ -72,6 +76,15 @@ namespace BaccaratGame
             {
                 _bets[i] = 0;
             }
+        }
+
+        public void changeAvatarMood()
+        {
+            Avatar = getAvatarImage(_avatarName);
+        }
+        public void changeAvatarMood(string mood)
+        {
+            Avatar = getAvatarImage($"{_avatarName}-{mood}");
         }
 
         public event EventHandler FundsChanged;

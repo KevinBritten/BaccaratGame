@@ -63,6 +63,7 @@ namespace BaccaratGame
                     Seat4ControlButton.Enabled = false;
                     GameState = 2;
                     GameControlButton.Text = "Play";
+                    ResetAllPlayerMoods();
                     break;
                 case 2:
                     if (NoBetMadeAtTable()) { UpdateMessageBox(2); break; }
@@ -73,7 +74,7 @@ namespace BaccaratGame
                     {
                         int[] CardD = S.DrainingShoe();
                         for (i = 0; i < CardD.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[CardD[i]]; }
-                        PC.RecordDrainingEvent(S.TallyS()-1, CardD);
+                        PC.RecordDrainingEvent(S.TallyS() - 1, CardD);
                         PC.WriteinEventFile();
                     }
                     ResetShoeBoxes();
@@ -194,6 +195,14 @@ namespace BaccaratGame
             int Busted = 0;
             for (int i = 0; i < playerStates.Length; i++) { if (playerStates[i] == 1) { Busted++; } }
             if (Busted > 0) { return true; } else { return false; }
+        }
+
+        private void ResetAllPlayerMoods()
+        {
+            foreach (Player player in players)
+            {
+                if (player != null) player.changeAvatarMood();
+            }
         }
 
         private void UpdatePlayerStates()
@@ -331,8 +340,8 @@ namespace BaccaratGame
                 if (playerStates[i] == 2)
                 {
                     int fundsDifference = players[i].Funds - previousPlayerFunds[i];
-                    if (fundsDifference > 0) { messageString += $"{players[i].Name} won ${fundsDifference}."; }
-                    else if (fundsDifference < 0) { messageString += $"{players[i].Name} lost ${fundsDifference * -1}."; }
+                    if (fundsDifference > 0) { messageString += $"{players[i].Name} won ${fundsDifference}."; players[i].changeAvatarMood("happy"); }
+                    else if (fundsDifference < 0) { messageString += $"{players[i].Name} lost ${fundsDifference * -1}."; players[i].changeAvatarMood("sad"); }
                     else { messageString += $"{players[i].Name} came out even."; }
                     messageString += " ";
                 }
@@ -636,11 +645,13 @@ namespace BaccaratGame
             player.updateBet(index, (int)value);
         }
 
-        private void SaveDataInFile() {
+        private void SaveDataInFile()
+        {
             PC.UpdatePlayEventCounts();
             PC.WriteInShoeFile(S.TallyS(), S.Position(), S.Stack());
             PC.LineUpHands(H.Player(), H.Banker(), H.ThirdCard(), H.Scores(), H.ResultName());
-            for (int i = 0; i < players.Length; i++) {
+            for (int i = 0; i < players.Length; i++)
+            {
                 if (playerStates[i] == 0) { PC.LineUpNoPlayer(); }
                 else { PC.LineUpPlayer(players[i].Name, players[i].Funds, players[i].Bets); }
             }
@@ -678,7 +689,8 @@ namespace BaccaratGame
         private void SetDataSavebutton_Click(object sender, EventArgs e)
         {
             DialogResult result = saveDatafolderBDialog.ShowDialog();
-            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(saveDatafolderBDialog.SelectedPath)) {
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(saveDatafolderBDialog.SelectedPath))
+            {
                 PC.SetDirectoryName(saveDatafolderBDialog.SelectedPath);
                 PC.SetDirectoryKnown(true);
                 PC.SetPlayCount(0);
