@@ -42,6 +42,7 @@ namespace BaccaratGame
             for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
             panel1.Enabled = false; panel2.Enabled = false; panel3.Enabled = false; panel4.Enabled = false;
             UpdateAllPlayerNamesInBettingArea();
+            ClearAllWinLossLabels();
         }
 
         private void GameControlButton_Click(object sender, EventArgs e)
@@ -64,6 +65,7 @@ namespace BaccaratGame
                     GameState = 2;
                     GameControlButton.Text = "Play";
                     ResetAllPlayerMoods();
+                    ClearAllWinLossLabels();
                     break;
                 case 2:
                     if (NoBetMadeAtTable()) { UpdateMessageBox(2); break; }
@@ -177,8 +179,6 @@ namespace BaccaratGame
             messageBox.Text = messages[messageCode];
         }
 
-        private void UpdateMessageBox(String message) { messageBox.Text = message; }
-
         private void ClearMessageBox()
         {
             messageBox.Text = "";
@@ -203,6 +203,19 @@ namespace BaccaratGame
             {
                 if (player != null) player.changeAvatarMood();
             }
+        }
+
+        private void ClearAllWinLossLabels()
+        {
+            for (int i = 0; i < players.Length; i++)
+            {
+                ClearWinLossLabel(i);
+            }
+        }
+
+        private void ClearWinLossLabel(int playerIndex)
+        {
+            groupBox1.Controls.Find($"WinLossLabelPlayer{playerIndex + 1}", true)[0].Text = "";
         }
 
         private void UpdatePlayerStates()
@@ -263,7 +276,6 @@ namespace BaccaratGame
 
         private void AdjustPlayersFunds()
         {
-            String messageString = "";
             //Store player funds before adjustment
             int[] previousPlayerFunds = new int[players.Length];
             for (int i = 0; i < players.Length; i++)
@@ -340,13 +352,16 @@ namespace BaccaratGame
                 if (playerStates[i] == 2)
                 {
                     int fundsDifference = players[i].Funds - previousPlayerFunds[i];
-                    if (fundsDifference > 0) { messageString += $"{players[i].Name} won ${fundsDifference}."; players[i].changeAvatarMood("happy"); }
-                    else if (fundsDifference < 0) { messageString += $"{players[i].Name} lost ${fundsDifference * -1}."; players[i].changeAvatarMood("sad"); }
-                    else { messageString += $"{players[i].Name} came out even."; }
-                    messageString += " ";
+                    Control winLossLabel = groupBox1.Controls.Find($"winLossLabelPlayer{i + 1}", true)[0];
+                    if (fundsDifference > 0) { winLossLabel.ForeColor = System.Drawing.Color.Blue; winLossLabel.Text = $"+${fundsDifference}"; players[i].changeAvatarMood("happy"); }
+                    else if (fundsDifference < 0) { winLossLabel.ForeColor = System.Drawing.Color.Red; winLossLabel.Text = $"-${fundsDifference * -1}"; players[i].changeAvatarMood("sad"); }
+                    else { winLossLabel.ForeColor = System.Drawing.Color.Blue; winLossLabel.Text = "+$0"; }
+
+
                 }
             }
-            UpdateMessageBox(messageString);
+
+
         }
 
         private void ResetShoeBoxes() { for (int i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; } }
@@ -457,6 +472,7 @@ namespace BaccaratGame
             players[playerIndex].Avatar = null;
             players[playerIndex].unsubscribeAllListeners();
             players[playerIndex] = null;
+            ClearWinLossLabel(playerIndex);
             UpdatePlayerStates();
             UpdatePlayerNameInBettingArea(playerIndex);
         }
