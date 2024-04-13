@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace BaccaratGame
 {
@@ -72,6 +73,8 @@ namespace BaccaratGame
                     {
                         int[] CardD = S.DrainingShoe();
                         for (i = 0; i < CardD.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[CardD[i]]; }
+                        PC.RecordDrainingEvent(S.TallyS()-1, CardD);
+                        PC.WriteinEventFile();
                     }
                     ResetShoeBoxes();
                     if (S.Position() == 0)
@@ -79,6 +82,8 @@ namespace BaccaratGame
                         int[] CardP = S.PrimingShoe();
                         ShoeBoxes[0].Image = PlayingCardsList.Images[CardP[0]];
                         for (i = 1; i < CardP.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[52]; }
+                        PC.RecordPrimingEvent(S.TallyS(), CardP);
+                        PC.WriteinEventFile();
                     }
                     //Play a hand for the Player and Banker
                     int[] CardH = new int[4];
@@ -104,8 +109,6 @@ namespace BaccaratGame
                     int[] BankerH = H.Banker();
                     int[] Scores = H.Scores();
                     ResetShoeBoxes();
-                    for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
-                    for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
                     ShoeBoxes[0].Image = PlayingCardsList.Images[PlayerH[0]]; ShoeBoxes[1].Image = PlayingCardsList.Images[BankerH[0]];
                     ShoeBoxes[2].Image = PlayingCardsList.Images[PlayerH[1]]; ShoeBoxes[3].Image = PlayingCardsList.Images[BankerH[1]];
                     if (ThirdCard[0]) { ShoeBoxes[4].Image = PlayingCardsList.Images[PlayerH[2]]; }
@@ -120,7 +123,6 @@ namespace BaccaratGame
                     if (ThirdCard[1]) { BankerBoxes[2].Image = PlayingCardsList.Images[BankerH[2]]; }
                     PlayerScoreV.Text = Convert.ToString(Scores[0]);
                     BankerScoreV.Text = Convert.ToString(Scores[1]);
-                    H.ResetHand();
                     SetBettingAreaEnabled();
                     GameState = 3;
                     GameControlButton.Text = "Settle bet";
@@ -129,9 +131,14 @@ namespace BaccaratGame
                     AdjustPlayersFunds();
                     ClearPlayerBets();
                     UpdatePlayerStates();
+                    SaveDataInFile();
+                    H.ResetHand();
                     ClearAndDisableAllBettingInputs();
-                    PC.SaveShoe(S.TallyS(), S.Position(), S.Stack());
-                    //PC.LineUpHands(H.Player(), H.Banker(), H.ThirdCard(), H.Scores(), H.ResultName());
+                    ResetShoeBoxes();
+                    for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
+                    for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
+                    PlayerScoreV.Text = "";
+                    BankerScoreV.Text = "";
                     Seat1ControlButton.Enabled = true;
                     Seat2ControlButton.Enabled = true;
                     Seat3ControlButton.Enabled = true;
@@ -629,6 +636,19 @@ namespace BaccaratGame
             player.updateBet(index, (int)value);
         }
 
+        private void SaveDataInFile() {
+            PC.UpdatePlayEventCounts();
+            PC.WriteInShoeFile(S.TallyS(), S.Position(), S.Stack());
+            PC.LineUpHands(H.Player(), H.Banker(), H.ThirdCard(), H.Scores(), H.ResultName());
+            for (int i = 0; i < players.Length; i++) {
+                if (playerStates[i] == 0) { PC.LineUpNoPlayer(); }
+                else { PC.LineUpPlayer(players[i].Name, players[i].Funds, players[i].Bets); }
+            }
+            PC.WriteinPlayFile();
+            PC.RecordPlayEvent(H.Player(), H.Banker(), H.ThirdCard());
+            PC.WriteinEventFile();
+        }
+
         private void ClearPlayerBets()
         {
             for (int i = 0; i < players.Length; i++)
@@ -661,6 +681,8 @@ namespace BaccaratGame
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(saveDatafolderBDialog.SelectedPath)) {
                 PC.SetDirectoryName(saveDatafolderBDialog.SelectedPath);
                 PC.SetDirectoryKnown(true);
+                PC.SetPlayCount(0);
+                PC.SetEventCount(0);
             }
         }
     }

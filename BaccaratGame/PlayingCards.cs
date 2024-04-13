@@ -23,7 +23,7 @@ namespace Play {
 
         private string _playLabel = "Play#,PH1,PH2,PH3,BH1,BH2,BH3,Result,P1N,P1A,P1F,P1PB,P1BB,P1BT,P2N,P2A,P2F,P2PB,P2BB,P2BT," +
             "P3N,P3A,P3F,P3PB,P3BB,P3BT,P4N,P4A,P4F,P4PB,P4BB,P4BT,";
-        private string _eventLabel = "Event#;Type;";
+        private string _eventLabel = "Event#,Type,";
 
         private string _playLine = "";
         private string _eventLine = "";
@@ -45,29 +45,26 @@ namespace Play {
         public string GetAbbrCardID(int n) { return _abbr[n]; }
         public void SetDirectoryName(string DirName) { _directoryName = DirName; }
         public void SetDirectoryKnown(Boolean Known) { _diretoryKnown = Known; }
+        public void SetPlayCount(int Count) { _playCount = Count; }
+        public void SetEventCount(int Count) { _eventCount = Count; }
 
         public void LineUpHands(int[] Player, int[] Banker, Boolean[] ThirdCard, int[] Scores, string Results) {
-            _playCount++;
             _playLine = "";
             _playLine += "Play#" + _playCount + "," + _abbr[Player[0]] + "," + _abbr[Player[1]] + ",";
             if (ThirdCard[0]) { _playLine += _abbr[Player[2]] + ","; } else { _playLine += ","; }
             _playLine += Scores[0] + "," + _abbr[Banker[0]] + "," + _abbr[Banker[1]] + ",";
             if (ThirdCard[1]) { _playLine += _abbr[Banker[2]] + ","; } else { _playLine += ","; }
             _playLine += Scores[1] + "," + Results + ",";
-            WriteinPlayFile();
         }
 
-        public void LineUpPlayer(int PlayerState, string Name, int Avatar, int Funds, int[] Bets) {
-            if (PlayerState == 0) { _playLine += ",,,,,,"; }
-            else { _playLine += Name + "," + Avatar + "," + Funds + "," + Bets[0] + "," + Bets[1] + "," + Bets[2] + ","; }
+        public void LineUpNoPlayer() { _playLine += ",,,,,,"; }
+        
+        public void LineUpPlayer(string Name, int Funds, int[] Bets) {
+            _playLine += Name + "," + Funds + "," + Bets[0] + "," + Bets[1] + "," + Bets[2] + ","; 
         }
 
-        public void SaveShoe(int Tally, int Position, int[] ShoeN) {
-            WriteInShoeFile(Tally,Position,ShoeN);
-        }
-
-        public void SavePlayEvent(int Play, int[] Player, int[] Banker, Boolean[] ThirdCard) {
-            SetEvent();
+        public void RecordPlayEvent(int[] Player, int[] Banker, Boolean[] ThirdCard) {
+            _eventLine = "";
             int ExtraCard = 0;
             if (ThirdCard[0]) { ExtraCard += 1; }
             if (ThirdCard[1]) { ExtraCard += 1; }
@@ -75,17 +72,19 @@ namespace Play {
             TotalCard[0] = Player[0]; TotalCard[1] = Player[1]; TotalCard[2] = Banker[0]; TotalCard[3] = Banker[1];
             if (ThirdCard[0]) { TotalCard[4] = Player[2]; }
             if (ThirdCard[1]) { if (ThirdCard[0]) { TotalCard[5] = Banker[2]; } else { TotalCard[4] = Banker[2]; } }
-            _eventLine += "Event#" + _eventCount + "Play#" + Play + "," + SortingCards(TotalCard);
+            _eventLine += "Event#" + _eventCount + ",Play#" + _playCount + "," + SortingCards(TotalCard);
         }
 
-        public void SavePrimingEvent(int Tally, int[] CardP) {
-            SetEvent();
-            _eventLine += "Event#" + _eventCount + "Priming#" + Tally + "," + SortingCards(CardP);
+        public void RecordPrimingEvent(int Tally, int[] CardP) {
+            _eventCount++;
+            _eventLine = "";
+            _eventLine += "Event#" + _eventCount + ",Priming#" + Tally + "," + SortingCards(CardP);
         }
 
-        public void SaveDrainingEvent(int Tally, int[] CarD) {
-            SetEvent();
-            _eventLine += "Event#" + _eventCount + "Draining#" + Tally + "," + SortingCards(CarD);
+        public void RecordDrainingEvent(int Tally, int[] CardD) {
+            _eventCount++;
+            _eventLine = "";
+            _eventLine += "Event#" + _eventCount + ",Draining#" + Tally + "," + SortingCards(CardD);
         }
 
         private string SortingCards(int[] CardPicked) {
@@ -98,9 +97,9 @@ namespace Play {
             return CardCount; 
         }
 
-        private void SetEvent() { _eventCount++; _eventLine = ""; }
+        public void UpdatePlayEventCounts() { _eventCount++; _playCount++; }
 
-        private void WriteInShoeFile(int Tally, int Position, int[] ShoeN) {
+        public void WriteInShoeFile(int Tally, int Position, int[] ShoeN) {
             string aPath = "";
             TextWriter txt = null;
             if (_diretoryKnown) {
@@ -116,7 +115,7 @@ namespace Play {
             }
         }
 
-        private void WriteinPlayFile() {
+        public void WriteinPlayFile() {
             string aPath = "";
             TextWriter txt = null;
             if (_diretoryKnown) {
@@ -129,7 +128,7 @@ namespace Play {
                     }
                     else {
                         txt = File.AppendText(aPath); 
-                        txt.WriteLine("hello");
+                        txt.WriteLine(_playLine);
                     }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -137,8 +136,24 @@ namespace Play {
             }
         }
 
-        private void WriteinEventFile() {
-            if (_diretoryKnown) { 
+        public void WriteinEventFile() {
+            string aPath = "";
+            TextWriter txt = null;
+            if (_diretoryKnown) {
+                try {
+                    aPath = Path.Combine(_directoryName, _eventFilename);
+                    if (_eventCount == 1) {
+                        txt = new StreamWriter(aPath);
+                        txt.WriteLine(_eventLabel);
+                        txt.WriteLine(_eventLine);
+                    }
+                    else {
+                        txt = File.AppendText(aPath);
+                        txt.WriteLine(_eventLine);
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+                finally { txt.Close(); }
             }
         }
     }
