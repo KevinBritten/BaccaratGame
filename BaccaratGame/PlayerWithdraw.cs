@@ -14,14 +14,20 @@ namespace BaccaratGame
     {
         int[] _playerStates;
         int _playerIndex;
-        public PlayerWithdraw(int playerIndex, int[] playerStates)
+        Player _currentPlayer;
+        public PlayerWithdraw(int playerIndex, int[] playerStates, Player currentPlayer)
         {
             InitializeComponent();
             _playerStates = playerStates;
             _playerIndex = playerIndex;
+            _currentPlayer = currentPlayer;
+            SetHeaderText();
         }
 
-
+        private void SetHeaderText()
+        {
+            WithdrawPlayerLabel.Text = $"{_currentPlayer.Name}, would you like to take your winnings and leave?";
+        }
         private void WithdrawButton_Click(object sender, EventArgs e)
         {
             _playerStates[_playerIndex] = 1;

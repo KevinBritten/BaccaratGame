@@ -40,17 +40,18 @@
             // 
             // BustedPlayerLabel
             // 
-            BustedPlayerLabel.AutoSize = true;
             BustedPlayerLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BustedPlayerLabel.Location = new Point(7, 9);
+            BustedPlayerLabel.Location = new Point(24, 9);
+            BustedPlayerLabel.MaximumSize = new Size(696, 150);
             BustedPlayerLabel.Name = "BustedPlayerLabel";
-            BustedPlayerLabel.Size = new Size(696, 41);
+            BustedPlayerLabel.Size = new Size(656, 86);
             BustedPlayerLabel.TabIndex = 2;
             BustedPlayerLabel.Text = "Sorry, you don't have enough funds to continue.";
+            BustedPlayerLabel.TextAlign = ContentAlignment.TopCenter;
             // 
             // ConfirmButton
             // 
-            ConfirmButton.Location = new Point(308, 170);
+            ConfirmButton.Location = new Point(304, 199);
             ConfirmButton.Name = "ConfirmButton";
             ConfirmButton.Size = new Size(94, 29);
             ConfirmButton.TabIndex = 5;
@@ -62,7 +63,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(242, 66);
+            label2.Location = new Point(238, 95);
             label2.Name = "label2";
             label2.Size = new Size(227, 28);
             label2.TabIndex = 6;
@@ -72,7 +73,7 @@
             // 
             panel1.Controls.Add(FundsInput);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(200, 114);
+            panel1.Location = new Point(196, 143);
             panel1.Name = "panel1";
             panel1.Size = new Size(310, 40);
             panel1.TabIndex = 7;
@@ -100,7 +101,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(709, 239);
+            ClientSize = new Size(709, 242);
             Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(ConfirmButton);

@@ -28,22 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SeatNumberLabel = new Label();
+            WithdrawPlayerLabel = new Label();
             WithdrawButton = new Button();
             panel1 = new Panel();
             CloseButton = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // SeatNumberLabel
+            // WithdrawPlayerLabel
             // 
-            SeatNumberLabel.AutoSize = true;
-            SeatNumberLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SeatNumberLabel.Location = new Point(12, 18);
-            SeatNumberLabel.Name = "SeatNumberLabel";
-            SeatNumberLabel.Size = new Size(700, 41);
-            SeatNumberLabel.TabIndex = 2;
-            SeatNumberLabel.Text = "Would you like to take your winnings and leave?";
+            WithdrawPlayerLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            WithdrawPlayerLabel.Location = new Point(56, 18);
+            WithdrawPlayerLabel.MaximumSize = new Size(680, 90);
+            WithdrawPlayerLabel.Name = "WithdrawPlayerLabel";
+            WithdrawPlayerLabel.Size = new Size(606, 86);
+            WithdrawPlayerLabel.TabIndex = 2;
+            WithdrawPlayerLabel.Text = "Would you like to take your winnings and leave?";
+            WithdrawPlayerLabel.TextAlign = ContentAlignment.TopCenter;
             // 
             // WithdrawButton
             // 
@@ -59,7 +60,7 @@
             // 
             panel1.Controls.Add(CloseButton);
             panel1.Controls.Add(WithdrawButton);
-            panel1.Location = new Point(214, 91);
+            panel1.Location = new Point(211, 107);
             panel1.Name = "panel1";
             panel1.Size = new Size(296, 41);
             panel1.TabIndex = 4;
@@ -78,20 +79,19 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(718, 152);
+            ClientSize = new Size(718, 172);
             Controls.Add(panel1);
-            Controls.Add(SeatNumberLabel);
+            Controls.Add(WithdrawPlayerLabel);
             Margin = new Padding(3, 4, 3, 4);
             Name = "PlayerWithdraw";
             Text = "Welcome for playing";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label SeatNumberLabel;
+        private Label WithdrawPlayerLabel;
         private Button WithdrawButton;
         private Panel panel1;
         private Button CloseButton;

@@ -435,7 +435,7 @@ namespace BaccaratGame
 
         public void ActivatePlayerWithdrawForm(int P)
         {
-            PlayerWithdraw SecondForm = new PlayerWithdraw(P, playerStates);
+            PlayerWithdraw SecondForm = new PlayerWithdraw(P, playerStates, players[P]);
             SecondForm.ShowDialog();
             if (playerStates[P] == 1)
             {

@@ -20,9 +20,13 @@ namespace BaccaratGame
             InitializeComponent();
             _players = players;
             _playerIndex = playerIndex;
+            SetHeaderText();
         }
 
-
+        private void SetHeaderText()
+        {
+            BustedPlayerLabel.Text = $"Sorry {_players[_playerIndex].Name}, you don't have enough funds to continue.";
+        }
         private void FundsInput_ValueChanged(object sender, EventArgs e)
         {
             ConfirmButton.Text = FundsInput.Value > 0 ? "Add Funds" : "Goodbye.";
