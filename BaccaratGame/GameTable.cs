@@ -717,11 +717,22 @@ namespace BaccaratGame
 
         private void LoadGameButton_Click(object sender, EventArgs e)
         {
+            ClearMessageBox();
             DialogResult result = saveDatafolderBDialog.ShowDialog();
             string directoryPath = saveDatafolderBDialog.SelectedPath;
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(directoryPath))
             {
                 if (!checkForSaveFiles(directoryPath)) UpdateMessageBox(6);
+                else
+                {
+                    PC.SetDirectoryName(directoryPath);
+                    PC.SetDirectoryKnown(true);
+                    //TODO:Uncomment when functions written
+                    //ExtractShoeData();
+                    //ExtractEventData();
+                    //ExtractPlayData();
+                }
+
             }
         }
 
@@ -739,7 +750,6 @@ namespace BaccaratGame
             }
             return result;
         }
-
 
         private void ExtractShoeData() {
             string aPath = "";
@@ -767,5 +777,6 @@ namespace BaccaratGame
         }
 
         private void ExtractEventData() { }
+        private void ExtractPlayData() { }
     }
 }
