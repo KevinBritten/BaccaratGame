@@ -731,7 +731,7 @@ namespace BaccaratGame
         private bool checkForSaveFiles(string directoryPath)
         {
             bool result = true;
-            string[] fileNames = { "Shoe.csv", "Events.csv", "Plays.csv" };
+            string[] fileNames = { PC.GetShoeFileName(), PC.GetEventFileName(), PC.GetPlayFileName() };
             foreach (string fileName in fileNames)
             {
                 string path = Path.Combine(directoryPath, fileName);
