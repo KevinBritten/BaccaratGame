@@ -43,6 +43,11 @@ namespace Play {
         public string Face(int n) { return _face[n]; }
         public string GetLongCardID(int n) { return (Face(_pack[n, 0]) + " of " + Color(_pack[n, 1])); }
         public string GetAbbrCardID(int n) { return _abbr[n]; }
+        public string GetShoeFileName() { return _shoeFilename; }
+        public string GetPlayFileName() { return _playFilename; }
+        public string GetEventFileName() { return _eventFilename; }
+        public string GetDirectoryName() { return _directoryName; }
+        public Boolean GetDirectoryKnown() { return _diretoryKnown; }
         public void SetDirectoryName(string DirName) { _directoryName = DirName; }
         public void SetDirectoryKnown(Boolean Known) { _diretoryKnown = Known; }
         public void SetPlayCount(int Count) { _playCount = Count; }

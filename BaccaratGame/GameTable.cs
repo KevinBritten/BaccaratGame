@@ -718,5 +718,32 @@ namespace BaccaratGame
         {
 
         }
+
+        private void ExtractShoeData() {
+            string aPath = "";
+            TextWriter txt = null;
+            if (PC.GetDirectoryKnown())
+            {
+                try
+                {
+                    aPath = Path.Combine(PC.GetDirectoryName(), PC.GetShoeFileName());
+                    //if (_eventCount == 1)
+                    //{
+                    //    txt = new StreamWriter(aPath);
+                    //    txt.WriteLine(_eventLabel);
+                    //    txt.WriteLine(_eventLine);
+                    //}
+                    //else
+                    //{
+                    //    txt = File.AppendText(aPath);
+                    //    txt.WriteLine(_eventLine);
+                    //}
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+                finally { txt.Close(); }
+            }
+        }
+
+        private void ExtractEventData() { }
     }
 }
