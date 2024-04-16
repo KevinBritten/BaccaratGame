@@ -161,7 +161,8 @@
             avatarPictureBox9.Image = Properties.Resources.monkey;
             avatarPictureBox9.Location = new Point(359, 381);
             avatarPictureBox9.Name = "avatarPictureBox9";
-            avatarPictureBox9.Size = new Size(169, 171);
+            avatarPictureBox9.Size = new Size(160, 160);
+            avatarPictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
             avatarPictureBox9.TabIndex = 8;
             avatarPictureBox9.TabStop = false;
             avatarPictureBox9.Click += avatarPictureBox9_Click;
@@ -171,7 +172,8 @@
             avatarPictureBox8.Image = Properties.Resources.monkey;
             avatarPictureBox8.Location = new Point(179, 381);
             avatarPictureBox8.Name = "avatarPictureBox8";
-            avatarPictureBox8.Size = new Size(169, 171);
+            avatarPictureBox8.Size = new Size(160, 160);
+            avatarPictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
             avatarPictureBox8.TabIndex = 7;
             avatarPictureBox8.TabStop = false;
             avatarPictureBox8.Click += avatarPictureBox8_Click;
@@ -181,7 +183,8 @@
             avatarPictureBox7.Image = Properties.Resources.monkey;
             avatarPictureBox7.Location = new Point(0, 381);
             avatarPictureBox7.Name = "avatarPictureBox7";
-            avatarPictureBox7.Size = new Size(169, 171);
+            avatarPictureBox7.Size = new Size(160, 160);
+            avatarPictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
             avatarPictureBox7.TabIndex = 6;
             avatarPictureBox7.TabStop = false;
             avatarPictureBox7.Click += avatarPictureBox7_Click;
@@ -191,7 +194,8 @@
             avatarPictureBox6.Image = Properties.Resources.monkey;
             avatarPictureBox6.Location = new Point(359, 207);
             avatarPictureBox6.Name = "avatarPictureBox6";
-            avatarPictureBox6.Size = new Size(169, 171);
+            avatarPictureBox6.Size = new Size(160, 160);
+            avatarPictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
             avatarPictureBox6.TabIndex = 5;
             avatarPictureBox6.TabStop = false;
             avatarPictureBox6.Click += avatarPictureBox6_Click;
@@ -201,7 +205,8 @@
             avatarPictureBox5.Image = Properties.Resources.monkey;
             avatarPictureBox5.Location = new Point(179, 207);
             avatarPictureBox5.Name = "avatarPictureBox5";
-            avatarPictureBox5.Size = new Size(169, 171);
+            avatarPictureBox5.Size = new Size(160, 160);
+            avatarPictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
             avatarPictureBox5.TabIndex = 4;
             avatarPictureBox5.TabStop = false;
             avatarPictureBox5.Click += avatarPictureBox5_Click;
@@ -211,7 +216,8 @@
             avatarPictureBox4.Image = Properties.Resources.monkey;
             avatarPictureBox4.Location = new Point(0, 207);
             avatarPictureBox4.Name = "avatarPictureBox4";
-            avatarPictureBox4.Size = new Size(169, 171);
+            avatarPictureBox4.Size = new Size(160, 160);
+            avatarPictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             avatarPictureBox4.TabIndex = 3;
             avatarPictureBox4.TabStop = false;
             avatarPictureBox4.Click += avatarPictureBox4_Click;
@@ -221,7 +227,8 @@
             avatarPictureBox3.Image = Properties.Resources.monkey;
             avatarPictureBox3.Location = new Point(359, 34);
             avatarPictureBox3.Name = "avatarPictureBox3";
-            avatarPictureBox3.Size = new Size(169, 171);
+            avatarPictureBox3.Size = new Size(160, 160);
+            avatarPictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             avatarPictureBox3.TabIndex = 2;
             avatarPictureBox3.TabStop = false;
             avatarPictureBox3.Click += avatarPictureBox3_Click;
@@ -231,7 +238,8 @@
             avatarPictureBox2.Image = Properties.Resources.cat;
             avatarPictureBox2.Location = new Point(179, 34);
             avatarPictureBox2.Name = "avatarPictureBox2";
-            avatarPictureBox2.Size = new Size(169, 171);
+            avatarPictureBox2.Size = new Size(160, 160);
+            avatarPictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             avatarPictureBox2.TabIndex = 1;
             avatarPictureBox2.TabStop = false;
             avatarPictureBox2.Click += avatarPictureBox2_Click;
@@ -242,7 +250,8 @@
             avatarPictureBox1.Image = Properties.Resources.monkey;
             avatarPictureBox1.Location = new Point(0, 34);
             avatarPictureBox1.Name = "avatarPictureBox1";
-            avatarPictureBox1.Size = new Size(169, 171);
+            avatarPictureBox1.Size = new Size(160, 160);
+            avatarPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             avatarPictureBox1.TabIndex = 0;
             avatarPictureBox1.TabStop = false;
             avatarPictureBox1.Click += avatarPictureBox1_Click;
