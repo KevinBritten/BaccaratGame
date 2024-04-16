@@ -174,7 +174,8 @@ namespace BaccaratGame
                 "Please make sure all players have bet to play.",
                 "Player hand wins!",
                 "Dealer hand wins!",
-                "This round is a tie."
+                "This round is a tie.",
+                "No save files were found in selected directory"
             };
             messageBox.Text = messages[messageCode];
         }
@@ -716,7 +717,27 @@ namespace BaccaratGame
 
         private void LoadGameButton_Click(object sender, EventArgs e)
         {
-
+            DialogResult result = saveDatafolderBDialog.ShowDialog();
+            string directoryPath = saveDatafolderBDialog.SelectedPath;
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(directoryPath))
+            {
+                if (!checkForSaveFiles(directoryPath)) UpdateMessageBox(6);
+            }
         }
+
+
+
+        private bool checkForSaveFiles(string directoryPath)
+        {
+            bool result = true;
+            string[] fileNames = { "Shoe.csv", "Events.csv", "Plays.csv" };
+            foreach (string fileName in fileNames)
+            {
+                string path = Path.Combine(directoryPath, fileName);
+                if (!File.Exists(path)) result = false; 
+            }
+            return result;
+        }
+
     }
 }
