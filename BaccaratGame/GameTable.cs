@@ -127,6 +127,7 @@ namespace BaccaratGame
                     PlayerScoreV.Text = Convert.ToString(Scores[0]);
                     BankerScoreV.Text = Convert.ToString(Scores[1]);
                     SetBettingAreaEnabled();
+                    SaveDataInFile();
                     GameState = 3;
                     GameControlButton.Text = "Settle bet";
                     break;
@@ -134,7 +135,6 @@ namespace BaccaratGame
                     AdjustPlayersFunds();
                     ClearPlayerBets();
                     UpdatePlayerStates();
-                    SaveDataInFile();
                     H.ResetHand();
                     ClearAndDisableAllBettingInputs();
                     ResetShoeBoxes();
@@ -669,7 +669,7 @@ namespace BaccaratGame
             for (int i = 0; i < players.Length; i++)
             {
                 if (playerStates[i] == 0) { PC.LineUpNoPlayer(); }
-                else { PC.LineUpPlayer(players[i].Name, players[i].Funds, players[i].Bets); }
+                else { PC.LineUpPlayer(players[i].Name, players[i].AvatarName, players[i].Funds, players[i].Bets); }
             }
             PC.WriteinPlayFile();
             PC.RecordPlayEvent(H.Player(), H.Banker(), H.ThirdCard());
