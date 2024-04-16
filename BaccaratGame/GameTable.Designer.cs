@@ -59,6 +59,10 @@
             BankerBox0 = new PictureBox();
             GameControlButton = new Button();
             groupBox1 = new GroupBox();
+            WinLossLabelPlayer4 = new Label();
+            WinLossLabelPlayer3 = new Label();
+            WinLossLabelPlayer2 = new Label();
+            WinLossLabelPlayer1 = new Label();
             AvatarPictureBoxPlayer4 = new PictureBox();
             AvatarPictureBoxPlayer3 = new PictureBox();
             AvatarPictureBoxPlayer2 = new PictureBox();
@@ -104,10 +108,7 @@
             Seat1ControlButton = new Button();
             saveDatafolderBDialog = new FolderBrowserDialog();
             SetDataSavebutton = new Button();
-            WinLossLabelPlayer4 = new Label();
-            WinLossLabelPlayer3 = new Label();
-            WinLossLabelPlayer2 = new Label();
-            WinLossLabelPlayer1 = new Label();
+            LoadGameButton = new Button();
             ShoeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ShoeBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ShoeBox9).BeginInit();
@@ -170,141 +171,126 @@
             ShoeGroupBox.Controls.Add(ShoeBox0);
             ShoeGroupBox.Controls.Add(ShoeProgressBar);
             ShoeGroupBox.Controls.Add(ShoePicture);
-            ShoeGroupBox.Location = new Point(14, 16);
-            ShoeGroupBox.Margin = new Padding(3, 4, 3, 4);
+            ShoeGroupBox.Location = new Point(12, 12);
             ShoeGroupBox.Name = "ShoeGroupBox";
-            ShoeGroupBox.Padding = new Padding(3, 4, 3, 4);
-            ShoeGroupBox.Size = new Size(825, 163);
+            ShoeGroupBox.Size = new Size(722, 122);
             ShoeGroupBox.TabIndex = 0;
             ShoeGroupBox.TabStop = false;
             ShoeGroupBox.Text = "Shoe area";
             // 
             // ShoeBox10
             // 
-            ShoeBox10.Location = new Point(654, 27);
-            ShoeBox10.Margin = new Padding(3, 4, 3, 4);
+            ShoeBox10.Location = new Point(572, 20);
             ShoeBox10.Name = "ShoeBox10";
-            ShoeBox10.Size = new Size(46, 80);
+            ShoeBox10.Size = new Size(40, 60);
             ShoeBox10.SizeMode = PictureBoxSizeMode.Zoom;
             ShoeBox10.TabIndex = 12;
             ShoeBox10.TabStop = false;
             // 
             // ShoeBox9
             // 
-            ShoeBox9.Location = new Point(601, 27);
-            ShoeBox9.Margin = new Padding(3, 4, 3, 4);
+            ShoeBox9.Location = new Point(526, 20);
             ShoeBox9.Name = "ShoeBox9";
-            ShoeBox9.Size = new Size(46, 80);
+            ShoeBox9.Size = new Size(40, 60);
             ShoeBox9.SizeMode = PictureBoxSizeMode.Zoom;
             ShoeBox9.TabIndex = 11;
             ShoeBox9.TabStop = false;
             // 
             // ShoeBox8
             // 
-            ShoeBox8.Location = new Point(549, 27);
-            ShoeBox8.Margin = new Padding(3, 4, 3, 4);
+            ShoeBox8.Location = new Point(480, 20);
             ShoeBox8.Name = "ShoeBox8";
-            ShoeBox8.Size = new Size(46, 80);
+            ShoeBox8.Size = new Size(40, 60);
             ShoeBox8.SizeMode = PictureBoxSizeMode.Zoom;
             ShoeBox8.TabIndex = 10;
             ShoeBox8.TabStop = false;
             // 
             // ShoeBox7
             // 
-            ShoeBox7.Location = new Point(496, 27);
-            ShoeBox7.Margin = new Padding(3, 4, 3, 4);
+            ShoeBox7.Location = new Point(434, 20);
             ShoeBox7.Name = "ShoeBox7";
-            ShoeBox7.Size = new Size(46, 80);
+            ShoeBox7.Size = new Size(40, 60);
             ShoeBox7.SizeMode = PictureBoxSizeMode.Zoom;
             ShoeBox7.TabIndex = 9;
             ShoeBox7.TabStop = false;
             // 
             // ShoeBox6
             // 
-            ShoeBox6.Location = new Point(443, 27);
-            ShoeBox6.Margin = new Padding(3, 4, 3, 4);
+            ShoeBox6.Location = new Point(388, 20);
             ShoeBox6.Name = "ShoeBox6";
-            ShoeBox6.Size = new Size(46, 80);
+            ShoeBox6.Size = new Size(40, 60);
             ShoeBox6.SizeMode = PictureBoxSizeMode.Zoom;
             ShoeBox6.TabIndex = 8;
             ShoeBox6.TabStop = false;
             // 
             // ShoeBox5
             // 
-            ShoeBox5.Location = new Point(391, 27);
-            ShoeBox5.Margin = new Padding(3, 4, 3, 4);
+            ShoeBox5.Location = new Point(342, 20);
             ShoeBox5.Name = "ShoeBox5";
-            ShoeBox5.Size = new Size(46, 80);
+            ShoeBox5.Size = new Size(40, 60);
             ShoeBox5.SizeMode = PictureBoxSizeMode.Zoom;
             ShoeBox5.TabIndex = 7;
             ShoeBox5.TabStop = false;
             // 
             // ShoeBox4
             // 
-            ShoeBox4.Location = new Point(338, 27);
-            ShoeBox4.Margin = new Padding(3, 4, 3, 4);
+            ShoeBox4.Location = new Point(296, 20);
             ShoeBox4.Name = "ShoeBox4";
-            ShoeBox4.Size = new Size(46, 80);
+            ShoeBox4.Size = new Size(40, 60);
             ShoeBox4.SizeMode = PictureBoxSizeMode.Zoom;
             ShoeBox4.TabIndex = 6;
             ShoeBox4.TabStop = false;
             // 
             // ShoeBox3
             // 
-            ShoeBox3.Location = new Point(286, 27);
-            ShoeBox3.Margin = new Padding(3, 4, 3, 4);
+            ShoeBox3.Location = new Point(250, 20);
             ShoeBox3.Name = "ShoeBox3";
-            ShoeBox3.Size = new Size(46, 80);
+            ShoeBox3.Size = new Size(40, 60);
             ShoeBox3.SizeMode = PictureBoxSizeMode.Zoom;
             ShoeBox3.TabIndex = 5;
             ShoeBox3.TabStop = false;
             // 
             // ShoeBox2
             // 
-            ShoeBox2.Location = new Point(233, 27);
-            ShoeBox2.Margin = new Padding(3, 4, 3, 4);
+            ShoeBox2.Location = new Point(204, 20);
             ShoeBox2.Name = "ShoeBox2";
-            ShoeBox2.Size = new Size(46, 80);
+            ShoeBox2.Size = new Size(40, 60);
             ShoeBox2.SizeMode = PictureBoxSizeMode.Zoom;
             ShoeBox2.TabIndex = 4;
             ShoeBox2.TabStop = false;
             // 
             // ShoeBox1
             // 
-            ShoeBox1.Location = new Point(181, 27);
-            ShoeBox1.Margin = new Padding(3, 4, 3, 4);
+            ShoeBox1.Location = new Point(158, 20);
             ShoeBox1.Name = "ShoeBox1";
-            ShoeBox1.Size = new Size(46, 80);
+            ShoeBox1.Size = new Size(40, 60);
             ShoeBox1.SizeMode = PictureBoxSizeMode.Zoom;
             ShoeBox1.TabIndex = 3;
             ShoeBox1.TabStop = false;
             // 
             // ShoeBox0
             // 
-            ShoeBox0.Location = new Point(128, 27);
-            ShoeBox0.Margin = new Padding(3, 4, 3, 4);
+            ShoeBox0.Location = new Point(112, 20);
             ShoeBox0.Name = "ShoeBox0";
-            ShoeBox0.Size = new Size(46, 80);
+            ShoeBox0.Size = new Size(40, 60);
             ShoeBox0.SizeMode = PictureBoxSizeMode.Zoom;
             ShoeBox0.TabIndex = 2;
             ShoeBox0.TabStop = false;
             // 
             // ShoeProgressBar
             // 
-            ShoeProgressBar.Location = new Point(128, 115);
-            ShoeProgressBar.Margin = new Padding(3, 4, 3, 4);
+            ShoeProgressBar.Location = new Point(112, 86);
             ShoeProgressBar.Name = "ShoeProgressBar";
-            ShoeProgressBar.Size = new Size(688, 40);
+            ShoeProgressBar.Size = new Size(602, 30);
             ShoeProgressBar.TabIndex = 1;
             ShoeProgressBar.Value = 100;
             // 
             // ShoePicture
             // 
             ShoePicture.Image = (Image)resources.GetObject("ShoePicture.Image");
-            ShoePicture.Location = new Point(7, 43);
-            ShoePicture.Margin = new Padding(3, 4, 3, 4);
+            ShoePicture.Location = new Point(6, 32);
             ShoePicture.Name = "ShoePicture";
-            ShoePicture.Size = new Size(114, 85);
+            ShoePicture.Size = new Size(100, 64);
             ShoePicture.SizeMode = PictureBoxSizeMode.Zoom;
             ShoePicture.TabIndex = 0;
             ShoePicture.TabStop = false;
@@ -376,11 +362,9 @@
             PlayerGroupBox.Controls.Add(PlayerBox2);
             PlayerGroupBox.Controls.Add(PlayerBox1);
             PlayerGroupBox.Controls.Add(PlayerBox0);
-            PlayerGroupBox.Location = new Point(181, 199);
-            PlayerGroupBox.Margin = new Padding(3, 4, 3, 4);
+            PlayerGroupBox.Location = new Point(158, 149);
             PlayerGroupBox.Name = "PlayerGroupBox";
-            PlayerGroupBox.Padding = new Padding(3, 4, 3, 4);
-            PlayerGroupBox.Size = new Size(229, 133);
+            PlayerGroupBox.Size = new Size(200, 100);
             PlayerGroupBox.TabIndex = 1;
             PlayerGroupBox.TabStop = false;
             PlayerGroupBox.Text = "Player Hand";
@@ -388,48 +372,45 @@
             // PlayerScoreV
             // 
             PlayerScoreV.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            PlayerScoreV.Location = new Point(179, 65);
+            PlayerScoreV.Location = new Point(157, 49);
             PlayerScoreV.Name = "PlayerScoreV";
-            PlayerScoreV.Size = new Size(34, 60);
+            PlayerScoreV.Size = new Size(30, 45);
             PlayerScoreV.TabIndex = 4;
             PlayerScoreV.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // PlayerScore
             // 
             PlayerScore.AutoSize = true;
-            PlayerScore.Location = new Point(169, 33);
+            PlayerScore.Location = new Point(148, 25);
             PlayerScore.Name = "PlayerScore";
-            PlayerScore.Size = new Size(49, 20);
+            PlayerScore.Size = new Size(39, 15);
             PlayerScore.TabIndex = 3;
             PlayerScore.Text = "Score:";
             PlayerScore.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // PlayerBox2
             // 
-            PlayerBox2.Location = new Point(112, 45);
-            PlayerBox2.Margin = new Padding(3, 4, 3, 4);
+            PlayerBox2.Location = new Point(98, 34);
             PlayerBox2.Name = "PlayerBox2";
-            PlayerBox2.Size = new Size(46, 80);
+            PlayerBox2.Size = new Size(40, 60);
             PlayerBox2.SizeMode = PictureBoxSizeMode.Zoom;
             PlayerBox2.TabIndex = 2;
             PlayerBox2.TabStop = false;
             // 
             // PlayerBox1
             // 
-            PlayerBox1.Location = new Point(59, 45);
-            PlayerBox1.Margin = new Padding(3, 4, 3, 4);
+            PlayerBox1.Location = new Point(52, 34);
             PlayerBox1.Name = "PlayerBox1";
-            PlayerBox1.Size = new Size(46, 80);
+            PlayerBox1.Size = new Size(40, 60);
             PlayerBox1.SizeMode = PictureBoxSizeMode.Zoom;
             PlayerBox1.TabIndex = 1;
             PlayerBox1.TabStop = false;
             // 
             // PlayerBox0
             // 
-            PlayerBox0.Location = new Point(7, 45);
-            PlayerBox0.Margin = new Padding(3, 4, 3, 4);
+            PlayerBox0.Location = new Point(6, 34);
             PlayerBox0.Name = "PlayerBox0";
-            PlayerBox0.Size = new Size(46, 80);
+            PlayerBox0.Size = new Size(40, 60);
             PlayerBox0.SizeMode = PictureBoxSizeMode.Zoom;
             PlayerBox0.TabIndex = 0;
             PlayerBox0.TabStop = false;
@@ -441,11 +422,9 @@
             BankerGroupBox.Controls.Add(BankerBox2);
             BankerGroupBox.Controls.Add(BankerBox1);
             BankerGroupBox.Controls.Add(BankerBox0);
-            BankerGroupBox.Location = new Point(432, 199);
-            BankerGroupBox.Margin = new Padding(3, 4, 3, 4);
+            BankerGroupBox.Location = new Point(378, 149);
             BankerGroupBox.Name = "BankerGroupBox";
-            BankerGroupBox.Padding = new Padding(3, 4, 3, 4);
-            BankerGroupBox.Size = new Size(229, 133);
+            BankerGroupBox.Size = new Size(200, 100);
             BankerGroupBox.TabIndex = 2;
             BankerGroupBox.TabStop = false;
             BankerGroupBox.Text = "Banker Hand";
@@ -453,58 +432,54 @@
             // BankerScoreV
             // 
             BankerScoreV.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BankerScoreV.Location = new Point(179, 65);
+            BankerScoreV.Location = new Point(157, 49);
             BankerScoreV.Name = "BankerScoreV";
-            BankerScoreV.Size = new Size(34, 60);
+            BankerScoreV.Size = new Size(30, 45);
             BankerScoreV.TabIndex = 4;
             BankerScoreV.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // BankerScore
             // 
             BankerScore.AutoSize = true;
-            BankerScore.Location = new Point(169, 33);
+            BankerScore.Location = new Point(148, 25);
             BankerScore.Name = "BankerScore";
-            BankerScore.Size = new Size(49, 20);
+            BankerScore.Size = new Size(39, 15);
             BankerScore.TabIndex = 3;
             BankerScore.Text = "Score:";
             BankerScore.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // BankerBox2
             // 
-            BankerBox2.Location = new Point(112, 45);
-            BankerBox2.Margin = new Padding(3, 4, 3, 4);
+            BankerBox2.Location = new Point(98, 34);
             BankerBox2.Name = "BankerBox2";
-            BankerBox2.Size = new Size(46, 80);
+            BankerBox2.Size = new Size(40, 60);
             BankerBox2.SizeMode = PictureBoxSizeMode.Zoom;
             BankerBox2.TabIndex = 2;
             BankerBox2.TabStop = false;
             // 
             // BankerBox1
             // 
-            BankerBox1.Location = new Point(59, 45);
-            BankerBox1.Margin = new Padding(3, 4, 3, 4);
+            BankerBox1.Location = new Point(52, 34);
             BankerBox1.Name = "BankerBox1";
-            BankerBox1.Size = new Size(46, 80);
+            BankerBox1.Size = new Size(40, 60);
             BankerBox1.SizeMode = PictureBoxSizeMode.Zoom;
             BankerBox1.TabIndex = 1;
             BankerBox1.TabStop = false;
             // 
             // BankerBox0
             // 
-            BankerBox0.Location = new Point(7, 45);
-            BankerBox0.Margin = new Padding(3, 4, 3, 4);
+            BankerBox0.Location = new Point(6, 34);
             BankerBox0.Name = "BankerBox0";
-            BankerBox0.Size = new Size(46, 80);
+            BankerBox0.Size = new Size(40, 60);
             BankerBox0.SizeMode = PictureBoxSizeMode.Zoom;
             BankerBox0.TabIndex = 0;
             BankerBox0.TabStop = false;
             // 
             // GameControlButton
             // 
-            GameControlButton.Location = new Point(1097, 741);
-            GameControlButton.Margin = new Padding(3, 4, 3, 4);
+            GameControlButton.Location = new Point(960, 556);
             GameControlButton.Name = "GameControlButton";
-            GameControlButton.Size = new Size(114, 40);
+            GameControlButton.Size = new Size(100, 30);
             GameControlButton.TabIndex = 3;
             GameControlButton.Text = "Bet";
             GameControlButton.UseVisualStyleBackColor = true;
@@ -525,21 +500,62 @@
             groupBox1.Controls.Add(messageBox);
             groupBox1.Controls.Add(PlayerGroupBox);
             groupBox1.Controls.Add(BankerGroupBox);
-            groupBox1.Location = new Point(14, 187);
-            groupBox1.Margin = new Padding(3, 4, 3, 4);
+            groupBox1.Location = new Point(12, 140);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(866, 532);
+            groupBox1.Size = new Size(758, 399);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
+            // 
+            // WinLossLabelPlayer4
+            // 
+            WinLossLabelPlayer4.AutoSize = true;
+            WinLossLabelPlayer4.BackColor = Color.Transparent;
+            WinLossLabelPlayer4.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            WinLossLabelPlayer4.Location = new Point(594, 190);
+            WinLossLabelPlayer4.Name = "WinLossLabelPlayer4";
+            WinLossLabelPlayer4.Size = new Size(79, 32);
+            WinLossLabelPlayer4.TabIndex = 11;
+            WinLossLabelPlayer4.Text = "WLP4";
+            // 
+            // WinLossLabelPlayer3
+            // 
+            WinLossLabelPlayer3.AutoSize = true;
+            WinLossLabelPlayer3.BackColor = Color.Transparent;
+            WinLossLabelPlayer3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            WinLossLabelPlayer3.Location = new Point(408, 272);
+            WinLossLabelPlayer3.Name = "WinLossLabelPlayer3";
+            WinLossLabelPlayer3.Size = new Size(79, 32);
+            WinLossLabelPlayer3.TabIndex = 10;
+            WinLossLabelPlayer3.Text = "WLP3";
+            // 
+            // WinLossLabelPlayer2
+            // 
+            WinLossLabelPlayer2.AutoSize = true;
+            WinLossLabelPlayer2.BackColor = Color.Transparent;
+            WinLossLabelPlayer2.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            WinLossLabelPlayer2.Location = new Point(256, 272);
+            WinLossLabelPlayer2.Name = "WinLossLabelPlayer2";
+            WinLossLabelPlayer2.Size = new Size(79, 32);
+            WinLossLabelPlayer2.TabIndex = 9;
+            WinLossLabelPlayer2.Text = "WLP2";
+            // 
+            // WinLossLabelPlayer1
+            // 
+            WinLossLabelPlayer1.AutoSize = true;
+            WinLossLabelPlayer1.BackColor = Color.Transparent;
+            WinLossLabelPlayer1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            WinLossLabelPlayer1.Location = new Point(56, 189);
+            WinLossLabelPlayer1.Name = "WinLossLabelPlayer1";
+            WinLossLabelPlayer1.Size = new Size(79, 32);
+            WinLossLabelPlayer1.TabIndex = 8;
+            WinLossLabelPlayer1.Text = "WLP1";
             // 
             // AvatarPictureBoxPlayer4
             // 
             AvatarPictureBoxPlayer4.BackColor = Color.Transparent;
-            AvatarPictureBoxPlayer4.Location = new Point(672, 473);
-            AvatarPictureBoxPlayer4.Margin = new Padding(3, 4, 3, 4);
+            AvatarPictureBoxPlayer4.Location = new Point(584, 230);
             AvatarPictureBoxPlayer4.Name = "AvatarPictureBoxPlayer4";
-            AvatarPictureBoxPlayer4.Size = new Size(83, 97);
+            AvatarPictureBoxPlayer4.Size = new Size(73, 73);
             AvatarPictureBoxPlayer4.SizeMode = PictureBoxSizeMode.Zoom;
             AvatarPictureBoxPlayer4.TabIndex = 7;
             AvatarPictureBoxPlayer4.TabStop = false;
@@ -547,10 +563,9 @@
             // AvatarPictureBoxPlayer3
             // 
             AvatarPictureBoxPlayer3.BackColor = Color.Transparent;
-            AvatarPictureBoxPlayer3.Location = new Point(517, 473);
-            AvatarPictureBoxPlayer3.Margin = new Padding(3, 4, 3, 4);
+            AvatarPictureBoxPlayer3.Location = new Point(493, 272);
             AvatarPictureBoxPlayer3.Name = "AvatarPictureBoxPlayer3";
-            AvatarPictureBoxPlayer3.Size = new Size(83, 97);
+            AvatarPictureBoxPlayer3.Size = new Size(73, 73);
             AvatarPictureBoxPlayer3.SizeMode = PictureBoxSizeMode.Zoom;
             AvatarPictureBoxPlayer3.TabIndex = 6;
             AvatarPictureBoxPlayer3.TabStop = false;
@@ -558,10 +573,9 @@
             // AvatarPictureBoxPlayer2
             // 
             AvatarPictureBoxPlayer2.BackColor = Color.Transparent;
-            AvatarPictureBoxPlayer2.Location = new Point(361, 473);
-            AvatarPictureBoxPlayer2.Margin = new Padding(3, 4, 3, 4);
+            AvatarPictureBoxPlayer2.Location = new Point(177, 272);
             AvatarPictureBoxPlayer2.Name = "AvatarPictureBoxPlayer2";
-            AvatarPictureBoxPlayer2.Size = new Size(83, 97);
+            AvatarPictureBoxPlayer2.Size = new Size(73, 73);
             AvatarPictureBoxPlayer2.SizeMode = PictureBoxSizeMode.Zoom;
             AvatarPictureBoxPlayer2.TabIndex = 5;
             AvatarPictureBoxPlayer2.TabStop = false;
@@ -569,28 +583,28 @@
             // AvatarPictureBoxPlayer1
             // 
             AvatarPictureBoxPlayer1.BackColor = Color.Transparent;
-            AvatarPictureBoxPlayer1.Location = new Point(207, 473);
-            AvatarPictureBoxPlayer1.Margin = new Padding(3, 4, 3, 4);
+            AvatarPictureBoxPlayer1.Location = new Point(79, 230);
             AvatarPictureBoxPlayer1.Name = "AvatarPictureBoxPlayer1";
-            AvatarPictureBoxPlayer1.Size = new Size(83, 97);
+            AvatarPictureBoxPlayer1.Size = new Size(73, 73);
             AvatarPictureBoxPlayer1.SizeMode = PictureBoxSizeMode.Zoom;
             AvatarPictureBoxPlayer1.TabIndex = 4;
             AvatarPictureBoxPlayer1.TabStop = false;
             // 
             // messageBox
             // 
-            messageBox.Location = new Point(0, 13);
+            messageBox.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            messageBox.Location = new Point(158, 77);
+            messageBox.Margin = new Padding(3, 2, 3, 2);
             messageBox.Name = "messageBox";
             messageBox.ReadOnly = true;
-            messageBox.Size = new Size(866, 27);
+            messageBox.Size = new Size(420, 39);
             messageBox.TabIndex = 3;
             // 
             // RulesButton
             // 
-            RulesButton.Location = new Point(1253, 16);
-            RulesButton.Margin = new Padding(3, 4, 3, 4);
+            RulesButton.Location = new Point(1096, 12);
             RulesButton.Name = "RulesButton";
-            RulesButton.Size = new Size(114, 40);
+            RulesButton.Size = new Size(100, 30);
             RulesButton.TabIndex = 5;
             RulesButton.Text = "Rules";
             RulesButton.UseVisualStyleBackColor = true;
@@ -604,9 +618,11 @@
             BettingAreaGroupBox.Controls.Add(panel2);
             BettingAreaGroupBox.Controls.Add(panel1);
             BettingAreaGroupBox.Enabled = false;
-            BettingAreaGroupBox.Location = new Point(886, 187);
+            BettingAreaGroupBox.Location = new Point(775, 140);
+            BettingAreaGroupBox.Margin = new Padding(3, 2, 3, 2);
             BettingAreaGroupBox.Name = "BettingAreaGroupBox";
-            BettingAreaGroupBox.Size = new Size(480, 532);
+            BettingAreaGroupBox.Padding = new Padding(3, 2, 3, 2);
+            BettingAreaGroupBox.Size = new Size(420, 399);
             BettingAreaGroupBox.TabIndex = 10;
             BettingAreaGroupBox.TabStop = false;
             // 
@@ -616,44 +632,45 @@
             panel5.Controls.Add(label7);
             panel5.Controls.Add(label6);
             panel5.Controls.Add(label5);
-            panel5.Location = new Point(0, 72);
+            panel5.Location = new Point(0, 54);
+            panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(480, 43);
+            panel5.Size = new Size(420, 32);
             panel5.TabIndex = 7;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(416, 11);
+            label8.Location = new Point(364, 8);
             label8.Name = "label8";
-            label8.Size = new Size(29, 20);
+            label8.Size = new Size(22, 15);
             label8.TabIndex = 3;
             label8.Text = "Tie";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(330, 11);
+            label7.Location = new Point(289, 8);
             label7.Name = "label7";
-            label7.Size = new Size(53, 20);
+            label7.Size = new Size(40, 15);
             label7.TabIndex = 2;
             label7.Text = "Dealer";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(243, 11);
+            label6.Location = new Point(213, 8);
             label6.Name = "label6";
-            label6.Size = new Size(49, 20);
+            label6.Size = new Size(39, 15);
             label6.TabIndex = 1;
             label6.Text = "Player";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(155, 11);
+            label5.Location = new Point(136, 8);
             label5.Name = "label5";
-            label5.Size = new Size(47, 20);
+            label5.Size = new Size(39, 15);
             label5.TabIndex = 0;
             label5.Text = "Funds";
             // 
@@ -664,55 +681,60 @@
             panel3.Controls.Add(PlayerBetPlayer3);
             panel3.Controls.Add(FundBoxPlayer3);
             panel3.Controls.Add(NameLabelPlayer3);
-            panel3.Location = new Point(0, 256);
+            panel3.Location = new Point(0, 192);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(480, 49);
+            panel3.Size = new Size(420, 37);
             panel3.TabIndex = 5;
             // 
             // TieBetPlayer3
             // 
             TieBetPlayer3.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            TieBetPlayer3.Location = new Point(406, 12);
+            TieBetPlayer3.Location = new Point(355, 9);
+            TieBetPlayer3.Margin = new Padding(3, 2, 3, 2);
             TieBetPlayer3.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             TieBetPlayer3.Name = "TieBetPlayer3";
-            TieBetPlayer3.Size = new Size(64, 27);
+            TieBetPlayer3.Size = new Size(56, 23);
             TieBetPlayer3.TabIndex = 3;
             TieBetPlayer3.ValueChanged += TieBetPlayer3_ValueChanged;
             // 
             // DealerBetPlayer3
             // 
             DealerBetPlayer3.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            DealerBetPlayer3.Location = new Point(322, 12);
+            DealerBetPlayer3.Location = new Point(282, 9);
+            DealerBetPlayer3.Margin = new Padding(3, 2, 3, 2);
             DealerBetPlayer3.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             DealerBetPlayer3.Name = "DealerBetPlayer3";
-            DealerBetPlayer3.Size = new Size(64, 27);
+            DealerBetPlayer3.Size = new Size(56, 23);
             DealerBetPlayer3.TabIndex = 2;
             DealerBetPlayer3.ValueChanged += DealerBetPlayer3_ValueChanged;
             // 
             // PlayerBetPlayer3
             // 
             PlayerBetPlayer3.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            PlayerBetPlayer3.Location = new Point(235, 12);
+            PlayerBetPlayer3.Location = new Point(206, 9);
+            PlayerBetPlayer3.Margin = new Padding(3, 2, 3, 2);
             PlayerBetPlayer3.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             PlayerBetPlayer3.Name = "PlayerBetPlayer3";
-            PlayerBetPlayer3.Size = new Size(64, 27);
+            PlayerBetPlayer3.Size = new Size(56, 23);
             PlayerBetPlayer3.TabIndex = 1;
             PlayerBetPlayer3.ValueChanged += PlayerBetPlayer3_ValueChanged;
             // 
             // FundBoxPlayer3
             // 
-            FundBoxPlayer3.Location = new Point(149, 12);
+            FundBoxPlayer3.Location = new Point(130, 9);
+            FundBoxPlayer3.Margin = new Padding(3, 2, 3, 2);
             FundBoxPlayer3.Name = "FundBoxPlayer3";
             FundBoxPlayer3.ReadOnly = true;
-            FundBoxPlayer3.Size = new Size(67, 27);
+            FundBoxPlayer3.Size = new Size(59, 23);
             FundBoxPlayer3.TabIndex = 1;
             // 
             // NameLabelPlayer3
             // 
             NameLabelPlayer3.AutoSize = true;
-            NameLabelPlayer3.Location = new Point(5, 15);
+            NameLabelPlayer3.Location = new Point(4, 11);
             NameLabelPlayer3.Name = "NameLabelPlayer3";
-            NameLabelPlayer3.Size = new Size(61, 20);
+            NameLabelPlayer3.Size = new Size(48, 15);
             NameLabelPlayer3.TabIndex = 0;
             NameLabelPlayer3.Text = "Player 3";
             // 
@@ -723,55 +745,60 @@
             panel4.Controls.Add(PlayerBetPlayer4);
             panel4.Controls.Add(FundBoxPlayer4);
             panel4.Controls.Add(NameLabelPlayer4);
-            panel4.Location = new Point(0, 324);
+            panel4.Location = new Point(0, 243);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(480, 49);
+            panel4.Size = new Size(420, 37);
             panel4.TabIndex = 6;
             // 
             // TieBetPlayer4
             // 
             TieBetPlayer4.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            TieBetPlayer4.Location = new Point(406, 12);
+            TieBetPlayer4.Location = new Point(355, 9);
+            TieBetPlayer4.Margin = new Padding(3, 2, 3, 2);
             TieBetPlayer4.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             TieBetPlayer4.Name = "TieBetPlayer4";
-            TieBetPlayer4.Size = new Size(64, 27);
+            TieBetPlayer4.Size = new Size(56, 23);
             TieBetPlayer4.TabIndex = 3;
             TieBetPlayer4.ValueChanged += TieBetPlayer4_ValueChanged;
             // 
             // DealerBetPlayer4
             // 
             DealerBetPlayer4.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            DealerBetPlayer4.Location = new Point(322, 12);
+            DealerBetPlayer4.Location = new Point(282, 9);
+            DealerBetPlayer4.Margin = new Padding(3, 2, 3, 2);
             DealerBetPlayer4.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             DealerBetPlayer4.Name = "DealerBetPlayer4";
-            DealerBetPlayer4.Size = new Size(64, 27);
+            DealerBetPlayer4.Size = new Size(56, 23);
             DealerBetPlayer4.TabIndex = 2;
             DealerBetPlayer4.ValueChanged += DealerBetPlayer4_ValueChanged;
             // 
             // PlayerBetPlayer4
             // 
             PlayerBetPlayer4.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            PlayerBetPlayer4.Location = new Point(235, 12);
+            PlayerBetPlayer4.Location = new Point(206, 9);
+            PlayerBetPlayer4.Margin = new Padding(3, 2, 3, 2);
             PlayerBetPlayer4.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             PlayerBetPlayer4.Name = "PlayerBetPlayer4";
-            PlayerBetPlayer4.Size = new Size(64, 27);
+            PlayerBetPlayer4.Size = new Size(56, 23);
             PlayerBetPlayer4.TabIndex = 1;
             PlayerBetPlayer4.ValueChanged += PlayerBetPlayer4_ValueChanged;
             // 
             // FundBoxPlayer4
             // 
-            FundBoxPlayer4.Location = new Point(149, 12);
+            FundBoxPlayer4.Location = new Point(130, 9);
+            FundBoxPlayer4.Margin = new Padding(3, 2, 3, 2);
             FundBoxPlayer4.Name = "FundBoxPlayer4";
             FundBoxPlayer4.ReadOnly = true;
-            FundBoxPlayer4.Size = new Size(67, 27);
+            FundBoxPlayer4.Size = new Size(59, 23);
             FundBoxPlayer4.TabIndex = 1;
             // 
             // NameLabelPlayer4
             // 
             NameLabelPlayer4.AutoSize = true;
-            NameLabelPlayer4.Location = new Point(5, 15);
+            NameLabelPlayer4.Location = new Point(4, 11);
             NameLabelPlayer4.Name = "NameLabelPlayer4";
-            NameLabelPlayer4.Size = new Size(61, 20);
+            NameLabelPlayer4.Size = new Size(48, 15);
             NameLabelPlayer4.TabIndex = 0;
             NameLabelPlayer4.Text = "Player 4";
             // 
@@ -782,55 +809,60 @@
             panel2.Controls.Add(PlayerBetPlayer2);
             panel2.Controls.Add(FundBoxPlayer2);
             panel2.Controls.Add(NameLabelPlayer2);
-            panel2.Location = new Point(0, 188);
+            panel2.Location = new Point(0, 141);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(480, 49);
+            panel2.Size = new Size(420, 37);
             panel2.TabIndex = 4;
             // 
             // TieBetPlayer2
             // 
             TieBetPlayer2.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            TieBetPlayer2.Location = new Point(406, 12);
+            TieBetPlayer2.Location = new Point(355, 9);
+            TieBetPlayer2.Margin = new Padding(3, 2, 3, 2);
             TieBetPlayer2.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             TieBetPlayer2.Name = "TieBetPlayer2";
-            TieBetPlayer2.Size = new Size(64, 27);
+            TieBetPlayer2.Size = new Size(56, 23);
             TieBetPlayer2.TabIndex = 3;
             TieBetPlayer2.ValueChanged += TieBetPlayer2_ValueChanged;
             // 
             // DealerBetPlayer2
             // 
             DealerBetPlayer2.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            DealerBetPlayer2.Location = new Point(322, 12);
+            DealerBetPlayer2.Location = new Point(282, 9);
+            DealerBetPlayer2.Margin = new Padding(3, 2, 3, 2);
             DealerBetPlayer2.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             DealerBetPlayer2.Name = "DealerBetPlayer2";
-            DealerBetPlayer2.Size = new Size(64, 27);
+            DealerBetPlayer2.Size = new Size(56, 23);
             DealerBetPlayer2.TabIndex = 2;
             DealerBetPlayer2.ValueChanged += DealerBetPlayer2_ValueChanged;
             // 
             // PlayerBetPlayer2
             // 
             PlayerBetPlayer2.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            PlayerBetPlayer2.Location = new Point(235, 12);
+            PlayerBetPlayer2.Location = new Point(206, 9);
+            PlayerBetPlayer2.Margin = new Padding(3, 2, 3, 2);
             PlayerBetPlayer2.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             PlayerBetPlayer2.Name = "PlayerBetPlayer2";
-            PlayerBetPlayer2.Size = new Size(64, 27);
+            PlayerBetPlayer2.Size = new Size(56, 23);
             PlayerBetPlayer2.TabIndex = 1;
             PlayerBetPlayer2.ValueChanged += PlayerBetPlayer2_ValueChanged;
             // 
             // FundBoxPlayer2
             // 
-            FundBoxPlayer2.Location = new Point(149, 12);
+            FundBoxPlayer2.Location = new Point(130, 9);
+            FundBoxPlayer2.Margin = new Padding(3, 2, 3, 2);
             FundBoxPlayer2.Name = "FundBoxPlayer2";
             FundBoxPlayer2.ReadOnly = true;
-            FundBoxPlayer2.Size = new Size(67, 27);
+            FundBoxPlayer2.Size = new Size(59, 23);
             FundBoxPlayer2.TabIndex = 1;
             // 
             // NameLabelPlayer2
             // 
             NameLabelPlayer2.AutoSize = true;
-            NameLabelPlayer2.Location = new Point(5, 15);
+            NameLabelPlayer2.Location = new Point(4, 11);
             NameLabelPlayer2.Name = "NameLabelPlayer2";
-            NameLabelPlayer2.Size = new Size(61, 20);
+            NameLabelPlayer2.Size = new Size(48, 15);
             NameLabelPlayer2.TabIndex = 0;
             NameLabelPlayer2.Text = "Player 2";
             // 
@@ -841,64 +873,68 @@
             panel1.Controls.Add(PlayerBetPlayer1);
             panel1.Controls.Add(FundBoxPlayer1);
             panel1.Controls.Add(NameLabelPlayer1);
-            panel1.Location = new Point(0, 120);
+            panel1.Location = new Point(0, 90);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(480, 49);
+            panel1.Size = new Size(420, 37);
             panel1.TabIndex = 0;
             // 
             // TieBetPlayer1
             // 
             TieBetPlayer1.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            TieBetPlayer1.Location = new Point(406, 12);
+            TieBetPlayer1.Location = new Point(355, 9);
+            TieBetPlayer1.Margin = new Padding(3, 2, 3, 2);
             TieBetPlayer1.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             TieBetPlayer1.Name = "TieBetPlayer1";
-            TieBetPlayer1.Size = new Size(64, 27);
+            TieBetPlayer1.Size = new Size(56, 23);
             TieBetPlayer1.TabIndex = 3;
             TieBetPlayer1.ValueChanged += TieBetPlayer1_ValueChanged;
             // 
             // DealerBetPlayer1
             // 
             DealerBetPlayer1.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            DealerBetPlayer1.Location = new Point(322, 12);
+            DealerBetPlayer1.Location = new Point(282, 9);
+            DealerBetPlayer1.Margin = new Padding(3, 2, 3, 2);
             DealerBetPlayer1.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             DealerBetPlayer1.Name = "DealerBetPlayer1";
-            DealerBetPlayer1.Size = new Size(64, 27);
+            DealerBetPlayer1.Size = new Size(56, 23);
             DealerBetPlayer1.TabIndex = 2;
             DealerBetPlayer1.ValueChanged += DealerBetPlayer1_ValueChanged;
             // 
             // PlayerBetPlayer1
             // 
             PlayerBetPlayer1.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            PlayerBetPlayer1.Location = new Point(235, 12);
+            PlayerBetPlayer1.Location = new Point(206, 9);
+            PlayerBetPlayer1.Margin = new Padding(3, 2, 3, 2);
             PlayerBetPlayer1.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             PlayerBetPlayer1.Name = "PlayerBetPlayer1";
-            PlayerBetPlayer1.Size = new Size(64, 27);
+            PlayerBetPlayer1.Size = new Size(56, 23);
             PlayerBetPlayer1.TabIndex = 1;
             PlayerBetPlayer1.ValueChanged += PlayerBetPlayer1_ValueChanged;
             // 
             // FundBoxPlayer1
             // 
-            FundBoxPlayer1.Location = new Point(149, 12);
+            FundBoxPlayer1.Location = new Point(130, 9);
+            FundBoxPlayer1.Margin = new Padding(3, 2, 3, 2);
             FundBoxPlayer1.Name = "FundBoxPlayer1";
             FundBoxPlayer1.ReadOnly = true;
-            FundBoxPlayer1.Size = new Size(67, 27);
+            FundBoxPlayer1.Size = new Size(59, 23);
             FundBoxPlayer1.TabIndex = 1;
             // 
             // NameLabelPlayer1
             // 
             NameLabelPlayer1.AutoSize = true;
-            NameLabelPlayer1.Location = new Point(5, 15);
+            NameLabelPlayer1.Location = new Point(4, 11);
             NameLabelPlayer1.Name = "NameLabelPlayer1";
-            NameLabelPlayer1.Size = new Size(61, 20);
+            NameLabelPlayer1.Size = new Size(48, 15);
             NameLabelPlayer1.TabIndex = 0;
             NameLabelPlayer1.Text = "Player 1";
             // 
             // AboutButton
             // 
-            AboutButton.Location = new Point(1253, 64);
-            AboutButton.Margin = new Padding(3, 4, 3, 4);
+            AboutButton.Location = new Point(1096, 48);
             AboutButton.Name = "AboutButton";
-            AboutButton.Size = new Size(114, 40);
+            AboutButton.Size = new Size(100, 30);
             AboutButton.TabIndex = 11;
             AboutButton.Text = "About";
             AboutButton.UseVisualStyleBackColor = true;
@@ -906,10 +942,9 @@
             // 
             // CloseButton
             // 
-            CloseButton.Location = new Point(1253, 112);
-            CloseButton.Margin = new Padding(3, 4, 3, 4);
+            CloseButton.Location = new Point(1096, 84);
             CloseButton.Name = "CloseButton";
-            CloseButton.Size = new Size(114, 40);
+            CloseButton.Size = new Size(100, 30);
             CloseButton.TabIndex = 12;
             CloseButton.Text = "Close";
             CloseButton.UseVisualStyleBackColor = true;
@@ -921,17 +956,17 @@
             SitPlayerButtonsPanel.Controls.Add(Seat3ControlButton);
             SitPlayerButtonsPanel.Controls.Add(Seat2ControlButton);
             SitPlayerButtonsPanel.Controls.Add(Seat1ControlButton);
-            SitPlayerButtonsPanel.Location = new Point(14, 725);
+            SitPlayerButtonsPanel.Location = new Point(12, 544);
+            SitPlayerButtonsPanel.Margin = new Padding(3, 2, 3, 2);
             SitPlayerButtonsPanel.Name = "SitPlayerButtonsPanel";
-            SitPlayerButtonsPanel.Size = new Size(866, 75);
+            SitPlayerButtonsPanel.Size = new Size(758, 56);
             SitPlayerButtonsPanel.TabIndex = 13;
             // 
             // Seat4ControlButton
             // 
-            Seat4ControlButton.Location = new Point(679, 17);
-            Seat4ControlButton.Margin = new Padding(3, 4, 3, 4);
+            Seat4ControlButton.Location = new Point(594, 13);
             Seat4ControlButton.Name = "Seat4ControlButton";
-            Seat4ControlButton.Size = new Size(137, 40);
+            Seat4ControlButton.Size = new Size(120, 30);
             Seat4ControlButton.TabIndex = 13;
             Seat4ControlButton.Text = "Seat 4 free";
             Seat4ControlButton.UseVisualStyleBackColor = true;
@@ -939,10 +974,9 @@
             // 
             // Seat3ControlButton
             // 
-            Seat3ControlButton.Location = new Point(457, 17);
-            Seat3ControlButton.Margin = new Padding(3, 4, 3, 4);
+            Seat3ControlButton.Location = new Point(400, 13);
             Seat3ControlButton.Name = "Seat3ControlButton";
-            Seat3ControlButton.Size = new Size(137, 40);
+            Seat3ControlButton.Size = new Size(120, 30);
             Seat3ControlButton.TabIndex = 12;
             Seat3ControlButton.Text = "Seat 3 free";
             Seat3ControlButton.UseVisualStyleBackColor = true;
@@ -950,10 +984,9 @@
             // 
             // Seat2ControlButton
             // 
-            Seat2ControlButton.Location = new Point(240, 17);
-            Seat2ControlButton.Margin = new Padding(3, 4, 3, 4);
+            Seat2ControlButton.Location = new Point(210, 13);
             Seat2ControlButton.Name = "Seat2ControlButton";
-            Seat2ControlButton.Size = new Size(137, 40);
+            Seat2ControlButton.Size = new Size(120, 30);
             Seat2ControlButton.TabIndex = 11;
             Seat2ControlButton.Text = "Seat 2 free";
             Seat2ControlButton.UseVisualStyleBackColor = true;
@@ -961,10 +994,9 @@
             // 
             // Seat1ControlButton
             // 
-            Seat1ControlButton.Location = new Point(37, 17);
-            Seat1ControlButton.Margin = new Padding(3, 4, 3, 4);
+            Seat1ControlButton.Location = new Point(32, 13);
             Seat1ControlButton.Name = "Seat1ControlButton";
-            Seat1ControlButton.Size = new Size(137, 40);
+            Seat1ControlButton.Size = new Size(120, 30);
             Seat1ControlButton.TabIndex = 10;
             Seat1ControlButton.Text = "Seat 1 free";
             Seat1ControlButton.UseVisualStyleBackColor = true;
@@ -976,60 +1008,30 @@
             // 
             // SetDataSavebutton
             // 
-            SetDataSavebutton.Location = new Point(1014, 112);
-            SetDataSavebutton.Margin = new Padding(3, 4, 3, 4);
+            SetDataSavebutton.Location = new Point(887, 84);
             SetDataSavebutton.Name = "SetDataSavebutton";
-            SetDataSavebutton.Size = new Size(171, 40);
+            SetDataSavebutton.Size = new Size(150, 30);
             SetDataSavebutton.TabIndex = 14;
             SetDataSavebutton.Text = "Set data save";
             SetDataSavebutton.UseVisualStyleBackColor = true;
             SetDataSavebutton.Click += SetDataSavebutton_Click;
             // 
-            // WinLossLabelPlayer4
+            // LoadGameButton
             // 
-            WinLossLabelPlayer4.AutoSize = true;
-            WinLossLabelPlayer4.BackColor = Color.Transparent;
-            WinLossLabelPlayer4.Location = new Point(682, 362);
-            WinLossLabelPlayer4.Name = "WinLossLabelPlayer4";
-            WinLossLabelPlayer4.Size = new Size(46, 20);
-            WinLossLabelPlayer4.TabIndex = 11;
-            WinLossLabelPlayer4.Text = "WLP4";
-            // 
-            // WinLossLabelPlayer3
-            // 
-            WinLossLabelPlayer3.AutoSize = true;
-            WinLossLabelPlayer3.BackColor = Color.Transparent;
-            WinLossLabelPlayer3.Location = new Point(534, 362);
-            WinLossLabelPlayer3.Name = "WinLossLabelPlayer3";
-            WinLossLabelPlayer3.Size = new Size(46, 20);
-            WinLossLabelPlayer3.TabIndex = 10;
-            WinLossLabelPlayer3.Text = "WLP3";
-            // 
-            // WinLossLabelPlayer2
-            // 
-            WinLossLabelPlayer2.AutoSize = true;
-            WinLossLabelPlayer2.BackColor = Color.Transparent;
-            WinLossLabelPlayer2.Location = new Point(370, 362);
-            WinLossLabelPlayer2.Name = "WinLossLabelPlayer2";
-            WinLossLabelPlayer2.Size = new Size(46, 20);
-            WinLossLabelPlayer2.TabIndex = 9;
-            WinLossLabelPlayer2.Text = "WLP2";
-            // 
-            // WinLossLabelPlayer1
-            // 
-            WinLossLabelPlayer1.AutoSize = true;
-            WinLossLabelPlayer1.BackColor = Color.Transparent;
-            WinLossLabelPlayer1.Location = new Point(207, 362);
-            WinLossLabelPlayer1.Name = "WinLossLabelPlayer1";
-            WinLossLabelPlayer1.Size = new Size(46, 20);
-            WinLossLabelPlayer1.TabIndex = 8;
-            WinLossLabelPlayer1.Text = "WLP1";
+            LoadGameButton.Location = new Point(887, 44);
+            LoadGameButton.Name = "LoadGameButton";
+            LoadGameButton.Size = new Size(150, 30);
+            LoadGameButton.TabIndex = 15;
+            LoadGameButton.Text = "Load previous game";
+            LoadGameButton.UseVisualStyleBackColor = true;
+            LoadGameButton.Click += LoadGameButton_Click;
             // 
             // GameTable
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1378, 812);
+            ClientSize = new Size(1206, 609);
+            Controls.Add(LoadGameButton);
             Controls.Add(SetDataSavebutton);
             Controls.Add(SitPlayerButtonsPanel);
             Controls.Add(CloseButton);
@@ -1039,6 +1041,7 @@
             Controls.Add(groupBox1);
             Controls.Add(GameControlButton);
             Controls.Add(ShoeGroupBox);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "GameTable";
             Text = "Game Table";
             ShoeGroupBox.ResumeLayout(false);
@@ -1177,5 +1180,6 @@
         private Label WinLossLabelPlayer3;
         private Label WinLossLabelPlayer2;
         private Label WinLossLabelPlayer1;
+        private Button LoadGameButton;
     }
 }

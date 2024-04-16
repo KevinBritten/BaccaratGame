@@ -713,5 +713,10 @@ namespace BaccaratGame
                 PC.SetEventCount(0);
             }
         }
+
+        private void LoadGameButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
