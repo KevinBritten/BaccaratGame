@@ -624,11 +624,11 @@
             // 
             // messageBox
             // 
-            messageBox.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            messageBox.Location = new Point(181, 103);
+            messageBox.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            messageBox.Location = new Point(181, 116);
             messageBox.Name = "messageBox";
             messageBox.ReadOnly = true;
-            messageBox.Size = new Size(479, 47);
+            messageBox.Size = new Size(480, 39);
             messageBox.TabIndex = 3;
             // 
             // RulesButton
