@@ -158,7 +158,7 @@
             // 
             // avatarPictureBox9
             // 
-            avatarPictureBox9.Image = Properties.Resources.monkey;
+            avatarPictureBox9.Image = Properties.Resources.speaker;
             avatarPictureBox9.Location = new Point(359, 381);
             avatarPictureBox9.Name = "avatarPictureBox9";
             avatarPictureBox9.Size = new Size(160, 160);
@@ -169,7 +169,7 @@
             // 
             // avatarPictureBox8
             // 
-            avatarPictureBox8.Image = Properties.Resources.monkey;
+            avatarPictureBox8.Image = Properties.Resources.moon;
             avatarPictureBox8.Location = new Point(179, 381);
             avatarPictureBox8.Name = "avatarPictureBox8";
             avatarPictureBox8.Size = new Size(160, 160);
@@ -191,7 +191,7 @@
             // 
             // avatarPictureBox6
             // 
-            avatarPictureBox6.Image = Properties.Resources.monkey;
+            avatarPictureBox6.Image = Properties.Resources.medal;
             avatarPictureBox6.Location = new Point(359, 207);
             avatarPictureBox6.Name = "avatarPictureBox6";
             avatarPictureBox6.Size = new Size(160, 160);
@@ -202,7 +202,7 @@
             // 
             // avatarPictureBox5
             // 
-            avatarPictureBox5.Image = Properties.Resources.monkey;
+            avatarPictureBox5.Image = Properties.Resources.heart;
             avatarPictureBox5.Location = new Point(179, 207);
             avatarPictureBox5.Name = "avatarPictureBox5";
             avatarPictureBox5.Size = new Size(160, 160);
@@ -213,7 +213,7 @@
             // 
             // avatarPictureBox4
             // 
-            avatarPictureBox4.Image = Properties.Resources.monkey;
+            avatarPictureBox4.Image = Properties.Resources.hand;
             avatarPictureBox4.Location = new Point(0, 207);
             avatarPictureBox4.Name = "avatarPictureBox4";
             avatarPictureBox4.Size = new Size(160, 160);
@@ -224,7 +224,7 @@
             // 
             // avatarPictureBox3
             // 
-            avatarPictureBox3.Image = Properties.Resources.monkey;
+            avatarPictureBox3.Image = Properties.Resources.cloud;
             avatarPictureBox3.Location = new Point(359, 34);
             avatarPictureBox3.Name = "avatarPictureBox3";
             avatarPictureBox3.Size = new Size(160, 160);
@@ -235,7 +235,7 @@
             // 
             // avatarPictureBox2
             // 
-            avatarPictureBox2.Image = Properties.Resources.cat;
+            avatarPictureBox2.Image = Properties.Resources.chart;
             avatarPictureBox2.Location = new Point(179, 34);
             avatarPictureBox2.Name = "avatarPictureBox2";
             avatarPictureBox2.Size = new Size(160, 160);
@@ -247,7 +247,7 @@
             // avatarPictureBox1
             // 
             avatarPictureBox1.BackColor = SystemColors.Control;
-            avatarPictureBox1.Image = Properties.Resources.monkey;
+            avatarPictureBox1.Image = Properties.Resources.cat;
             avatarPictureBox1.Location = new Point(0, 34);
             avatarPictureBox1.Name = "avatarPictureBox1";
             avatarPictureBox1.Size = new Size(160, 160);

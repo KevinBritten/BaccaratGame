@@ -18,7 +18,7 @@ namespace BaccaratGame
         int _position;
         EventHandler _fundsChangedCallback;
         EventHandler _avatarChangedCallback;
-      String[] avatarStrings = { "monkey", "cat", "monkey", "monkey", "monkey", "monkey", "monkey", "monkey", "monkey" };
+        String[] avatarStrings = { "cat", "chart", "cloud", "hand", "heart", "medal", "monkey", "moon", "speaker" };
         String selectedAvatar = "";
         public PlayerSit(int S, Player[] players, EventHandler fundsChangedCallback, EventHandler avatarChangedCallback)
         {
