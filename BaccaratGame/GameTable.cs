@@ -893,8 +893,8 @@ namespace BaccaratGame
         }
         private void SetHandAttributesFromPlayData(string[] currentPlay)
         {
-            H.ResultName = currentPlay[9];
-            switch (H.ResultName)
+            string ResultName = currentPlay[9];
+            switch (ResultName)
             {
                 case "Player": H.Result = 0; break;
                 case "Banker": H.Result = 1; break;
