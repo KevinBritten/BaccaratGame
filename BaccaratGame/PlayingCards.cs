@@ -161,5 +161,11 @@ namespace Play {
                 finally { txt.Close(); }
             }
         }
+
+        public int GetCardNumber(string CardLabel) {
+            int CardLocation = 53;
+            for (int i = 0; i < _abbr.Length; i++) { if (_abbr[i].Equals(CardLabel)) { CardLocation = i; } }
+            return CardLocation; 
+        }
     }
 }

@@ -817,6 +817,7 @@ namespace BaccaratGame
         {
             string aPath = Path.Combine(PC.GetDirectoryName(), PC.GetPlayFileName());
             string[] currentPlay = GetLastNonEmptyLine(aPath).Split(',');
+            PC.SetPlayCount(Convert.ToInt16(currentPlay[0]));
             SetLoadedPlayers(currentPlay);
             SetHandAttributesFromPlayData(currentPlay);
             SetDealtCardsFromPlayData(currentPlay);
@@ -904,7 +905,23 @@ namespace BaccaratGame
 
         private void SetDealtCardsFromPlayData(string[] currentPlay)
         {
-
+            ShoeBoxes[0].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[1])];
+            ShoeBoxes[1].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[5])];
+            ShoeBoxes[2].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[2])];
+            ShoeBoxes[3].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[6])];
+            if (currentPlay[3] != null) { ShoeBoxes[4].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[3])]; }
+            if (currentPlay[7] != null) {
+                if (currentPlay[3] == null) { ShoeBoxes[4].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[7])]; }
+                else { ShoeBoxes[5].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[7])]; }
+            }
+            PlayerBoxes[0].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[1])];
+            PlayerBoxes[1].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[2])];
+            BankerBoxes[0].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[5])];
+            BankerBoxes[1].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[6])];
+            if (currentPlay[3] != null) { PlayerBoxes[2].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[3])]; }
+            if (currentPlay[7] != null) { BankerBoxes[2].Image = PlayingCardsList.Images[PC.GetCardNumber(currentPlay[7])]; }
+            PlayerScoreV.Text = currentPlay[4];
+            BankerScoreV.Text = currentPlay[8];
         }
 
         private void ResetAllPlayers()
