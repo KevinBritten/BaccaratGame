@@ -98,7 +98,7 @@ namespace BaccaratGame
                     }
                     H.DetermineWinningHand();
                     SetWinningHandMessage();
-                
+
                     ShoeProgressBar.Value = 100 * (S.DeckN() * S.CardN() - S.Position()) / (S.DeckN() * S.CardN());
                     //Summarizing the result of the play
                     Boolean[] ThirdCard = H.ThirdCard();
@@ -132,8 +132,7 @@ namespace BaccaratGame
                     H.ResetHand();
                     ClearAndDisableAllBettingInputs();
                     ResetShoeBoxes();
-                    for (i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
-                    for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
+                    ResetPlayerAndBankerBoxes();
                     PlayerScoreV.Text = "";
                     BankerScoreV.Text = "";
                     GameState = 1;
@@ -378,6 +377,12 @@ namespace BaccaratGame
         }
 
         private void ResetShoeBoxes() { for (int i = 0; i < ShoeBoxes.Length; i++) { ShoeBoxes[i].Image = PlayingCardsList.Images[53]; } }
+        private void ResetPlayerAndBankerBoxes()
+        {
+            for (int i = 0; i < PlayerBoxes.Length; i++) { PlayerBoxes[i].Image = PlayingCardsList.Images[53]; }
+            for (int i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
+        }
+
 
         private void Seat1ControlButton_Click(object sender, EventArgs e)
         {
@@ -730,6 +735,7 @@ namespace BaccaratGame
         private void LoadGameButton_Click(object sender, EventArgs e)
         {
             ClearMessageBox();
+
             DialogResult result = saveDatafolderBDialog.ShowDialog();
             string directoryPath = saveDatafolderBDialog.SelectedPath;
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(directoryPath))
@@ -737,6 +743,9 @@ namespace BaccaratGame
                 if (!checkForSaveFiles(directoryPath)) UpdateMessageBox(6);
                 else
                 {
+                    ClearAllWinLossLabels();
+                    ResetShoeBoxes();
+                    ResetPlayerAndBankerBoxes();
                     PC.SetDirectoryName(directoryPath);
                     PC.SetDirectoryKnown(true);
                     //TODO:Uncomment when functions written
@@ -766,14 +775,16 @@ namespace BaccaratGame
         {
             string aPath = "";
             TextReader txt = null;
-            if (PC.GetDirectoryKnown()) {
-                try {
+            if (PC.GetDirectoryKnown())
+            {
+                try
+                {
                     int[] CardStack = new int[S.DeckN() * S.CardN()];
                     aPath = Path.Combine(PC.GetDirectoryName(), PC.GetShoeFileName());
                     txt = new StreamReader(aPath);
                     S.GetTallyS(Convert.ToInt16(txt.ReadLine()));
                     S.GetPosition(Convert.ToInt16(txt.ReadLine()));
-                    for (int i = 0; i < CardStack.Length; i++) { CardStack[i] = Convert.ToInt16(txt.ReadLine());}
+                    for (int i = 0; i < CardStack.Length; i++) { CardStack[i] = Convert.ToInt16(txt.ReadLine()); }
                     S.GetStack(CardStack);
                     ShoeProgressBar.Value = 100 * (S.DeckN() * S.CardN() - S.Position()) / (S.DeckN() * S.CardN());
                 }
@@ -782,12 +793,15 @@ namespace BaccaratGame
             }
         }
 
-        private void ExtractEventData() {
+        private void ExtractEventData()
+        {
             string aPath = "";
             int EventN = 0;
             TextReader txt = null;
-            if (PC.GetDirectoryKnown()) {
-                try {
+            if (PC.GetDirectoryKnown())
+            {
+                try
+                {
                     string Line;
                     aPath = Path.Combine(PC.GetDirectoryName(), PC.GetEventFileName());
                     txt = new StreamReader(aPath);
@@ -804,6 +818,8 @@ namespace BaccaratGame
             string aPath = Path.Combine(PC.GetDirectoryName(), PC.GetPlayFileName());
             string[] currentPlay = GetLastNonEmptyLine(aPath).Split(',');
             SetLoadedPlayers(currentPlay);
+            SetHandAttributesFromPlayData(currentPlay);
+            SetDealtCardsFromPlayData(currentPlay);
             UpdatePlayerStates();
             UpdateAllPlayerNamesInBettingArea();
             GameState = 3;
@@ -813,7 +829,7 @@ namespace BaccaratGame
             SetBettingAreaEnabled();
             SetWinningHandMessage();
         }
-    
+
         private string GetLastNonEmptyLine(string filePath)
         {
             string? lastNonEmptyLine = null;
@@ -851,6 +867,9 @@ namespace BaccaratGame
                 new NumericUpDown[]{ PlayerBetPlayer2, DealerBetPlayer2, TieBetPlayer2 },
                 new NumericUpDown[]{ PlayerBetPlayer3, DealerBetPlayer3, TieBetPlayer3 },
                 new NumericUpDown[]{ PlayerBetPlayer4, DealerBetPlayer4, TieBetPlayer4 }, };
+
+            ResetAllBettingControls(bettingControls);
+            ResetAllPlayers();
             //look for player names on index 10,16,22,28 and set them if found
             for (int i = 10; i < 29; i += 6)
             {
@@ -865,9 +884,47 @@ namespace BaccaratGame
                     players[playerIndex].AvatarChanged += avatarHandlers[playerIndex];
                     players[playerIndex].Funds = funds;
                     players[playerIndex].AvatarName = avatarName;
-                    bettingControls[playerIndex][0].Value = int.Parse(currentPlay[i+3]);
-                    bettingControls[playerIndex][1].Value = int.Parse(currentPlay[i+4]);
-                    bettingControls[playerIndex][2].Value = int.Parse(currentPlay[i+5]);
+                    bettingControls[playerIndex][0].Value = int.Parse(currentPlay[i + 3]);
+                    bettingControls[playerIndex][1].Value = int.Parse(currentPlay[i + 4]);
+                    bettingControls[playerIndex][2].Value = int.Parse(currentPlay[i + 5]);
+                }
+            }
+        }
+        private void SetHandAttributesFromPlayData(string[] currentPlay)
+        {
+            H.ResultName = currentPlay[9];
+            switch (H.ResultName)
+            {
+                case "Player": H.Result = 0; break;
+                case "Banker": H.Result = 1; break;
+                case "Tie": H.Result = 2; break;
+                default: break;
+            }
+        }
+
+        private void SetDealtCardsFromPlayData(string[] currentPlay)
+        {
+
+        }
+
+        private void ResetAllPlayers()
+        {
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i] != null)
+                {
+                    WithdrawPlayer(i);
+                }
+            }
+        }
+
+        private void ResetAllBettingControls(NumericUpDown[][] bettingControls)
+        {
+            foreach (NumericUpDown[] innerArray in bettingControls)
+            {
+                foreach (NumericUpDown bettingControl in innerArray)
+                {
+                    if (bettingControl.Value != 0) bettingControl.Value = 0;
                 }
             }
         }
