@@ -777,8 +777,7 @@ namespace BaccaratGame
                     aPath = Path.Combine(PC.GetDirectoryName(), PC.GetEventFileName());
                     txt = new StreamReader(aPath);
                     Line = txt.ReadLine();
-                    Line = txt.ReadLine();
-                    while (Line != null) { string[] fields = Line.Split(','); EventN = Convert.ToInt16(fields[0]); }
+                    while ((Line = txt.ReadLine()) != null) { string[] fields = Line.Split(','); EventN = Convert.ToInt16(fields[0]); }
                     PC.SetEventCount(EventN);
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
