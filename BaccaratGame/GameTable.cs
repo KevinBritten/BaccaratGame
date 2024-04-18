@@ -184,7 +184,7 @@ namespace BaccaratGame
                 "Please make sure there are no busted players at the table before making bets.",
                 "Please make sure all players have bet to play.",
                 "Player hand wins!",
-                "Dealer hand wins!",
+                "Banker hand wins!",
                 "This round is a tie.",
                 "No save files were found in selected directory"
             };
