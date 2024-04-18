@@ -168,7 +168,7 @@ namespace BaccaratGame
 
         private void SetWinningHandMessage()
         {
-            switch (H.ResultName())
+            switch (H.ResultName)
             {
                 case "Player": UpdateMessageBox(3); break;
                 case "Banker": UpdateMessageBox(4); break;
@@ -298,7 +298,7 @@ namespace BaccaratGame
                     previousPlayerFunds[i] = players[i].Funds;
                 }
             }
-            switch (H.Result())
+            switch (H.Result)
             {
                 case 0:
                     if ((playerStates[0] == 2))
@@ -678,7 +678,7 @@ namespace BaccaratGame
         {
             PC.UpdatePlayEventCounts();
             PC.WriteInShoeFile(S.TallyS(), S.Position(), S.Stack());
-            PC.LineUpHands(H.Player(), H.Banker(), H.ThirdCard(), H.Scores(), H.ResultName());
+            PC.LineUpHands(H.Player(), H.Banker(), H.ThirdCard(), H.Scores(), H.ResultName);
             for (int i = 0; i < players.Length; i++)
             {
                 if (playerStates[i] == 0) { PC.LineUpNoPlayer(); }

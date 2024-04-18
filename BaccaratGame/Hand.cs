@@ -5,8 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Play {
-    internal class Hand {
+namespace Play
+{
+    internal class Hand
+    {
         private Boolean PLAYER = true;
         private Boolean BANKER = false;
         private int[] _banker = new int[3];
@@ -26,10 +28,18 @@ namespace Play {
         public int[] Scores() { return _scores; }
         public Boolean[] ThirdCard() { return _thirdCard; }
         public Boolean NaturalHand() { return _naturalHand; }
-        public int Result() { return _result; }
-        public string ResultName() { return _resultName[_result]; }
+        public int Result
+        {
+            get { return _result; }
+            set { _result = value; }
+        }
+        public string ResultName {
+            get { return _resultName[_result]; }
+            set { _resultName[_result] = value;}
+        }
 
-        public void DistributeFourCards(int[] C) {
+        public void DistributeFourCards(int[] C)
+        {
             _player[0] = C[0]; _player[1] = C[2];
             _banker[0] = C[1]; _banker[1] = C[3];
             _scores[0] = CalculateScore(_cardValue[_player[0]] + _cardValue[_player[1]]);
@@ -38,35 +48,43 @@ namespace Play {
             if (_scores[1] >= 8) { _naturalHand = true; }
         }
 
-        public void GetThirdCard(int C, Boolean Choice) {
+        public void GetThirdCard(int C, Boolean Choice)
+        {
             if (Choice == PLAYER) { GetPlayerThirdCard(C); } else { GetBankerThirdCard(C); }
         }
 
-        public void GetPlayerThirdCard(int C) {
+        public void GetPlayerThirdCard(int C)
+        {
             _player[2] = C;
             _scores[0] = CalculateScore(_cardValue[_player[0]] + _cardValue[_player[1]] + _cardValue[_player[2]]);
         }
 
-        public void GetBankerThirdCard(int C) {
+        public void GetBankerThirdCard(int C)
+        {
             _banker[2] = C;
             _scores[1] = CalculateScore(_cardValue[_banker[0]] + _cardValue[_banker[1]] + _cardValue[_banker[2]]);
         }
 
-        public int CalculateScore(int S) {
+        public int CalculateScore(int S)
+        {
             if (S >= 20) { return S - 20; } else if (S >= 10) { return S - 10; } else { return S; }
         }
 
         public Boolean NoNaturalHand() { if (_naturalHand) { return false; } else { return true; } }
 
-        public Boolean NeedPlayerThirdCard() {
-            if (_scores[0] <= 5) { _thirdCard[0] = true;  return true; } else { return false; }
+        public Boolean NeedPlayerThirdCard()
+        {
+            if (_scores[0] <= 5) { _thirdCard[0] = true; return true; } else { return false; }
         }
 
-        public Boolean NeedBankerThirdCard() { 
-            if (!_thirdCard[0]) { 
-                if (_scores[1] <= 5) { _thirdCard[1] = true; return true; } else { return false; } 
+        public Boolean NeedBankerThirdCard()
+        {
+            if (!_thirdCard[0])
+            {
+                if (_scores[1] <= 5) { _thirdCard[1] = true; return true; } else { return false; }
             }
-            else {
+            else
+            {
                 int thirdCardP = _cardValue[_player[2]];
                 if (_scores[1] <= 2) { _thirdCard[1] = true; return true; }
                 else if ((_scores[1] == 3) && (thirdCardP != 8)) { _thirdCard[1] = true; return true; }
@@ -77,7 +95,8 @@ namespace Play {
             }
         }
 
-        public void DetermineWinningHand() { 
+        public void DetermineWinningHand()
+        {
             if (_scores[0] > _scores[1]) { _result = 0; }
             else if (_scores[0] < _scores[1]) { _result = 1; }
             else { _result = 2; }
