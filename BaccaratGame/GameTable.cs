@@ -740,16 +740,15 @@ namespace BaccaratGame
                     PC.SetDirectoryName(directoryPath);
                     PC.SetDirectoryKnown(true);
                     //TODO:Uncomment when functions written
-                    //ExtractShoeData();
-                    //ExtractEventData();
+
+                    ExtractShoeData();
+                    ExtractEventData();
                     ExtractPlayData();
+
                 }
 
             }
         }
-
-
-
 
         private bool checkForSaveFiles(string directoryPath)
         {
@@ -766,30 +765,40 @@ namespace BaccaratGame
         private void ExtractShoeData()
         {
             string aPath = "";
-            TextWriter txt = null;
-            if (PC.GetDirectoryKnown())
-            {
-                try
-                {
+            TextReader txt = null;
+            if (PC.GetDirectoryKnown()) {
+                try {
+                    int[] CardStack = new int[S.DeckN() * S.CardN()];
                     aPath = Path.Combine(PC.GetDirectoryName(), PC.GetShoeFileName());
-                    //if (_eventCount == 1)
-                    //{
-                    //    txt = new StreamWriter(aPath);
-                    //    txt.WriteLine(_eventLabel);
-                    //    txt.WriteLine(_eventLine);
-                    //}
-                    //else
-                    //{
-                    //    txt = File.AppendText(aPath);
-                    //    txt.WriteLine(_eventLine);
-                    //}
+                    txt = new StreamReader(aPath);
+                    S.GetTallyS(Convert.ToInt16(txt.ReadLine()));
+                    S.GetPosition(Convert.ToInt16(txt.ReadLine()));
+                    for (int i = 0; i < CardStack.Length; i++) { CardStack[i] = Convert.ToInt16(txt.ReadLine());}
+                    S.GetStack(CardStack);
+                    ShoeProgressBar.Value = 100 * (S.DeckN() * S.CardN() - S.Position()) / (S.DeckN() * S.CardN());
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
                 finally { txt.Close(); }
             }
         }
 
-        private void ExtractEventData() { }
+        private void ExtractEventData() {
+            string aPath = "";
+            int EventN = 0;
+            TextReader txt = null;
+            if (PC.GetDirectoryKnown()) {
+                try {
+                    string Line;
+                    aPath = Path.Combine(PC.GetDirectoryName(), PC.GetEventFileName());
+                    txt = new StreamReader(aPath);
+                    Line = txt.ReadLine();
+                    while ((Line = txt.ReadLine()) != null) { string[] fields = Line.Split(','); EventN = Convert.ToInt16(fields[0]); }
+                    PC.SetEventCount(EventN);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+                finally { txt.Close(); }
+            }
+        }
         private void ExtractPlayData()
         {
             string aPath = Path.Combine(PC.GetDirectoryName(), PC.GetPlayFileName());
@@ -804,23 +813,7 @@ namespace BaccaratGame
             SetBettingAreaEnabled();
             SetWinningHandMessage();
         }
-
-        //static string GetLastNonEmptyLine(string filePath)
-        //{
-        //    string? lastNonEmptyLine = null;
-        //    using (StreamReader reader = new StreamReader(filePath))
-        //    {
-        //        string line;
-        //        while ((line = reader.ReadLine()) != null)
-        //        {
-        //            if (!string.IsNullOrWhiteSpace(line))
-        //            {
-        //                lastNonEmptyLine = line;
-        //            }
-        //        }
-        //    }
-        //    return lastNonEmptyLine;
-        //}        
+    
         private string GetLastNonEmptyLine(string filePath)
         {
             string? lastNonEmptyLine = null;
