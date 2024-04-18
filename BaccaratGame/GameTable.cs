@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Xml.Linq;
 using static System.Formats.Asn1.AsnWriter;
 
 namespace BaccaratGame
@@ -57,12 +59,9 @@ namespace BaccaratGame
                     if (playerStates[1] == 2) { panel2.Enabled = true; }
                     if (playerStates[2] == 2) { panel3.Enabled = true; }
                     if (playerStates[3] == 2) { panel4.Enabled = true; }
-                    SetBettingAreaEnabled();
-                    Seat1ControlButton.Enabled = false;
-                    Seat2ControlButton.Enabled = false;
-                    Seat3ControlButton.Enabled = false;
-                    Seat4ControlButton.Enabled = false;
                     GameState = 2;
+                    SetBettingAreaEnabled();
+                    SetSeatControlButtonsEnabled();
                     GameControlButton.Text = "Play";
                     ResetAllPlayerMoods();
                     ClearAllWinLossLabels();
@@ -98,13 +97,8 @@ namespace BaccaratGame
                         if (H.NeedBankerThirdCard()) { H.GetThirdCard(S.PickCard(), BANKER); }
                     }
                     H.DetermineWinningHand();
-                    switch (H.ResultName())
-                    {
-                        case "Player": UpdateMessageBox(3); break;
-                        case "Banker": UpdateMessageBox(4); break;
-                        case "Tie": UpdateMessageBox(5); break;
-                        default: break;
-                    }
+                    SetWinningHandMessage();
+                
                     ShoeProgressBar.Value = 100 * (S.DeckN() * S.CardN() - S.Position()) / (S.DeckN() * S.CardN());
                     //Summarizing the result of the play
                     Boolean[] ThirdCard = H.ThirdCard();
@@ -126,9 +120,9 @@ namespace BaccaratGame
                     if (ThirdCard[1]) { BankerBoxes[2].Image = PlayingCardsList.Images[BankerH[2]]; }
                     PlayerScoreV.Text = Convert.ToString(Scores[0]);
                     BankerScoreV.Text = Convert.ToString(Scores[1]);
-                    SetBettingAreaEnabled();
                     SaveDataInFile();
                     GameState = 3;
+                    SetBettingAreaEnabled();
                     GameControlButton.Text = "Settle bet";
                     break;
                 case 3:
@@ -142,11 +136,8 @@ namespace BaccaratGame
                     for (i = 0; i < BankerBoxes.Length; i++) { BankerBoxes[i].Image = PlayingCardsList.Images[53]; }
                     PlayerScoreV.Text = "";
                     BankerScoreV.Text = "";
-                    Seat1ControlButton.Enabled = true;
-                    Seat2ControlButton.Enabled = true;
-                    Seat3ControlButton.Enabled = true;
-                    Seat4ControlButton.Enabled = true;
                     GameState = 1;
+                    SetSeatControlButtonsEnabled();
                     GameControlButton.Text = "Bet";
                     break;
                 default: break;
@@ -155,13 +146,34 @@ namespace BaccaratGame
 
         private void SetBettingAreaEnabled()
         {
-            if (GameState == 1)
+            if (GameState == 2)
             {
                 BettingAreaGroupBox.Enabled = true;
             }
             else
             {
                 BettingAreaGroupBox.Enabled = false;
+            }
+        }
+
+        private void SetSeatControlButtonsEnabled()
+        {
+            bool state = GameState == 1 ? true : false;
+            Control[] seatControlButtons = { Seat1ControlButton, Seat2ControlButton, Seat3ControlButton, Seat4ControlButton };
+            foreach (Control seatControlButton in seatControlButtons)
+            {
+                seatControlButton.Enabled = state;
+            }
+        }
+
+        private void SetWinningHandMessage()
+        {
+            switch (H.ResultName())
+            {
+                case "Player": UpdateMessageBox(3); break;
+                case "Banker": UpdateMessageBox(4); break;
+                case "Tie": UpdateMessageBox(5); break;
+                default: break;
             }
         }
 
@@ -730,7 +742,7 @@ namespace BaccaratGame
                     //TODO:Uncomment when functions written
                     //ExtractShoeData();
                     //ExtractEventData();
-                    //ExtractPlayData();
+                    ExtractPlayData();
                 }
 
             }
@@ -746,12 +758,13 @@ namespace BaccaratGame
             foreach (string fileName in fileNames)
             {
                 string path = Path.Combine(directoryPath, fileName);
-                if (!File.Exists(path)) result = false; 
+                if (!File.Exists(path)) result = false;
             }
             return result;
         }
 
-        private void ExtractShoeData() {
+        private void ExtractShoeData()
+        {
             string aPath = "";
             TextWriter txt = null;
             if (PC.GetDirectoryKnown())
@@ -777,6 +790,93 @@ namespace BaccaratGame
         }
 
         private void ExtractEventData() { }
-        private void ExtractPlayData() { }
+        private void ExtractPlayData()
+        {
+            string aPath = Path.Combine(PC.GetDirectoryName(), PC.GetPlayFileName());
+            string[] currentPlay = GetLastNonEmptyLine(aPath).Split(',');
+            SetLoadedPlayers(currentPlay);
+            UpdatePlayerStates();
+            UpdateAllPlayerNamesInBettingArea();
+            GameState = 3;
+            GameControlButton.Text = "Settle bet";
+            SetBettingAreaEnabled();
+            SetSeatControlButtonsEnabled();
+            SetBettingAreaEnabled();
+            SetWinningHandMessage();
+        }
+
+        //static string GetLastNonEmptyLine(string filePath)
+        //{
+        //    string? lastNonEmptyLine = null;
+        //    using (StreamReader reader = new StreamReader(filePath))
+        //    {
+        //        string line;
+        //        while ((line = reader.ReadLine()) != null)
+        //        {
+        //            if (!string.IsNullOrWhiteSpace(line))
+        //            {
+        //                lastNonEmptyLine = line;
+        //            }
+        //        }
+        //    }
+        //    return lastNonEmptyLine;
+        //}        
+        private string GetLastNonEmptyLine(string filePath)
+        {
+            string? lastNonEmptyLine = null;
+            StreamReader reader = null;
+            try
+            {
+                reader = new StreamReader(filePath);
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (!string.IsNullOrWhiteSpace(line))
+                    {
+                        lastNonEmptyLine = line;
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                reader.Close();
+            }
+            return lastNonEmptyLine;
+        }
+
+        private void SetLoadedPlayers(string[] currentPlay)
+        {
+            EventHandler[] fundsHandlers = { FundBoxPlayer1_FundsChanged, FundBoxPlayer2_FundsChanged, FundBoxPlayer3_FundsChanged, FundBoxPlayer4_FundsChanged };
+            EventHandler[] avatarHandlers = { AvatarPictureBoxPlayer1_ImageChanged, AvatarPictureBoxPlayer2_ImageChanged, AvatarPictureBoxPlayer3_ImageChanged, AvatarPictureBoxPlayer4_ImageChanged };
+            NumericUpDown[][] bettingControls = new NumericUpDown[][] {
+                new NumericUpDown[]{ PlayerBetPlayer1, DealerBetPlayer1, TieBetPlayer1 },
+                new NumericUpDown[]{ PlayerBetPlayer2, DealerBetPlayer2, TieBetPlayer2 },
+                new NumericUpDown[]{ PlayerBetPlayer3, DealerBetPlayer3, TieBetPlayer3 },
+                new NumericUpDown[]{ PlayerBetPlayer4, DealerBetPlayer4, TieBetPlayer4 }, };
+            //look for player names on index 10,16,22,28 and set them if found
+            for (int i = 10; i < 29; i += 6)
+            {
+                if (!string.IsNullOrWhiteSpace(currentPlay[i]))
+                {
+                    int playerIndex = (i - 10) / 6;
+                    string name = currentPlay[i];
+                    int funds = int.Parse(currentPlay[i + 2]);
+                    string avatarName = currentPlay[i + 1];
+                    players[playerIndex] = new Player(name, 0);
+                    players[playerIndex].FundsChanged += fundsHandlers[playerIndex];
+                    players[playerIndex].AvatarChanged += avatarHandlers[playerIndex];
+                    players[playerIndex].Funds = funds;
+                    players[playerIndex].AvatarName = avatarName;
+                    bettingControls[playerIndex][0].Value = int.Parse(currentPlay[i+3]);
+                    bettingControls[playerIndex][1].Value = int.Parse(currentPlay[i+4]);
+                    bettingControls[playerIndex][2].Value = int.Parse(currentPlay[i+5]);
+                }
+            }
+        }
     }
 }
