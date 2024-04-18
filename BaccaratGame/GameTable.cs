@@ -728,16 +728,13 @@ namespace BaccaratGame
                     PC.SetDirectoryName(directoryPath);
                     PC.SetDirectoryKnown(true);
                     //TODO:Uncomment when functions written
-                    //ExtractShoeData();
-                    //ExtractEventData();
+                    ExtractShoeData();
+                    ExtractEventData();
                     //ExtractPlayData();
                 }
 
             }
         }
-
-
-
 
         private bool checkForSaveFiles(string directoryPath)
         {
@@ -753,30 +750,41 @@ namespace BaccaratGame
 
         private void ExtractShoeData() {
             string aPath = "";
-            TextWriter txt = null;
-            if (PC.GetDirectoryKnown())
-            {
-                try
-                {
+            TextReader txt = null;
+            if (PC.GetDirectoryKnown()) {
+                try {
+                    int[] CardStack = new int[S.DeckN() * S.CardN()];
                     aPath = Path.Combine(PC.GetDirectoryName(), PC.GetShoeFileName());
-                    //if (_eventCount == 1)
-                    //{
-                    //    txt = new StreamWriter(aPath);
-                    //    txt.WriteLine(_eventLabel);
-                    //    txt.WriteLine(_eventLine);
-                    //}
-                    //else
-                    //{
-                    //    txt = File.AppendText(aPath);
-                    //    txt.WriteLine(_eventLine);
-                    //}
+                    txt = new StreamReader(aPath);
+                    S.GetTallyS(Convert.ToInt16(txt.ReadLine()));
+                    S.GetPosition(Convert.ToInt16(txt.ReadLine()));
+                    for (int i = 0; i < CardStack.Length; i++) { CardStack[i] = Convert.ToInt16(txt.ReadLine());}
+                    S.GetStack(CardStack);
+                    ShoeProgressBar.Value = 100 * (S.DeckN() * S.CardN() - S.Position()) / (S.DeckN() * S.CardN());
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
                 finally { txt.Close(); }
             }
         }
 
-        private void ExtractEventData() { }
+        private void ExtractEventData() {
+            string aPath = "";
+            TextReader txt = null;
+            if (PC.GetDirectoryKnown()) {
+                try {
+                    string Line;
+                    int EventN;
+                    aPath = Path.Combine(PC.GetDirectoryName(), PC.GetEventFileName());
+                    txt = new StreamReader(aPath);
+                    Line = txt.ReadLine();
+                    Line = txt.ReadLine();
+                    while (Line != null) { string[] fields = Line.Split(','); EventN = Convert.ToInt16(fields[0]); }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+                finally { txt.Close(); }
+            }
+        }
+
         private void ExtractPlayData() { }
     }
 }
