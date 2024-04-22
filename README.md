@@ -1,14 +1,14 @@
-# Baccarat Game in C#
+# Baccarat Game in C# using Windows Forms
 
 ## Overview
-This repository contains a Baccarat card game simulation written in C#. This is the final project of [Nicolas Lauzon](https://github.com/NLauzon123) and [Kevin Britten](https://github.com/KevinBritten/) for Programming Concepts 1 at Vanier College.
+This repository contains a Baccarat card game simulation written in C# using Windows Forms. This is the final project of [Nicolas Lauzon](https://github.com/NLauzon123) and [Kevin Britten](https://github.com/KevinBritten/) for Programming Concepts 1 at Vanier College.
 
 ![Baccarat Game Interface](/assets/baccarat-interface.png "Baccarat Game Interface")
 
 ## Features
 - **Gameplay:** Single computer "hot seat" play for up to 4 players with 9 avatars to choose from.
 - **Interactive UI:** Windows forms user interface for easy interaction.
-- **Saving and Loading:** Once a directory is set autosave allows the game to be loaded at another time.
+- **Saving and Loading:** Once a directory is set, autosave allows the game to be loaded at another time.
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
