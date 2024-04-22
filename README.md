@@ -3,7 +3,7 @@
 ## Overview
 This repository contains a Baccarat card game simulation written in C#. This is the final project of [Nicolas Lauzon](https://github.com/NLauzon123) and [Kevin Britten](https://github.com/KevinBritten/) for Programming Concepts 1 at Vanier College.
 
-![Baccarat Game Interface](/assets/baccarat_interface.png "Baccarat Game Interface")
+![Baccarat Game Interface](/assets/baccarat-interface.png "Baccarat Game Interface")
 
 ## Features
 - **Gameplay:** Single computer "hot seat" play for up to 4 players with 9 avatars to choose from.
