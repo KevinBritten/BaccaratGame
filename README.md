@@ -10,6 +10,14 @@ This repository contains a Baccarat card game simulation written in C# using Win
 - **Interactive UI:** Windows forms user interface for easy interaction.
 - **Saving and Loading:** Once a directory is set, autosave allows the game to be loaded at another time.
 
+## How to play
+- If you want to save your game, set a folder to save files to using the "Set save data" button. The game will autosave after every hand.
+- Sit one or more players using the buttons at the bottom of the window.
+- Once players are sat, click the "Bet" button to move onto betting.
+- Bet on the player's hand, the banker's hand, and/or for a tie.
+- Click "Play" to deal the hand.
+- After the hand is dealt, click settle bet to settle the bets and return to seating/removing players.
+
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
