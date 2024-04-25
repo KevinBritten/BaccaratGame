@@ -181,7 +181,7 @@ namespace BaccaratGame
             String[] messages =
             {
                 "Please seat at least one player to make bets.",
-                "Please make sure there are no busted players at the table before making bets.",
+                "Busted players, leave or up the ante please.",
                 "Please make sure all players have bet to play.",
                 "Player hand wins!",
                 "Banker hand wins!",
